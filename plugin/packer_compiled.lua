@@ -142,6 +142,12 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://hub.fastgit.org/rafamadriz/friendly-snippets"
   },
+  ["gitsigns.nvim"] = {
+    config = { "require('plugins.tools.gitsigns')" },
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://hub.fastgit.org/lewis6991/gitsigns.nvim"
+  },
   ["glow.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -314,22 +320,26 @@ time([[Setup for telescope.nvim]], false)
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rnvimtree\18core.mappings\frequire\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
--- Config for: feline.nvim
-time([[Config for feline.nvim]], true)
-require("plugins.tools.statusline")
-time([[Config for feline.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require("plugins.completion.lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require("plugins.completion.cmp")
-time([[Config for nvim-cmp]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('plugins.tools.gitsigns')
+time([[Config for gitsigns.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require("Comment").setup()
 time([[Config for Comment.nvim]], false)
+-- Config for: feline.nvim
+time([[Config for feline.nvim]], true)
+require("plugins.tools.statusline")
+time([[Config for feline.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("plugins.completion.cmp")
+time([[Config for nvim-cmp]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]
@@ -369,8 +379,8 @@ time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

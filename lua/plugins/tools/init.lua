@@ -59,6 +59,11 @@ M.tools = function(use)
     "folke/which-key.nvim",
     config = require('plugins.tools.config').whichkey()
   }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = [[require('plugins.tools.gitsigns')]]
+  }
 end
 
 return M

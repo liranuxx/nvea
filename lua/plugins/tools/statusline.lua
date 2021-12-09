@@ -201,7 +201,7 @@ components.active[2][1] = {
 
 components.active[3][1] = {
   provider = 'lsp_client_names',
-  right_sep = statusline_style.right..' ',
+  right_sep = statusline_style.right,
   enabled = shortline or function(winid)
      return vim.api.nvim_win_get_width(winid) > 70
   end,
