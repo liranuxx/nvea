@@ -1,12 +1,12 @@
 local M = {}
 M.basic, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
-M.basic ={
+M.basic = {
   copy_cut = true,
-  copy_del =true,
+  copy_del = true,
   insert_nav = true,
   cmd_nav = true,
-  window_nav = true,
+  window_nav = true
 }
 
 M.ui = {
@@ -21,9 +21,9 @@ M.mappings = {
   line_number_toggle = "<leader>n", -- show or hide line number
   new_buffer = "<S-t>", -- open a new buffer
   new_tab = "<C-t>b", -- open a new vim tab
-  save_file = "<leader>s", -- save file using :w
+  save_file = "<leader>w", -- save file using :w
   quit_file = "<leader>q", -- quite file using :q!
-  save_quit_file = "<leader>wq", -- quite file using :wq!
+  -- save_quit_file = "<leader>wq", -- quite file using :wq!
   nv = {
     insert_nav = {
       backward = "<C-h>",
@@ -31,7 +31,7 @@ M.mappings = {
       forward = "<C-l>",
       next_line = "<C-k>",
       prev_line = "<C-j>",
-      beginning_of_line = "<C-a>",
+      beginning_of_line = "<C-a>"
     },
     cmd_nav = {
       backward = "<C-j>",
@@ -39,11 +39,15 @@ M.mappings = {
       beginning_of_line = "<C-a>",
       sudow = "w!!"
     },
-    window_nav ={
+    window_nav = {
       moveLeft = "<C-h>",
       moveRight = "<C-l>",
       moveUp = "<C-k>",
       moveDown = "<C-j>",
+      addHeight = "<A-k>",
+      delHeight = "<A-j>",
+      addWidth = "<A-h>",
+      delWidth = "<A-l>"
     }
   }
 }
@@ -87,6 +91,7 @@ M.mappings.plugins = {
   },
   -- multitool for finding & picking things
   telescope = {
+    builtin = "<leader>bb",
     buffers = "<leader>fb",
     find_files = "<leader>ff",
     find_hiddenfiles = "<leader>fa",
@@ -95,7 +100,7 @@ M.mappings.plugins = {
     help_tags = "<leader>fh",
     live_grep = "<leader>fw",
     oldfiles = "<leader>fo",
-    themes = "<leader>th", -- theme picker
+    themes = "<leader>th" -- theme picker
   },
   lspsaga = {
     rename = "gr",

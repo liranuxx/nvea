@@ -6,7 +6,6 @@ local basic = require("core.config").basic
 local maps = require("core.config").mappings
 local plugin_maps = maps.plugins
 
-
 local M = {}
 
 M.misc = function()
@@ -24,13 +23,13 @@ M.misc = function()
     map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
 
     -- use ESC to turn off search highlighting
-    map({"n","i"}, "<Esc>", "<Esc>:noh <CR>")
+    map({"n", "i"}, "<Esc>", "<Esc>:noh <CR>")
 
     -- yank from current cursor to end of line
     map("n", "Y", "yg$")
 
-    map({"n","v"}, "H", "^")
-    map({"n","v"}, "L", "$")
+    map({"n", "v"}, "H", "^")
+    map({"n", "v"}, "L", "$")
     map("n", "n", "nzz")
     map("n", "N", "Nzz")
     map("n", "*", "*zz")
@@ -38,20 +37,19 @@ M.misc = function()
     map("n", "g*", "g*zz")
 
     -- Visual
-    map('v', 'J', ":m '>+1<cr>gv=gv")
-    map('v', 'K', ":m '<-2<cr>gv=gv")
+    map("v", "J", ":m '>+1<cr>gv=gv")
+    map("v", "K", ":m '<-2<cr>gv=gv")
   end
 
   local function optional_mappings()
-
     -- don't yank text on cut ( x )
     if not basic.copy_cut then
-      map({ "n", "v" }, "x", '"_x')
+      map({"n", "v"}, "x", '"_x')
     end
 
     -- don't yank text on delete ( dd )
     if not basic.copy_del then
-      map({ "n", "v" }, "d", '"_d')
+      map({"n", "v"}, "d", '"_d')
     end
 
     -- navigation within insert mode
@@ -84,8 +82,11 @@ M.misc = function()
       map("n", wnav.moveRight, "<C-w>l")
       map("n", wnav.moveUp, "<C-w>k")
       map("n", wnav.moveDown, "<C-w>j")
+      map("n", wnav.addHeight, "<C-w>+")
+      map("n", wnav.delHeight, "<C-w>-")
+      map("n", wnav.addWidth, "<C-w>>")
+      map("n", wnav.delWidth, "<C-w><")
     end
-
   end
 
   local function required_mappings()
@@ -96,15 +97,15 @@ M.misc = function()
     map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
     map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
     map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
-    map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
+    -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
 
     -- Add Packer commands because we are not loading it at startup
-    -- cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-    -- cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-    -- cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-    -- cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-    -- cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-    -- cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+    cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
+    cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
+    cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
+    cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
+    cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
+    cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
   end
   non_config_mappings()
   optional_mappings()
@@ -136,6 +137,7 @@ end
 M.telescope = function()
   local m = plugin_maps.telescope
 
+  map("n", m.builtin, ":Telescope builtin <CR>")
   map("n", m.buffers, ":Telescope buffers <CR>")
   map("n", m.find_files, ":Telescope find_files <CR>")
   map("n", m.find_hiddenfiles, ":Telescope find_files hidden=true <CR>")
@@ -144,12 +146,13 @@ M.telescope = function()
   map("n", m.help_tags, ":Telescope help_tags <CR>")
   map("n", m.live_grep, ":Telescope live_grep <CR>")
   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
+  map("n", "<leader>fp", ":Telescope project<CR>")
   map("n", m.themes, ":Telescope themes <CR>")
 end
 
 M.lspsaga = function()
   local m = plugin_maps.lspsaga
-  
+
   map("n", m.rename, "<cmd>Lspsaga rename<cr>")
   map("n", m.code_cation, "<cmd>Lspsaga code_action<cr>")
   map("x", m.code_cation, ":<c-u>Lspsaga range_code_action<cr>")

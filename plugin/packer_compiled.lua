@@ -266,30 +266,15 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/popup.nvim",
     url = "https://hub.fastgit.org/nvim-lua/popup.nvim"
   },
-  ["telescope-file-browser.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/telescope-file-browser.nvim",
-    url = "https://hub.fastgit.org/nvim-telescope/telescope-file-browser.nvim"
-  },
-  ["telescope-fzf-native.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/telescope-fzf-native.nvim",
-    url = "https://hub.fastgit.org/nvim-telescope/telescope-fzf-native.nvim"
-  },
   ["telescope-project.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/telescope-project.nvim",
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/telescope-project.nvim",
     url = "https://hub.fastgit.org/nvim-telescope/telescope-project.nvim"
   },
   ["telescope.nvim"] = {
-    commands = { "Telescope" },
-    config = { "\27LJ\1\2\14\0\0\t\0>\0s4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0004\2\5\0007\2\6\0027\2\a\2\14\0\2\0T\2\20€4\2\b\0007\2\t\2%\3\n\0>\2\2\0014\2\b\0007\2\t\2%\3\v\0>\2\2\0014\2\b\0007\2\t\2%\3\f\0>\2\2\0014\2\b\0007\2\t\2%\3\r\0>\2\2\0014\2\b\0007\2\t\2%\3\14\0>\2\2\0014\2\1\0%\3\2\0>\2\2\0027\2\15\2%\3\16\0>\2\2\0014\2\1\0%\3\2\0>\2\2\0027\2\15\2%\3\17\0>\2\2\0013\2\19\0003\3\18\0:\3\20\0023\3\21\0002\4\0\0:\4\22\0037\4\23\0013\0058\0003\6\25\0003\a\24\0:\a\26\0063\a\28\0003\b\27\0:\b\29\a3\b\30\0:\b\31\a:\a \0064\a\1\0%\b!\0>\a\2\0027\a\"\a:\a#\0063\a$\0:\a%\0064\a\1\0%\b!\0>\a\2\0027\a&\a:\a'\0063\a(\0:\a)\0062\a\0\0:\a*\0063\a+\0:\a,\0063\a-\0:\a.\0064\a\1\0%\b/\0>\a\2\0027\a0\a7\a1\a:\a2\0064\a\1\0%\b/\0>\a\2\0027\a3\a7\a1\a:\a4\0064\a\1\0%\b/\0>\a\2\0027\a5\a7\a1\a:\a6\0064\a\1\0%\b/\0>\a\2\0027\a7\a:\a7\6:\0069\0053\6;\0003\a:\0:\a<\6:\2\16\6:\3\17\6:\6=\5>\4\2\1G\0\1\0\15extensions\15fzf_native\1\0\0\1\0\2\28override_generic_sorter\1\25override_file_sorter\2\rdefaults\1\0\0\27buffer_previewer_maker\21qflist_previewer\22vim_buffer_qflist\19grep_previewer\23vim_buffer_vimgrep\19file_previewer\bnew\19vim_buffer_cat\25telescope.previewers\fset_env\1\0\1\14COLORTERM\14truecolor\16borderchars\1\t\0\0\bâ”€\bâ”‚\bâ”€\bâ”‚\bâ•­\bâ•®\bâ•¯\bâ•°\vborder\17path_display\1\2\0\0\rabsolute\19generic_sorter\29get_generic_fuzzy_sorter\25file_ignore_patterns\1\2\0\0\17node_modules\16file_sorter\19get_fuzzy_file\22telescope.sorters\18layout_config\rvertical\1\0\1\vmirror\1\15horizontal\1\0\3\vheight\4š³æÌ\t™³¦ÿ\3\19preview_cutoff\3x\nwidth\4×ÇÂë\3Š®¯ÿ\3\1\0\3\18preview_width\4š³æÌ\t™³†ÿ\3\20prompt_position\btop\18results_width\4š³æÌ\t™³¦ÿ\3\22vimgrep_arguments\1\0\n\23selection_strategy\nreset\20layout_strategy\15horizontal\ruse_less\2\17entry_prefix\a  \21sorting_strategy\14ascending\18prompt_prefix\n ï€‚ \17initial_mode\vinsert\rwinblend\3\0\19color_devicons\2\20selection_caret\a  \1\b\0\0\arg\18--color=never\17--no-heading\20--with-filename\18--line-number\r--column\17--smart-case\nsetup\rmappings\1\0\1\ntheme\15catppuccin\14base_dirs\1\0\1\17hidden_files\2\1\3\0\0\25~/AppData/Local/nvim\24~/Desktop/projects/\17file_browser\fproject\19load_extension1'nvim-telescope/telescope-file-browser.nvim','nvim-telescope/telescope-project.nvim'&packadd telescope-fzy-native.nvim\23packadd popup.nvim\25packadd plenary.nvim\bcmd\bvim\vloaded\17plenary.nvim\19packer_plugins\29Telescope not present!!!\nprint\14telescope\frequire\npcall\0" },
-    loaded = false,
+    config = { 'require("plugins.tools.telescope")' },
+    loaded = true,
     needs_bufread = true,
-    only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/telescope.nvim",
     url = "https://hub.fastgit.org/nvim-telescope/telescope.nvim"
   },
@@ -316,30 +301,37 @@ time([[Setup for bufferline.nvim]], false)
 time([[Setup for telescope.nvim]], true)
 try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\14telescope\18core.mappings\frequire\0", "setup", "telescope.nvim")
 time([[Setup for telescope.nvim]], false)
+time([[packadd for telescope.nvim]], true)
+vim.cmd [[packadd telescope.nvim]]
+time([[packadd for telescope.nvim]], false)
 -- Setup for: nvim-tree.lua
 time([[Setup for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rnvimtree\18core.mappings\frequire\0", "setup", "nvim-tree.lua")
 time([[Setup for nvim-tree.lua]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("plugins.completion.lspconfig")
-time([[Config for nvim-lspconfig]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("plugins.tools.telescope")
+time([[Config for telescope.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require('plugins.tools.gitsigns')
 time([[Config for gitsigns.nvim]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require("Comment").setup()
-time([[Config for Comment.nvim]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 require("plugins.tools.statusline")
 time([[Config for feline.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require("Comment").setup()
+time([[Config for Comment.nvim]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("plugins.completion.cmp")
 time([[Config for nvim-cmp]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("plugins.completion.lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]
@@ -364,7 +356,6 @@ time([[Sequenced loading]], false)
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeOpen lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeOpen", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file Telescope lua require("packer.load")({'telescope.nvim'}, { cmd = "Telescope", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
@@ -379,8 +370,8 @@ time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'packer.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

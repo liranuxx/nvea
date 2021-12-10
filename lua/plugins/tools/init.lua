@@ -5,15 +5,15 @@ M.tools = function(use)
   use {
     "numToStr/Comment.nvim",
     disable = not status.comment,
-    config = [[require("Comment").setup()]],
+    config = [[require("Comment").setup()]]
   }
   use {
-    "kyazdani42/nvim-web-devicons",
+    "kyazdani42/nvim-web-devicons"
   }
   use {
     "famiu/feline.nvim",
     disable = not status.feline,
-    config = [[require("plugins.tools.statusline")]],
+    config = [[require("plugins.tools.statusline")]]
   }
   use {
     "akinsho/bufferline.nvim",
@@ -22,46 +22,43 @@ M.tools = function(use)
     config = [[require("plugins.tools.bufferline")]],
     setup = function()
       require("core.mappings").bufferline()
-    end,
+    end
   }
   use {
     "kyazdani42/nvim-tree.lua",
     disable = not status.nvimtree,
-    cmd = { "NvimTreeToggle", "NvimTreeOpen" },
+    cmd = {"NvimTreeToggle", "NvimTreeOpen"},
     config = [[require("plugins.tools.nvimtree")]],
     setup = function()
       require("core.mappings").nvimtree()
-    end,
+    end
   }
   use {
     "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
     requires = {
-      {"nvim-telescope/telescope-fzf-native.nvim",opt = true},
-      {'nvim-telescope/telescope-project.nvim',opt = true},
-      {'nvim-telescope/telescope-file-browser.nvim',opt = true},
-      {"nvim-lua/popup.nvim", opt = true},
-      {"nvim-lua/plenary.nvim", opt = true},
+      {"nvim-telescope/telescope-project.nvim"},
+      {"nvim-lua/popup.nvim",opt = true},
+      {"nvim-lua/plenary.nvim",opt = true}
     },
-    config = require("plugins.tools.config").telescope,
+    config = [[require("plugins.tools.telescope")]],
     setup = function()
       require("core.mappings").telescope()
-    end,
+    end
   }
 
   use {
-    'ellisonleao/glow.nvim',
-    ft = 'markdown',
-    config = require('plugins.tools.config').glow(),
+    "ellisonleao/glow.nvim",
+    ft = "markdown",
+    config = require("plugins.tools.config").glow()
   }
 
   use {
     "folke/which-key.nvim",
-    config = require('plugins.tools.config').whichkey()
+    config = require("plugins.tools.config").whichkey()
   }
   use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    "lewis6991/gitsigns.nvim",
+    requires = {"nvim-lua/plenary.nvim"},
     config = [[require('plugins.tools.gitsigns')]]
   }
 end
