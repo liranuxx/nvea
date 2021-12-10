@@ -20,18 +20,12 @@ M.tools = function(use)
     disable = not status.bufferline,
     after = "nvim-web-devicons",
     config = [[require("plugins.tools.bufferline")]],
-    setup = function()
-      require("core.mappings").bufferline()
-    end
   }
   use {
     "kyazdani42/nvim-tree.lua",
     disable = not status.nvimtree,
     cmd = {"NvimTreeToggle", "NvimTreeOpen"},
     config = [[require("plugins.tools.nvimtree")]],
-    setup = function()
-      require("core.mappings").nvimtree()
-    end
   }
   use {
     "nvim-telescope/telescope.nvim",
@@ -41,9 +35,6 @@ M.tools = function(use)
       {"nvim-lua/plenary.nvim",opt = true}
     },
     config = [[require("plugins.tools.telescope")]],
-    setup = function()
-      require("core.mappings").telescope()
-    end
   }
 
   use {

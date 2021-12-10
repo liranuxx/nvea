@@ -20,7 +20,6 @@ M.cmp = function(use)
     "tami5/lspsaga.nvim",
     after = "nvim-lspconfig",
     config = require("plugins.completion.config").lspsaga,
-    action = require("core.mappings").lspsaga(),
   }
   use {
     "hrsh7th/nvim-cmp",
