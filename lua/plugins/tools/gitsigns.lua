@@ -12,13 +12,6 @@ gitsigns.setup {
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
     },
-  -- signs = {
-  --   add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
-  --   change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
-  --   changedelete = { hl = "DiffChange", text = "~", numhl = "GitSignsChangeNr" },
-  --   delete = { hl = "DiffDelete", text = "_", numhl = "GitSignsDeleteNr" },
-  --   topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
-  -- },
   keymaps = {
     -- Default keymap options
     buffer = true,
@@ -36,7 +29,7 @@ gitsigns.setup {
   current_line_blame_opts = {delay = 1000, virtual_text_pos = "eol"},
   update_debounce = 100,
   status_formatter = nil, -- Use default
-  word_diff = true,
+  -- word_diff = true,
   diff_opts = {internal = true}
 }
 
