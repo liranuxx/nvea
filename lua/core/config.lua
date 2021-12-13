@@ -99,11 +99,13 @@ M.mappings.plugins = {
     buffers = "<leader>fb",
     find_files = "<leader>ff",
     find_hiddenfiles = "<leader>fa",
-    git_commits = "<leader>cm",
-    git_status = "<leader>gt",
-    help_tags = "<leader>fh",
+    search_char = "<leader>/",
     live_grep = "<leader>fw",
     oldfiles = "<leader>fo",
+    com_history = "<leader>ch",
+    git_commits = "<leader>cm",
+    git_status = "<leader>gt",
+    help_tags = "<F1>",
     themes = "<leader>th" -- theme picker
   },
   lspsaga = {

@@ -4,12 +4,10 @@ g.mapleader = ' '
 g.maplocalleader = ' '
 -- default utf-8
 -- g.encoding = "UTF-8"
-vim.o.fileencoding = "UTF-8"
--- vim.wo.signcolumn = "yes"
 opt.whichwrap = 'b,s,<,>,[,],h,l'
 
 opt.number = true
-opt.numberwidth = 4
+opt.numberwidth = 1
 opt.cursorline = true
 -- default true
 -- opt.ruler = true
@@ -40,6 +38,7 @@ opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 opt.ignorecase = true
 opt.smartcase = true
 opt.completeopt = "menuone,noselect"
+opt.breakindent = true
 
 -----------------------------------------------------------
 -- Colorscheme
@@ -78,5 +77,5 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 opt.shadafile = ""
-opt.shell = "/bin/bash"
+opt.shell = "/bin/zsh"
 opt.lazyredraw = true

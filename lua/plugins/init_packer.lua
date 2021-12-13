@@ -13,7 +13,7 @@ if not state then
   print("Packer cloned successfully.")
 end
 
-vim.cmd("packadd packer.nvim")
+vim.cmd [[packadd packer.nvim]]
 local packer = require("packer")
 
 packer.init {

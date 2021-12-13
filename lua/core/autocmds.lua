@@ -22,3 +22,9 @@ cmd [[autocmd Filetype lua FormatWrite]]
 
 -- Open a file from its last left off position
 cmd [[ autocmd BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
+
+-- remove trailing whitespaces
+vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
+
+-- remove trailing newline
+vim.cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])

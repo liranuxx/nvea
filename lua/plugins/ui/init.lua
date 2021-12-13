@@ -5,7 +5,7 @@ local M = {}
 M.ui = function(use)
   use {
     "wbthomason/packer.nvim",
-    event = "VimEnter",
+    opt = true,
   }
   use {"nvim-lua/plenary.nvim",}
 

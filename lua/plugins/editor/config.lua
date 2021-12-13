@@ -49,7 +49,7 @@ M.blankline = function()
   end
   blankline.setup {
     indentLine_enabled = 1,
-    char = "▏",
+    char = "┊",
     filetype_exclude = {
       "help",
       "terminal",
@@ -60,7 +60,7 @@ M.blankline = function()
       "TelescopeResults",
     },
     buftype_exclude = { "terminal" },
-    show_trailing_blankline_indent = false,
+    show_trailing_blankline_indent = true,
     show_first_indent_level = true,
     show_current_context = true,
     context_patterns = {

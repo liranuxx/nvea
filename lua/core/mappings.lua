@@ -98,13 +98,6 @@ local function required_mappings()
   map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
 
-  -- Add Packer commands because we are not loading it at startup
-  -- cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
-  -- cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
-  -- cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-  -- cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-  -- cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-  -- cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
 end
 
 local function bufferline()
@@ -141,6 +134,7 @@ local function telescope()
   map("n", m.help_tags, ":Telescope help_tags <CR>")
   map("n", m.live_grep, ":Telescope live_grep <CR>")
   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
+  map("n", m.search_char, ":Telescope current_buffer_fuzzy_find <CR>")
   map("n", "<leader>fp", ":Telescope project<CR>")
   map("n", m.themes, ":Telescope themes <CR>")
 end
