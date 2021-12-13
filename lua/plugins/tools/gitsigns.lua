@@ -32,4 +32,3 @@ gitsigns.setup {
   -- word_diff = true,
   diff_opts = {internal = true}
 }
-

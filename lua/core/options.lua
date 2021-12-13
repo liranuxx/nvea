@@ -7,7 +7,7 @@ g.maplocalleader = ' '
 opt.whichwrap = 'b,s,<,>,[,],h,l'
 
 opt.number = true
-opt.numberwidth = 1
+opt.numberwidth = 2
 opt.cursorline = true
 -- default true
 -- opt.ruler = true
@@ -79,3 +79,4 @@ end
 opt.shadafile = ""
 opt.shell = "/bin/zsh"
 opt.lazyredraw = true
+g.python3_host_prog = '/bin/python3'
