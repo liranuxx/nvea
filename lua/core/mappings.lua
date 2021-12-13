@@ -89,7 +89,7 @@ local function optional_mappings()
 end
 
 local function required_mappings()
-  map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close  buffer
+  map("n", maps.close_buffer, ":bd <CR>") -- close  buffer
   map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
   map("n", maps.new_buffer, ":enew <CR>") -- new buffer
   map("n", maps.new_tab, ":tabnew <CR>") -- new tabs

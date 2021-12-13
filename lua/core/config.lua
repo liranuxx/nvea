@@ -10,15 +10,19 @@ M.basic = {
 }
 
 M.ui = {
-  italic_comment = true,
   theme = "onedark",
+  toggle_theme = {
+    "onedark",
+    "one-light",
+  },
+  italic_comment = true,
   transparency = false
 }
 
 M.mappings = {
   close_buffer = "<leader>x",
   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
-  line_number_toggle = "<leader>n", -- show or hide line number
+  line_number_toggle = "<F2>", -- show or hide line number
   new_buffer = "<S-t>", -- open a new buffer
   new_tab = "<C-t>b", -- open a new vim tab
   save_file = "<leader>w", -- save file using :w

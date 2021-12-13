@@ -1,16 +1,21 @@
+vim.g.nvea_theme = require("core.config").ui.theme
 local M = {}
 
-M.theme = "onedark"
-
-M.init = function()
+M.init = function(theme)
+  if not theme then
+    theme = vim.g.nvea_theme
+  end
   local base16 = require("base16")
 
-  base16(base16.themes(M.theme), true)
+  base16(base16.themes(theme), true)
   require("colors.highlights")
 end
 
-M.get = function()
-  return require("hl_themes."..M.theme)
+M.get = function(theme)
+  if not theme then
+    theme = vim.g.nvea_theme
+  end
+  return require("hl_themes."..theme)
 end
 
 return M

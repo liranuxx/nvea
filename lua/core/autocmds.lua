@@ -5,8 +5,8 @@ local cmd = vim.cmd
 -- [ Builds / Compiles / Interpretes  ]
 exec([[
 augroup bci
-  autocmd FileType c nnoremap <buffer> <C-m> :!gcc % && ./a.exe <CR>
-  autocmd FileType cpp nnoremap <buffer> <C-m> :!g++ % && ./a.exe <CR>
+  autocmd FileType c nnoremap <buffer> <C-m> :!gcc % && ./a.out <CR>
+  autocmd FileType cpp nnoremap <buffer> <C-m> :!g++ % && ./a.out <CR>
   autocmd FileType python nnoremap <buffer> <C-m> :!python % <CR>
   autocmd FileType sh nnoremap <buffer> <C-m> :!sh % <CR>
   autocmd FileType markdown nnoremap <buffer> <C-m> :Glow <CR>
