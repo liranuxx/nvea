@@ -1,5 +1,4 @@
--- local packer = require("plugins.init_packer")
--- local use = packer.use
+local plugin_status = require("core.config").plugins.status
 
 local M = {}
 M.ui = function(use)
@@ -7,11 +6,10 @@ M.ui = function(use)
     "wbthomason/packer.nvim",
     opt = true,
   }
-  use {"nvim-lua/plenary.nvim",}
 
-  use {
-    "liranuxx/nvim-base16.lua",
-  }
+  use { "nvim-lua/plenary.nvim", }
+
+  use { "liranuxx/nvim-base16.lua", }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -21,8 +19,10 @@ M.ui = function(use)
       'nvim-treesitter/nvim-treesitter-textobjects'
     }
   }
+
   use {
     'p00f/nvim-ts-rainbow',
+    disble = not plugin_status.rauinbow,
     config = require("plugins.ui.config").rainbow(),
   }
 end

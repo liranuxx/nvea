@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local utils = require("core.utils")
 local map = utils.map
 -- local map = vim.api.nvim_set_keymap
@@ -66,11 +65,11 @@ local function optional_mappings()
   -- navigation within cmd mode
   if basic.cmd_nav then
     local cnav = maps.nv.cmd_nav
-
-    map("c", cnav.backward, "<Left>")
-    map("c", cnav.forward, "<Right>")
-    map("c", cnav.beginning_of_line, "<Home>")
-    map("c", cnav.sudow, "w !sudo tee>/dev/null %")
+    map("c",cnav.backward,"<Left>")
+    -- map("c",cnav.forward,"<Right>")
+    -- map("c",cnav.beginning_of_line,"<Home>")
+    map("c",cnav.endding_of_line,"<End>")
+    map("c",cnav.sudow,"w !sudo tee>/dev/null %")
   end
 
   -- easier navigation between windows

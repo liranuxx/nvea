@@ -41,6 +41,7 @@ M.mappings = {
       backward = "<C-j>",
       forward = "<C-k>",
       beginning_of_line = "<C-a>",
+      endding_of_line = "<C-e>",
       sudow = "w!!"
     },
     window_nav = {
@@ -59,19 +60,23 @@ M.mappings = {
 M.plugins = {
   -- enable and disable plugins (false for disable)
   status = {
-    blankline = true, -- show code scope with symbols
-    bufferline = true, -- list open buffers up the top, easy switching too
-    colorizer = true, -- color RGB, HEX, CSS, NAME color codes
-    comment = true, -- easily (un)comment code, language aware
-    dashboard = false, -- NeoVim 'home screen' on open
-    esc_insertmode = true, -- map to <ESC> with no lag
-    feline = true, -- statusline
-    gitsigns = true, -- gitsigns in statusline
-    lspsignature = true, -- lsp enhancements
+    blankline = true,
+    bufferline = true,
+    colorizer = true,
+    rainbow = true,
+    comment = true,
+    dashboard = false,
+    esc_insertmode = true,
+    feline = true,
+    gitsigns = true,
+    lspsignature = true,
     cmp = true,
     nvimtree = true,
     autopairs = true,
-    cursorword = true
+    cursorword = true,
+    markdown_preview = true,
+    telescope = true,
+    whichkey = true,
   }
 }
 
@@ -95,7 +100,7 @@ M.mappings.plugins = {
   },
   -- multitool for finding & picking things
   telescope = {
-    builtin = "<leader>bb",
+    builtin = "<leader>fl",
     buffers = "<leader>fb",
     find_files = "<leader>ff",
     find_hiddenfiles = "<leader>fa",

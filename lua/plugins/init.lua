@@ -10,5 +10,4 @@ packer.startup(function()
   plug_tools.tools(use)
   plug_editor.editor(use)
   plug_cmp.cmp(use)
-
 end)

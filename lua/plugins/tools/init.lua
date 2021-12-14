@@ -1,10 +1,10 @@
-local status = require("core.config").plugins.status
+local plugin_status = require("core.config").plugins.status
 local M = {}
 
 M.tools = function(use)
   use {
     "numToStr/Comment.nvim",
-    disable = not status.comment,
+    disable = not plugin_status.comment,
     config = [[require("Comment").setup()]]
   }
   use {
@@ -12,23 +12,24 @@ M.tools = function(use)
   }
   use {
     "famiu/feline.nvim",
-    disable = not status.feline,
+    disable = not plugin_status.feline,
     config = [[require("plugins.tools.statusline")]]
   }
   use {
     "akinsho/bufferline.nvim",
-    disable = not status.bufferline,
+    disable = not plugin_status.bufferline,
     after = "nvim-web-devicons",
     config = [[require("plugins.tools.bufferline")]],
   }
   use {
     "kyazdani42/nvim-tree.lua",
-    disable = not status.nvimtree,
+    disable = not plugin_status.nvimtree,
     cmd = {"NvimTreeToggle", "NvimTreeOpen"},
     config = [[require("plugins.tools.nvimtree")]],
   }
   use {
     "nvim-telescope/telescope.nvim",
+    disable = not plugin_status.telescope,
     requires = {
       {"nvim-telescope/telescope-project.nvim"},
       {"nvim-lua/popup.nvim",opt = true},
@@ -39,16 +40,19 @@ M.tools = function(use)
 
   use {
     "ellisonleao/glow.nvim",
+    disable = not plugin_status.markdown_preview,
     ft = "markdown",
     config = require("plugins.tools.config").glow()
   }
 
   use {
     "folke/which-key.nvim",
-    config = require("plugins.tools.config").whichkey()
+    disable = not plugin_status.whichkey,
+    config = [[require("plugins.tools.whichkey")]]
   }
   use {
     "lewis6991/gitsigns.nvim",
+    disable = not plugin_status.gitsigns,
     requires = {"nvim-lua/plenary.nvim"},
     config = [[require('plugins.tools.gitsigns')]]
   }
