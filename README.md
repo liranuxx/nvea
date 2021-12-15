@@ -4,7 +4,8 @@ Nvea，一个 neovim 配置。
 
 ## 展示
 
-![nvea](https://gitee.com/liranux/pictures/blob/master/nvea/nvea.png)
+![nvea](https://gitee.com/liranux/pictures/raw/master/nvea/nvea.png)
+![nvea](https://gitee.com/liranux/pictures/raw/master/nvea/git.png)
 
 ## 要求
 
