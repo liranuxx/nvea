@@ -1,8 +1,25 @@
 local packer = require("plugins.init_packer")
-local plug_ui = require("plugins.ui")
-local plug_tools = require("plugins.tools")
-local plug_editor = require("plugins.editor")
-local plug_cmp = require("plugins.completion")
+
+local status_ui, plug_ui = pcall(require, "plugins.ui")
+if not status_ui then
+  return print("Error loading plugin_ui\n\n"..plug_ui)
+end
+
+local status_tools, plug_tools = pcall(require, "plugins.tools")
+if not status_tools then
+  return print("Error loading plugin_tools\n\n"..plug_tools)
+end
+
+local status_editor, plug_editor = pcall(require, "plugins.editor")
+if not status_editor then
+  return print("Error loading plugin_editor\n\n"..plug_editor)
+end
+
+local status_cmp, plug_cmp = pcall(require, "plugins.completion")
+if not status_cmp then
+  return print("Error loading plugin_cmp\n\n"..plug_cmp)
+end
+
 local use = packer.use
 
 packer.startup(function()
