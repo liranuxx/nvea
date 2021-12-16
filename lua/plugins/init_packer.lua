@@ -10,11 +10,13 @@ if not state then
     'git', 'clone', '--depth', '1',
     "https://codechina.csdn.net/mirrors/wbthomason/packer.nvim",
     install_path})
-  print("Packer cloned successfully.")
 end
 
 vim.cmd [[packadd packer.nvim]]
-local packer = require("packer")
+local present, packer = pcall(require, "packer")
+if not present then
+  return print("Couldn't clone packer !\nPacker path: " .. install_path .. "\n" .. packer)
+end
 
 packer.init {
    max_job = 16,
@@ -22,12 +24,13 @@ packer.init {
       open_fn = function()
          return require("packer.util").float({ border = "single" })
       end,
+      prompt_border = "single",
    },
    git = {
-      clone_timeout = 600,
+      clone_timeout = 1000,
       default_url_format = 'https://hub.fastgit.org/%s',
    },
-   -- auto_clean = true,
+   auto_clean = true,
    compile_on_sync = true,
    auto_reload_compiled = true
 }

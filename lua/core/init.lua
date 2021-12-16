@@ -10,5 +10,5 @@ for _, module in ipairs(modules) do
   end
 end
 
--- set all thn non plugin mappings
+-- set all the mappings
 require("core.mappings").init()

@@ -28,8 +28,15 @@ nvim + PackerSync
 
 ## 包管理器
 
+Packer
+
 
 ## 插件
 
 
 ## 基础快捷键
+
+| 快捷键 | 含义 |
+| -- | -- |
+| \<leader> | \<space> |
+| \<leader>w | 保存文件 |
