@@ -44,12 +44,18 @@ local lspkind_icons = {
 }
 
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
   formatting = {
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         nvim_lua = "[LUA]",
+        buffer = "BUF",
         path = "[PATH]",
         luasnip = "[SNIP]",
         spell = "[SPELL]"
@@ -84,13 +90,8 @@ cmp.setup {
       end
     end,
   },
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
   sources = {
-    {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "luasnip"},
-    {name = "path"}, {name = "spell"}, {name = "calc"},
+    {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "buffer"},
+    {name = "luasnip"}, {name = "path"}, {name = "spell"},
   }
 }

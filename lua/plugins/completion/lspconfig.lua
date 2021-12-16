@@ -4,6 +4,44 @@ if not present then
   return print("Lsp not present!!!")
 end
 
+-- beauty
+require("plugins.completion.config").lsp_handlers()
+
+local function on_attach(_, bufnr)
+   local function buf_set_keymap(...)
+      vim.api.nvim_buf_set_keymap(bufnr, ...)
+   end
+   local function buf_set_option(...)
+      vim.api.nvim_buf_set_option(bufnr, ...)
+   end
+
+   -- Enable completion triggered by <c-x><c-o>
+   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+   -- Mappings.
+   local opts = { noremap = true, silent = true }
+
+   -- See `:help vim.lsp.*` for documentation on any of the below functions
+   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+   buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+   buf_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+   buf_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+   buf_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+   buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+   buf_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+   buf_set_keymap("n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
+   buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+   buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+   buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
+end
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
@@ -22,32 +60,11 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
    },
 }
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-      source = "always",
-      prefix = '>',
-    }
-})
-
--- Highlight line number instead of having icons in sign column
-vim.cmd [[
-  highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
-  highlight DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
-  highlight DiagnosticLineNrInfo guibg=#1E535D guifg=#00FFFF gui=bold
-  highlight DiagnosticLineNrHint guibg=#1E205D guifg=#0000FF gui=bold
-
-  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
-  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
-  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-]]
-
-
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'bashls', 'pyright', }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
+    on_attach = on_attach,
     capabilities = capabilities,
     root_dir = lspconfig.util.root_pattern('../../')
   }
@@ -71,6 +88,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
     sumneko_binary,
@@ -101,6 +119,7 @@ lspconfig.sumneko_lua.setup {
 local clangd_root_path = vim.fn.stdpath('data') .. "/lsp_servers/clangd"
 local clangd_binary = clangd_root_path .. "/clangd_13.0.0/bin/clangd"
 lspconfig.clangd.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
   cmd = {
     clangd_binary,
