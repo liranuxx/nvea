@@ -8,6 +8,8 @@ Nvea，一个 neovim 配置。
 
 ## 要求
 
+neovim >=0.5
+
 ## 安装
 
 - Windows
