@@ -138,24 +138,18 @@ local function telescope()
   map("n", m.themes, ":Telescope themes <CR>")
 end
 
-local function lspsaga()
-  local m = plugin_maps.lspsaga
-
-  map("n", m.rename, "<cmd>Lspsaga rename<cr>")
-  map("n", m.code_cation, "<cmd>Lspsaga code_action<cr>")
-  map("x", m.code_cation, ":<c-u>Lspsaga range_code_action<cr>")
-  map("n", m.hover_doc, ":Lspsaga hover_doc<cr>")
-  map("n", m.lsp_finder, ":Lspsaga lsp_finder<cr>")
-  map("n", m.signaturehelp, ":Lspsaga signaturehelp<cr>")
-  map("n", m.show_line_diag, "<cmd>Lspsaga show_line_diagnostics<cr>")
-  map("n", m.preview_def, "<cmd>Lspsaga preview_definition<cr>")
-  map("n", m.open_terminal, ":Lspsaga open_floaterm<CR>")
-  map("t", m.close_terminal, "<C-\\><C-n>:Lspsaga close_floaterm<CR>")
-  map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
-  map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-  map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
-  map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
-end
+-- local function lspsaga()
+--
+--   map("n", m.rename, "<cmd>Lspsaga rename<cr>")
+--   map("x", m.code_cation, ":<c-u>Lspsaga range_code_action<cr>")
+--   map("n", m.hover_doc, ":Lspsaga hover_doc<cr>")
+--   map("n", m.lsp_finder, ":Lspsaga lsp_finder<cr>")
+--   map("n", m.signaturehelp, ":Lspsaga signaturehelp<cr>")
+--   map("n", m.open_terminal, ":Lspsaga open_floaterm<CR>")
+--   map("t", m.close_terminal, "<C-\\><C-n>:Lspsaga close_floaterm<CR>")
+--   map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
+--   map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
+-- end
 
 M.init = function ()
   non_config_mappings()
@@ -164,7 +158,40 @@ M.init = function ()
   bufferline()
   nvimtree()
   telescope()
-  lspsaga()
+end
+
+M.on_attach = function (_, bufnr)
+  print()
+  local function buf_set_keymap(...)
+     vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+  local function buf_set_option(...)
+     vim.api.nvim_buf_set_option(bufnr, ...)
+  end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+
+   -- Mappings.
+  local opts = { noremap = true, silent = true }
+  local m = plugin_maps.lspsaga
+
+   -- See `:help vim.lsp.*` for documentation on any of the below functions
+   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+   buf_set_keymap("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+   buf_set_keymap("n", m.preview_def, "<cmd>Lspsaga preview_definition<cr>", opts)
+   buf_set_keymap("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+   buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+   buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+   buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+   buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+   buf_set_keymap("n", m.code_cation, "<cmd>Lspsaga code_action<cr>", opts)
+   buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+   -- buf_set_keymap("n", m.show_line_diag, "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+   buf_set_keymap("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+   buf_set_keymap("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+   buf_set_keymap("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+   buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
 return M

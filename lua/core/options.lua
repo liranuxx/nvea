@@ -14,6 +14,7 @@ opt.cursorline = true
 opt.mouse = 'a'
 opt.clipboard = 'unnamedplus'
 opt.cmdheight = 1
+vim.o.updatetime = 100
 
 opt.shiftwidth = 4
 opt.tabstop = 4

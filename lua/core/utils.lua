@@ -103,4 +103,3 @@ M.fg_bg = function(group, fgcol, bgcol)
 end
 
 return M
-
