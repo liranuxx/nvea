@@ -19,6 +19,32 @@ M.ui = {
   transparency = false
 }
 
+M.plugins = {
+  -- enable and disable plugins (false for disable)
+  status = {
+    blankline = true,
+    bufferline = true,
+    colorizer = true,
+    rainbow = true,
+    comment = true,
+    dashboard = false,
+    esc_insertmode = true,
+    feline = true,
+    gitsigns = true,
+    lspsignature = true,
+    cmp = true,
+    nvimtree = true,
+    autopairs = true,
+    cursorword = true,
+    markdown_preview = true,
+    telescope = true,
+    whichkey = true,
+  },
+  feline = {
+    center_string = "Enioy the time!",
+  }
+}
+
 M.mappings = {
   close_buffer = "<leader>x",
   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
@@ -54,29 +80,6 @@ M.mappings = {
       addWidth = "<A-h>",
       delWidth = "<A-l>"
     }
-  }
-}
-
-M.plugins = {
-  -- enable and disable plugins (false for disable)
-  status = {
-    blankline = true,
-    bufferline = true,
-    colorizer = true,
-    rainbow = true,
-    comment = true,
-    dashboard = false,
-    esc_insertmode = true,
-    feline = true,
-    gitsigns = true,
-    lspsignature = true,
-    cmp = true,
-    nvimtree = true,
-    autopairs = true,
-    cursorword = true,
-    markdown_preview = true,
-    telescope = true,
-    whichkey = true,
   }
 }
 

@@ -1,5 +1,6 @@
 local colors = require("colors").get()
 local global = require("core.global")
+local center_string = require("core.config").plugins.feline.center_string
 local lsp = require "feline.providers.lsp"
 local present, feline = pcall(require, "feline")
 if not present then
@@ -194,7 +195,7 @@ components.active[1][10] = {
 }
 components.active[2][1] = {
   provider = function()
-    return "Hello, liran!"
+    return center_string
   end,
    -- enabled = shortline or function(winid)
    --    return vim.api.nvim_win_get_width(winid) > 80
@@ -216,7 +217,8 @@ components.active[3][2] = {
    enabled = shortline or function(winid)
       return vim.api.nvim_win_get_width(winid) > 110
    end,
-   right_sep = statusline_style.right,
+   left_sep = statusline_style.left,
+    right_sep = statusline_style.right,
    hl = {
       -- fg = "#a9a1e1",
       fg = colors.green,
@@ -230,6 +232,7 @@ components.active[3][3] = {
    enabled = shortline or function(winid)
       return vim.api.nvim_win_get_width(winid) > 100
    end,
+   left_sep = statusline_style.left,
    hl = {
       -- fg = "#a9a1e1",
       fg = colors.cyan,
@@ -242,6 +245,7 @@ components.active[3][4] = {
    enabled = shortline or function(winid)
       return vim.api.nvim_win_get_width(winid) > 120
    end,
+   left_sep = statusline_style.left,
    hl = function()
       return {
          fg = vi_mode_utils.get_mode_color(),

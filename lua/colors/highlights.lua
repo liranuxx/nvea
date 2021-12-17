@@ -20,18 +20,18 @@ local white = colors.white
 local yellow = colors.yellow
 local one_bg3 = colors.one_bg3
 
---local ui = require("core.default_config").ui
+local ui = require("core.config").ui
 
 local fg = require("core.utils").fg
 local fg_bg = require("core.utils").fg_bg
 local bg = require("core.utils").bg
 
 -- Comments
---if ui.italic_comments then
---   fg("Comment", grey_fg .. " gui=italic")
---else
---   fg("Comment", grey_fg)
---end
+if ui.italic_comments then
+  fg("Comment", grey_fg .. " gui=italic")
+else
+  fg("Comment", grey_fg)
+end
 
 -- Disable cusror line
 cmd "hi clear CursorLine"
