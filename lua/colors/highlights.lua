@@ -36,9 +36,10 @@ local bg = require("core.utils").bg
 -- Disable cusror line
 cmd "hi clear CursorLine"
 -- Line number
-fg("cursorlinenr", white)
+fg("cursorlinenr", red)
 
 -- same it bg, so it doesn't appear
+-- buffer 结尾的波浪号
 fg("EndOfBuffer", black)
 
 -- For floating windows
@@ -81,7 +82,7 @@ fg("DashboardShortcut", grey_fg)
 
 -- Git signs
 fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", grey_fg, "none")
+fg_bg("DiffChange", yellow, "none")
 fg_bg("DiffModified", nord_blue, "none")
 
 -- Indent blankline plugin
