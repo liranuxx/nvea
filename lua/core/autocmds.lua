@@ -31,6 +31,6 @@ vim.cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
 
 vim.cmd([[autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=300})]])
 
-vim.cmd([[autocmd CursorHold,CursorHoldI * Lspsaga show_line_diagnostics]])
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * Lspsaga show_line_diagnostics]])
 
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="single"})]]
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="single"})]]
