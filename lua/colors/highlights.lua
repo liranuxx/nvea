@@ -65,12 +65,12 @@ fg("LineNr", grey)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
 
---if ui.transparency then
 --   bg("Normal", "NONE")
---   bg("Folded", "NONE")
---   fg("Folded", "NONE")
---   fg("Comment", grey)
---end
+if ui.transparency then
+  bg("Folded", "NONE")
+  fg("Folded", "NONE")
+  fg("Comment", grey)
+end
 
 -- [[ Plugin Highlights
 
@@ -125,12 +125,12 @@ bg("NvimTreeVertSplit", darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
 
 -- Disable some highlight in nvim tree if transparency enabled
---if ui.transparency then
---   bg("NvimTreeNormal", "NONE")
---   bg("NvimTreeStatusLineNC", "NONE")
---   bg("NvimTreeVertSplit", "NONE")
---   fg("NvimTreeVertSplit", grey)
---end
+if ui.transparency then
+  bg("NvimTreeNormal", "NONE")
+  bg("NvimTreeStatusLineNC", "NONE")
+  bg("NvimTreeVertSplit", "NONE")
+  fg("NvimTreeVertSplit", grey)
+end
 
 -- Telescope
 fg("TelescopeBorder", one_bg)
