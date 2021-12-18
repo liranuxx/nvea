@@ -6,7 +6,14 @@ M.basic = {
   copy_del = true,
   insert_nav = true,
   cmd_nav = true,
-  window_nav = true
+  window_nav = true,
+  lsp = {
+    lua = true,
+    python = true,
+    -- c++
+    c = true,
+    bash = true,
+  },
 }
 
 M.ui = {
@@ -47,6 +54,7 @@ M.plugins = {
 
 M.mappings = {
   close_buffer = "<leader>x",
+  close_window = "<leader>k",
   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
   line_number_toggle = "<F2>", -- show or hide line number
   new_buffer = "<S-t>", -- open a new buffer

@@ -88,6 +88,7 @@ local function optional_mappings()
 end
 
 local function required_mappings()
+  map("n", maps.close_window, "<c-w>q") -- close  window
   map("n", maps.close_buffer, ":bd <CR>") -- close  buffer
   map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
   map("n", maps.new_buffer, ":enew <CR>") -- new buffer
