@@ -38,6 +38,7 @@ whichkey.register({
   q = { "Close Window" },
   w = { "Save File" },
   x = { "Close Buffer " },
+  k = { "Close Window " },
 
   ["/"] = { "search chars" },
 }, {prefix = "<leader>"})
