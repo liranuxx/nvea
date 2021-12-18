@@ -3,12 +3,12 @@ local M = {}
 
 M.tools = function(use)
   use {
+    "kyazdani42/nvim-web-devicons"
+  }
+  use {
     "numToStr/Comment.nvim",
     disable = not plugin_status.comment,
     config = [[require("Comment").setup()]]
-  }
-  use {
-    "kyazdani42/nvim-web-devicons"
   }
   use {
     "famiu/feline.nvim",
@@ -24,7 +24,7 @@ M.tools = function(use)
   use {
     "kyazdani42/nvim-tree.lua",
     disable = not plugin_status.nvimtree,
-    cmd = {"NvimTreeToggle", "NvimTreeOpen"},
+    cmd = {"NvimTreeToggle", "NvimTreeFocus"},
     config = [[require("plugins.tools.nvimtree")]],
   }
   use {
