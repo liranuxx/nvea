@@ -12,7 +12,7 @@ M.editor = function(use)
    use {
       "norcalli/nvim-colorizer.lua",
       disable = not status.colorizer,
-      event = "BufRead",
+      -- event = "BufRead",
       config = conf.colorizer,
    }
    use {

@@ -1,9 +1,7 @@
--- load theme
-require("colors").init()
-
 local modules = {
   "core",
   "plugins",
+  "colors"
 }
 
 for _, module in ipairs(modules) do

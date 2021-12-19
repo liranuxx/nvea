@@ -6,10 +6,8 @@ M.ui = function(use)
     "wbthomason/packer.nvim",
     opt = true,
   }
-
   use { "nvim-lua/plenary.nvim", }
-
-  use { "liranuxx/nvim-base16.lua", }
+  use { "joshdick/onedark.vim" }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -22,7 +20,7 @@ M.ui = function(use)
 
   use {
     'p00f/nvim-ts-rainbow',
-    disble = not plugin_status.rauinbow,
+    disble = not plugin_status.rainbow,
     config = require("plugins.ui.config").rainbow(),
   }
 end

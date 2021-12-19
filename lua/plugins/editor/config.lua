@@ -38,7 +38,6 @@ M.colorizer = function()
     -- Available modes: foreground, background
     mode = "background", -- Set the display mode.
   })
-  vim.cmd "ColorizerReloadAllBuffers"
 end
 
 

@@ -192,22 +192,15 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-autopairs",
     url = "https://hub.fastgit.org/windwp/nvim-autopairs"
   },
-  ["nvim-base16.lua"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-base16.lua",
-    url = "https://hub.fastgit.org/liranuxx/nvim-base16.lua"
-  },
   ["nvim-cmp"] = {
     after = { "nvim-autopairs" },
     loaded = true,
     only_config = true
   },
   ["nvim-colorizer.lua"] = {
-    config = { "\27LJ\1\2‚\2\0\0\5\0\v\0\0184\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\0014\2\b\0007\2\t\2%\3\n\0>\2\2\1G\0\1\0\30ColorizerReloadAllBuffers\bcmd\bvim\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
+    config = { "\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0" },
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
     url = "https://hub.fastgit.org/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lsp-installer"] = {
@@ -216,7 +209,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
-    after = { "lsp_signature.nvim", "lspsaga.nvim" },
+    after = { "lspsaga.nvim", "lsp_signature.nvim" },
     loaded = true,
     only_config = true
   },
@@ -248,6 +241,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://hub.fastgit.org/kyazdani42/nvim-web-devicons"
+  },
+  ["onedark.vim"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/onedark.vim",
+    url = "https://hub.fastgit.org/joshdick/onedark.vim"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -293,10 +291,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: feline.nvim
-time([[Config for feline.nvim]], true)
-require("plugins.tools.statusline")
-time([[Config for feline.nvim]], false)
 -- Config for: nvim-lspconfig
 time([[Config for nvim-lspconfig]], true)
 require("plugins.completion.lspconfig")
@@ -305,14 +299,22 @@ time([[Config for nvim-lspconfig]], false)
 time([[Config for nvim-cmp]], true)
 require("plugins.completion.cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require("plugins.tools.whichkey")
-time([[Config for which-key.nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: neoscroll.nvim
 time([[Config for neoscroll.nvim]], true)
 try_loadstring("\27LJ\1\2’\2\0\0\5\0\t\0\0154\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\a\0003\4\6\0:\4\b\3>\2\2\1G\0\1\0\rmappings\1\0\5\24use_local_scrolloff\1\22respect_scrolloff\1\16hide_cursor\2\25cursor_scrolls_alone\2\rstop_eof\2\1\n\0\0\n<C-u>\n<C-d>\n<C-b>\n<C-f>\n<C-y>\n<C-e>\azt\azz\azb\nsetup\29Neoscroll not present!!!\nprint\14neoscroll\frequire\npcall\0", "config", "neoscroll.nvim")
 time([[Config for neoscroll.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('plugins.tools.gitsigns')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: feline.nvim
+time([[Config for feline.nvim]], true)
+require("plugins.tools.statusline")
+time([[Config for feline.nvim]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require("Comment").setup()
@@ -321,10 +323,10 @@ time([[Config for Comment.nvim]], false)
 time([[Config for telescope.nvim]], true)
 require("plugins.tools.telescope")
 time([[Config for telescope.nvim]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('plugins.tools.gitsigns')
-time([[Config for gitsigns.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require("plugins.tools.whichkey")
+time([[Config for which-key.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]
@@ -363,7 +365,7 @@ time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'better-escape.nvim'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'indent-blankline.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
