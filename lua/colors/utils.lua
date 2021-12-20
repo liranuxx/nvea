@@ -28,10 +28,4 @@ function M.highlight()
   for _, group in pairs(langs) do vim_highlights(group) end
 end
 
-function M.toggle_theme(theme)
-  if not theme then
-    theme = vim.g.nvea_theme
-  end
-end
-
 return M

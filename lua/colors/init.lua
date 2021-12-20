@@ -1,4 +1,3 @@
-
 local M = {}
 
 M.init =  function (theme)
@@ -9,6 +8,13 @@ M.init =  function (theme)
 
   local color = require("colors.utils")
   color.highlight()
+end
+
+M.get = function (theme)
+  if not theme then
+    theme = vim.g.nvea_theme
+  end
+  return require("colors.schemes."..theme)
 end
 
 return M

@@ -1,4 +1,4 @@
-local c = require("colors.schemes."..vim.g.nvea_theme)
+local c = require("colors").get()
 
 local plugins = {}
 

@@ -1,4 +1,4 @@
-local colors = require("colors.schemes."..vim.g.nvea_theme)
+local colors = require("colors").get()
 local present, bufferline = pcall(require, "bufferline")
 if not present then
   return print("Bufferline not present!!!")

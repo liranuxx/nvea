@@ -7,21 +7,11 @@ M.basic = {
   insert_nav = true,
   cmd_nav = true,
   window_nav = true,
-  lsp = {
-    lua = true,
-    python = true,
-    -- c++
-    c = true,
-    bash = true,
-  },
 }
 
 M.ui = {
   theme = "onedark",
-  toggle_theme = {
-    "onedark",
-    "onelight",
-  },
+  -- theme = "onelight",
   italic_comment = true,
   transparency = false
 }
@@ -49,6 +39,9 @@ M.plugins = {
   },
   feline = {
     center_string = "Enioy the time!",
+  },
+  lspconfig = {
+    setup_lspconf = "plugins.lang.lspconfig",
   }
 }
 
@@ -62,7 +55,7 @@ M.mappings = {
   save_file = "<leader>w", -- save file using :w
   quit_file = "<leader>q", -- quite file using :q!
   -- save_quit_file = "<leader>wq", -- quite file using :wq!
-  toggle_theme = "<leader>th",
+  -- toggle_theme = "<leader>th",
   nv = {
     insert_nav = {
       backward = "<C-h>",
@@ -133,11 +126,11 @@ M.mappings.plugins = {
     signaturehelp = "gs",
     preview_def = "gp",
     goto_definition = "gd",
+    show_line_diag = "ge",
     list_line_diag = "gl",
-    open_terminal = "<A-d>",
-    close_terminal = "<A-d>",
     diag_jump_next = "gj",
-    diag_jump_prev = "gk"
+    diag_jump_prev = "gk",
+    formatting = "<leader>fm",
   }
 }
 

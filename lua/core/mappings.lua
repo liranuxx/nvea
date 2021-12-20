@@ -98,8 +98,6 @@ local function required_mappings()
   map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
 
-  map("n", maps.toggle_theme, ":lua require('colors.utils').toggle_theme()<cr>")
-
 end
 
 local function bufferline()
@@ -161,40 +159,24 @@ M.init = function ()
   telescope()
 end
 
-M.on_attach = function (_, bufnr)
-  print()
-  local function buf_set_keymap(...)
-     vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-  local function buf_set_option(...)
-     vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  -- Enable completion triggered by <c-x><c-o>
-  buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-  -- Mappings.
-  local opts = { noremap = true, silent = true }
+M.lspconfig = function ()
   local m = plugin_maps.lspsaga
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  buf_set_keymap("n", m.preview_def, "<cmd>Lspsaga preview_definition<cr>", opts)
-  buf_set_keymap("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  buf_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  buf_set_keymap("n", m.code_cation, "<cmd>Lspsaga code_action<cr>", opts)
-  buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  -- buf_set_keymap("n", m.show_line_diag, "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  buf_set_keymap("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-  buf_set_keymap("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-  buf_set_keymap("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-  buf_set_keymap("n", "<space>fm", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  buf_set_keymap("n", m.open_terminal, ":Lspsaga open_floaterm<CR>", opts)
-  buf_set_keymap("t", m.close_terminal, "<C-\\><C-n>:Lspsaga close_floaterm<CR>", opts)
+  map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+  map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  map("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
+  map("n", m.preview_def, "<cmd>Lspsaga preview_definition<cr>")
+  map("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>")
+  map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+  map("n", m.code_cation, "<cmd>Lspsaga code_action<cr>")
+  -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+  map("n", m.show_line_diag, "<cmd>Lspsaga show_line_diagnostics<cr>")
+  map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
+  map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+  map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+  map("n", m.formatting, "<cmd>lua vim.lsp.buf.formatting()<CR>")
 end
 
 return M
