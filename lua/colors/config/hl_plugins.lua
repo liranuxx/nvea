@@ -1,4 +1,4 @@
-local c = require("colors.themes.onedark")
+local c = require("colors.themes."..vim.g.nvea_theme)
 
 local plugins = {}
 

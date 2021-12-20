@@ -20,7 +20,7 @@ M.ui = {
   theme = "onedark",
   toggle_theme = {
     "onedark",
-    "one-light",
+    "onelight",
   },
   italic_comment = true,
   transparency = false

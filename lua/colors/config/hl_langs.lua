@@ -1,4 +1,4 @@
-local colors = require("colors.themes.onedark")
+local colors = require("colors.themes."..vim.g.nvea_theme)
 
 local red = colors.red
 local dark_red = colors.dark_red
