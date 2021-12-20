@@ -1,5 +1,6 @@
+require("colors").init()
+
 local modules = {
-  "colors",
   "core",
   "plugins",
 }

@@ -18,6 +18,8 @@ local function vim_highlights(highlights)
   end
 end
 function M.highlight()
+  vim.cmd("hi clear")
+  if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
   local hl = require("colors.highlights")
   local plugins = require("colors.hl_plugins")
   local langs = require("colors.hl_langs")
@@ -31,6 +33,5 @@ function M.toggle_theme(theme)
     theme = vim.g.nvea_theme
   end
 end
-
 
 return M
