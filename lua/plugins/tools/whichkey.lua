@@ -21,7 +21,7 @@ whichkey.setup {
 require("plugins.tools.")
 whichkey.register({
   f = {
-    name = "file",
+    name = "File",
     f = { "Find File" },
     b = { "Find Buffer" },
     a = { "Find HiddenFile" },
