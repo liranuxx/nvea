@@ -40,7 +40,7 @@ whichkey.register(
       h = {"Find CmdHistory"}
     },
     e = {"Focu File On Tree"},
-    q = {"Close Window"},
+    q = {"Close File"},
     w = {"Save File"},
     x = {"Close Buffer "},
     k = {"Close Window "},

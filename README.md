@@ -16,8 +16,8 @@ neovim >=0.5
 
 ```bash
 git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\opt\packer.nvim"
-...
-
+git clone https://gitee.com/liranux/nvea.git ~/AppData/Local/nvim
+nvim +PackerSync
 ```
 
 - linux
@@ -25,7 +25,7 @@ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bk
 git clone https://gitee.com/liranux/nvea.git ~/.config/nvim
-nvim + PackerSync
+nvim +PackerSync
 ```
 
 ## 包管理器
@@ -42,3 +42,7 @@ Packer
 | -- | -- |
 | \<leader> | \<space> |
 | \<leader>w | 保存文件 |
+| \<leader>q | 关闭文件 |
+| \<leader>/ | 搜索字符 |
+| \<c-n> | 打开目录数 |
+| \<leader>ff | 搜索文件 |
