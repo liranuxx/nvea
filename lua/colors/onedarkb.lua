@@ -1,4 +1,3 @@
-
 local colors = {
   dark = {
     red = "#E06C75",

@@ -1,5 +1,4 @@
--- local colors = require("colors").get()
-local onedark = require("colors.onedark").dark
+local colors = require("colors.themes.onedark")
 local global = require("core.global")
 local center_string = require("core.config").plugins.feline.center_string
 local lsp = require "feline.providers.lsp"
@@ -11,34 +10,21 @@ end
 local vi_mode_utils = require("feline.providers.vi_mode")
 
 local vi_mode_colors = {
-  NORMAL = onedark.red,
-  INSERT = onedark.purple,
-  TERM = onedark.green,
-  VISUAL = onedark.blue,
-  BLOCK = onedark.cyan,
-  REPLACE = onedark.dark_yellow,
-  ["V-REPLACE"] = onedark.dark_yellow,
-  SELECT = onedark.cyan,
-  ENTER = onedark.cyan,
-  COMMAND = onedark.yellow,
-  PROMPT = onedark.yellow,
-  MORE = onedark.yellow,
-  SHELL = onedark.green,
-  OP = onedark.green,
-  NONE = onedark.yellow,
-}
-
-local colors ={
-  statusline_bg = onedark.background,
-  white = onedark.white,
-  red = onedark.red,
-  blue = onedark.blue,
-  cyan = onedark.cyan,
-  yellow = onedark.yellow,
-  purple = onedark.purple,
-  green = onedark.green,
-  grey_fg2 = onedark.foregroun,
-  fg = onedark.foregroun,
+  NORMAL = colors.red,
+  INSERT = colors.purple,
+  TERM = colors.green,
+  VISUAL = colors.blue,
+  BLOCK = colors.cyan,
+  REPLACE = colors.dark_yellow,
+  ["V-REPLACE"] = colors.dark_yellow,
+  SELECT = colors.cyan,
+  ENTER = colors.cyan,
+  COMMAND = colors.yellow,
+  PROMPT = colors.yellow,
+  MORE = colors.yellow,
+  SHELL = colors.green,
+  OP = colors.green,
+  NONE = colors.yellow,
 }
 
 
@@ -98,7 +84,7 @@ table.insert(components.active, {})
 local mode_hl = function()
   return {
     fg = vi_mode_utils.get_mode_color(),
-    bg = colors.statusline_bg,
+    -- bg = colors.statusline_bg,
   }
 end
 
@@ -119,7 +105,6 @@ components.active[1][2] = {
   end,
   hl = {
     fg = colors.white,
-    bg = colors.statusline_bg,
   },
 }
 
@@ -131,7 +116,6 @@ components.active[1][3] = {
   -- right_sep = statusline_style.right,
   hl = {
     fg = colors.cyan,
-    bg = colors.statusline_bg,
   },
 }
 
@@ -143,7 +127,6 @@ components.active[1][4] = {
   left_sep = statusline_style.left,
   hl = {
     fg = colors.red,
-    bg = colors.statusline_bg,
   },
   icon = "  ",
 }
@@ -155,7 +138,6 @@ components.active[1][5] = {
   end,
   hl = {
     fg = colors.yellow,
-    bg = colors.statusline_bg,
   },
   icon = "  ",
 }
@@ -167,7 +149,6 @@ components.active[1][6] = {
   end,
   hl = {
     fg = colors.blue,
-    bg = colors.statusline_bg,
   },
   icon = "  ",
 }
@@ -223,7 +204,7 @@ components.active[3][1] = {
   enabled = shortline or function(winid)
     return vim.api.nvim_win_get_width(winid) > 90
   end,
-  hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
+  hl = { fg = colors.grey_fg2 },
 }
 
 components.active[3][2] = {
@@ -236,7 +217,6 @@ components.active[3][2] = {
   hl = {
     -- fg = "#a9a1e1",
     fg = colors.green,
-    bg = colors.statusline_bg,
   },
   -- icon = "  ",
 }
@@ -250,7 +230,6 @@ components.active[3][3] = {
   hl = {
     -- fg = "#a9a1e1",
     fg = colors.cyan,
-    bg = colors.statusline_bg,
   },
 }
 
@@ -263,7 +242,6 @@ components.active[3][4] = {
   hl = function()
     return {
       fg = vi_mode_utils.get_mode_color(),
-      bg = colors.statusline_bg,
     }
   end,
 }
@@ -273,7 +251,6 @@ components.active[3][5] = {
   left_sep = statusline_style.left,
   hl = {
     fg = colors.green,
-    bg = colors.statusline_bg,
   },
 }
 
@@ -293,13 +270,12 @@ components.active[3][6] = {
 
   hl = {
     fg = colors.green,
-    bg = colors.statusline_bg,
   },
 }
 
 feline.setup {
   colors = {
-    bg = colors.statusline_bg,
+    bg = colors.background,
     fg = colors.fg,
   },
   vi_mode_colors = vi_mode_colors,

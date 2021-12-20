@@ -7,7 +7,6 @@ M.ui = function(use)
     opt = true,
   }
   use { "nvim-lua/plenary.nvim", }
-  use { "joshdick/onedark.vim" }
 
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -23,6 +22,7 @@ M.ui = function(use)
     disble = not plugin_status.rainbow,
     config = require("plugins.ui.config").rainbow(),
   }
+  use { 'rktjmp/lush.nvim' }
 end
 
 return M

@@ -1,25 +1,8 @@
-local others = require("colors.onedark").others
-local onedark = require("colors.onedark").dark
-
+local colors = require("colors.themes.onedark")
 local present, bufferline = pcall(require, "bufferline")
 if not present then
   return print("Bufferline not present!!!")
 end
-
-local colors ={
-  black = onedark.black,
-  bg = onedark.background,
-  white = onedark.white,
-  red = onedark.red,
-  blue = onedark.blue,
-  cyan = onedark.cyan,
-  yellow = onedark.yellow,
-  purple = onedark.purple,
-  green = onedark.green,
-  grey_fg2 = onedark.foregroun,
-  fg = onedark.foregroun,
-  teal = others.teal,
-}
 
 bufferline.setup {
   options = {
@@ -48,7 +31,7 @@ bufferline.setup {
     },
     tab_selected = {
       guifg = colors.black,
-      guibg = colors.teal,
+      guibg = colors.extra.teal,
     },
   },
 }

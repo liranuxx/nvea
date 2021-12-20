@@ -1,3 +1,4 @@
+local theme = require("colors.onedark")
 vim.g.nvea_theme = require("core.config").ui.theme
 
 local function init(theme)
@@ -8,4 +9,4 @@ local function init(theme)
   require("colors.highlights")
 end
 
-init()
+theme.setup()
