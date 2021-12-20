@@ -214,7 +214,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
-    after = { "lspsaga.nvim", "lsp_signature.nvim" },
+    after = { "lsp_signature.nvim", "lspsaga.nvim" },
     loaded = true,
     only_config = true
   },
@@ -246,11 +246,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://hub.fastgit.org/kyazdani42/nvim-web-devicons"
-  },
-  ["onedark.vim"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/onedark.vim",
-    url = "https://hub.fastgit.org/joshdick/onedark.vim"
   },
   ["packer.nvim"] = {
     loaded = false,
@@ -296,10 +291,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require("plugins.tools.telescope")
-time([[Config for telescope.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("plugins.completion.lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("plugins.completion.cmp")
@@ -316,22 +311,22 @@ time([[Config for neoscroll.nvim]], false)
 time([[Config for gitsigns.nvim]], true)
 require('plugins.tools.gitsigns')
 time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("plugins.completion.lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: Comment.nvim
-time([[Config for Comment.nvim]], true)
-require("Comment").setup()
-time([[Config for Comment.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require("plugins.tools.whichkey")
-time([[Config for which-key.nvim]], false)
 -- Config for: feline.nvim
 time([[Config for feline.nvim]], true)
 require("plugins.tools.statusline")
 time([[Config for feline.nvim]], false)
+-- Config for: Comment.nvim
+time([[Config for Comment.nvim]], true)
+require("Comment").setup()
+time([[Config for Comment.nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require("plugins.tools.telescope")
+time([[Config for telescope.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require("plugins.tools.whichkey")
+time([[Config for which-key.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-web-devicons ]]

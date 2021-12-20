@@ -1,12 +1,13 @@
 vim.g.nvea_theme = require("core.config").ui.theme
-local load_theme = require("colors.config")
+local highlight = require("colors.utils").highlight
+-- local terminal = require('onedark.terminal')
 
-local function init(theme)
-  if not theme then
-    theme = vim.g.nvea_theme
-  end
-  -- vim.cmd([[colorscheme onedark]])
-  load_theme.setup()
+local function setup()
+  vim.cmd("hi clear")
+  if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
+  vim.g.colors_name = vim.g.nvea_theme
+  highlight()
+  -- terminal.setup()
 end
 
-init()
+setup()

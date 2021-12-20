@@ -16,7 +16,7 @@ M.hide_statusline = function()
   local api = vim.api
   local buftype = api.nvim_buf_get_option("%", "ft")
 
-   -- shown table from config has the highest priority
+  -- shown table from config has the highest priority
   if vim.tbl_contains(shown, buftype) then
     api.nvim_set_option("laststatus", 2)
     return

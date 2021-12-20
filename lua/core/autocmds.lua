@@ -33,4 +33,7 @@ vim.cmd([[autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="Inc
 
 -- vim.cmd([[autocmd CursorHold,CursorHoldI * Lspsaga show_line_diagnostics]])
 
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="single"})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor", border="single"})]]
+
+-- Don't show status line on certain windows
+vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("core.utils").hide_statusline() ]]

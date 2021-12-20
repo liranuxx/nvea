@@ -1,4 +1,4 @@
-local c = require("colors.themes."..vim.g.nvea_theme)
+local c = require("colors.schemes."..vim.g.nvea_theme)
 
 local plugins = {}
 
@@ -28,7 +28,7 @@ plugins.telescope = {
 plugins.nvimtree = {
   NvimTreeEndOfBuffer = { fg = c.background},
   NvimTreeFolderIcon = { fg = c.blue },
-  NvimTreeOpenedFolderName = { fg = c.redd },
+  NvimTreeOpenedFolderName = { fg = c.red },
   NvimTreeNormal = { bg = c.background },
   NvimTreeRootFolder = { fg = c.red, underline = true },
 }

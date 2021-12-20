@@ -98,6 +98,8 @@ local function required_mappings()
   map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
 
+  map("n", maps.toggle_theme, ":lua require('colors.utils').toggle_theme()<cr>")
+
 end
 
 local function bufferline()
@@ -136,7 +138,7 @@ local function telescope()
   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
   map("n", m.search_char, ":Telescope current_buffer_fuzzy_find <CR>")
   map("n", "<leader>fp", ":Telescope project<CR>")
-  map("n", m.themes, ":Telescope themes <CR>")
+  -- map("n", m.themes, ":Telescope themes <CR>")
 end
 
 -- local function lspsaga()

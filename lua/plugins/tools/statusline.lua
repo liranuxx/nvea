@@ -1,4 +1,4 @@
-local colors = require("colors.themes."..vim.g.nvea_theme)
+local colors = require("colors.schemes."..vim.g.nvea_theme)
 local global = require("core.global")
 local center_string = require("core.config").plugins.feline.center_string
 local lsp = require "feline.providers.lsp"

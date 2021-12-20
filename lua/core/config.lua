@@ -62,6 +62,7 @@ M.mappings = {
   save_file = "<leader>w", -- save file using :w
   quit_file = "<leader>q", -- quite file using :q!
   -- save_quit_file = "<leader>wq", -- quite file using :wq!
+  toggle_theme = "<leader>th",
   nv = {
     insert_nav = {
       backward = "<C-h>",
@@ -122,7 +123,7 @@ M.mappings.plugins = {
     git_commits = "<leader>cm",
     git_status = "<leader>gt",
     help_tags = "<F1>",
-    themes = "<leader>th" -- theme picker
+    -- themes = "<leader>th" -- theme picker
   },
   lspsaga = {
     rename = "gr",

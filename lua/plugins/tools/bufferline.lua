@@ -1,4 +1,4 @@
-local colors = require("colors.themes."..vim.g.nvea_theme)
+local colors = require("colors.schemes."..vim.g.nvea_theme)
 local present, bufferline = pcall(require, "bufferline")
 if not present then
   return print("Bufferline not present!!!")
@@ -23,11 +23,11 @@ bufferline.setup {
   highlights = {
     close_button_selected = {
       guifg = colors.red,
-      guibg = colors.black,
+      guibg = colors.background,
     },
     indicator_selected = {
       guifg = colors.blue,
-      guibg = colors.black,
+      guibg = colors.dackground,
     },
     tab_selected = {
       guifg = colors.black,
