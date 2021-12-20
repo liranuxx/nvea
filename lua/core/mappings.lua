@@ -65,11 +65,11 @@ local function optional_mappings()
   -- navigation within cmd mode
   if basic.cmd_nav then
     local cnav = maps.nv.cmd_nav
-    map("c",cnav.backward,"<Left>")
+    map("c", cnav.backward, "<Left>")
     -- map("c",cnav.forward,"<Right>")
     -- map("c",cnav.beginning_of_line,"<Home>")
-    map("c",cnav.endding_of_line,"<End>")
-    map("c",cnav.sudow,"w !sudo tee>/dev/null %")
+    map("c", cnav.endding_of_line, "<End>")
+    map("c", cnav.sudow, "w !sudo tee>/dev/null %")
   end
 
   -- easier navigation between windows
@@ -97,7 +97,6 @@ local function required_mappings()
   map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
   map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
-
 end
 
 local function bufferline()
@@ -150,16 +149,12 @@ end
 --   map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
 -- end
 
-M.init = function ()
-  non_config_mappings()
-  optional_mappings()
-  required_mappings()
-  bufferline()
-  nvimtree()
-  telescope()
+local formatter = function()
+  local m = plugin_maps.formatter
+  map("n", m.format, ":Format<CR>")
 end
 
-M.lspconfig = function ()
+M.lspconfig = function()
   local m = plugin_maps.lspsaga
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
@@ -176,7 +171,16 @@ M.lspconfig = function ()
   map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
   map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
-  map("n", m.formatting, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+end
+
+M.init = function()
+  non_config_mappings()
+  optional_mappings()
+  required_mappings()
+  bufferline()
+  nvimtree()
+  telescope()
+  formatter()
 end
 
 return M

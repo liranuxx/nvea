@@ -118,6 +118,9 @@ M.mappings.plugins = {
     help_tags = "<F1>",
     -- themes = "<leader>th" -- theme picker
   },
+  formatter = {
+    format = "<leader>fm",
+  },
   lspsaga = {
     rename = "gr",
     code_cation = "gx",
@@ -130,7 +133,6 @@ M.mappings.plugins = {
     list_line_diag = "gl",
     diag_jump_next = "gj",
     diag_jump_prev = "gk",
-    formatting = "<leader>fm",
   }
 }
 
