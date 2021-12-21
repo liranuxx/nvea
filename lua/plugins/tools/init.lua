@@ -56,6 +56,11 @@ M.tools = function(use)
     requires = {"nvim-lua/plenary.nvim"},
     config = [[require('plugins.tools.gitsigns')]]
   }
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && yarn install",
+    ft = "markdown",
+  }
 end
 
 return M
