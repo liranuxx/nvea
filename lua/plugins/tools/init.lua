@@ -86,7 +86,10 @@ M.tools = function(use)
       require("project_nvim").setup {}
     end
   }
-  use {"akinsho/toggleterm.nvim"}
+  use {
+    "akinsho/toggleterm.nvim",
+    config = [[require("plugins.tools.term")]]
+  }
 end
 
 return M

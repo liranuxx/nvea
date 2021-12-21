@@ -147,7 +147,6 @@ local lualine_x = {
       lsp_client_name = c.magenta,
       use = true
     },
-    timer = {progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000},
     spinner_symbols = {"🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 "}
   },
   {
