@@ -14,7 +14,7 @@ M.get = function (theme)
   if not theme then
     theme = vim.g.nvea_theme
   end
-  return require("colors.schemes."..theme)
+  return require("colors.schemes.".."onedark")
 end
 
 return M

@@ -1,4 +1,4 @@
-require("colors").init()
+vim.cmd("colorscheme onedark")
 
 local modules = {
   "core",

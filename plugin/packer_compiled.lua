@@ -289,6 +289,16 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/vim-cursorword",
     url = "https://hub.fastgit.org/itchyny/vim-cursorword"
   },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://hub.fastgit.org/mg979/vim-visual-multi"
+  },
+  ["vista.vim"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/vista.vim",
+    url = "https://hub.fastgit.org/liuchengxu/vista.vim"
+  },
   ["which-key.nvim"] = {
     config = { 'require("plugins.tools.whichkey")' },
     loaded = true,
