@@ -14,8 +14,8 @@ M.tools = function(use)
     "nvim-lualine/lualine.nvim",
     disable = not plugin_status.lualine,
     config = [[require("plugins.tools.lualine")]],
-    require={"arkav/lualine-lsp-progress"},
   }
+  use {"arkav/lualine-lsp-progress"}
 
   use {
     "akinsho/bufferline.nvim",
@@ -55,7 +55,6 @@ M.tools = function(use)
     disable = not plugin_status.markdown_preview,
     ft = "markdown"
   }
-  use {"liuchengxu/vista.vim"}
   use {
     "mg979/vim-visual-multi",
     branch = "master"

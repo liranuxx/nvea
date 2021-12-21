@@ -1,4 +1,5 @@
 vim.cmd("colorscheme onedark")
+require("ui.notification")("Enjoy in your time!",{row=5,col=100})
 
 local modules = {
   "core",

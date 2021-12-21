@@ -37,9 +37,6 @@ M.plugins = {
     telescope = true,
     whichkey = true,
   },
-  feline = {
-    center_string = "Enioy the time!",
-  },
   lspconfig = {
     setup_lspconf = "plugins.lang.lspconfig",
   }

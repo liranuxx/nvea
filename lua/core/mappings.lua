@@ -180,6 +180,7 @@ M.lspconfig = function()
   -- map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
   -- map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
+  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
 

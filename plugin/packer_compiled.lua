@@ -161,6 +161,11 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim",
     url = "https://hub.fastgit.org/ray-x/lsp_signature.nvim"
   },
+  ["lualine-lsp-progress"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress",
+    url = "https://hub.fastgit.org/arkav/lualine-lsp-progress"
+  },
   ["lualine.nvim"] = {
     config = { 'require("plugins.tools.lualine")' },
     loaded = true,
@@ -284,11 +289,6 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
     url = "https://hub.fastgit.org/mg979/vim-visual-multi"
   },
-  ["vista.vim"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/vista.vim",
-    url = "https://hub.fastgit.org/liuchengxu/vista.vim"
-  },
   ["which-key.nvim"] = {
     config = { 'require("plugins.tools.whichkey")' },
     loaded = true,
@@ -310,10 +310,10 @@ time([[Config for telescope.nvim]], false)
 time([[Config for nvim-cmp]], true)
 require("plugins.completion.cmp")
 time([[Config for nvim-cmp]], false)
--- Config for: nvim-colorizer.lua
-time([[Config for nvim-colorizer.lua]], true)
-try_loadstring("\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0", "config", "nvim-colorizer.lua")
-time([[Config for nvim-colorizer.lua]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require("plugins.tools.whichkey")
+time([[Config for which-key.nvim]], false)
 -- Config for: neoscroll.nvim
 time([[Config for neoscroll.nvim]], true)
 try_loadstring("\27LJ\1\2’\2\0\0\5\0\t\0\0154\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\a\0003\4\6\0:\4\b\3>\2\2\1G\0\1\0\rmappings\1\0\5\24use_local_scrolloff\1\22respect_scrolloff\1\16hide_cursor\2\25cursor_scrolls_alone\2\rstop_eof\2\1\n\0\0\n<C-u>\n<C-d>\n<C-b>\n<C-f>\n<C-y>\n<C-e>\azt\azz\azb\nsetup\29Neoscroll not present!!!\nprint\14neoscroll\frequire\npcall\0", "config", "neoscroll.nvim")
@@ -330,14 +330,14 @@ time([[Config for gitsigns.nvim]], false)
 time([[Config for lualine.nvim]], true)
 require("plugins.tools.lualine")
 time([[Config for lualine.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require("plugins.tools.whichkey")
-time([[Config for which-key.nvim]], false)
 -- Config for: dashboard-nvim
 time([[Config for dashboard-nvim]], true)
 require('plugins.tools.dashboard')
 time([[Config for dashboard-nvim]], false)
+-- Config for: nvim-colorizer.lua
+time([[Config for nvim-colorizer.lua]], true)
+try_loadstring("\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0", "config", "nvim-colorizer.lua")
+time([[Config for nvim-colorizer.lua]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require("Comment").setup()

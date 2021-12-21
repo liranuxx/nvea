@@ -1,6 +1,5 @@
 local present, lualine = pcall(require, "lualine")
-local center_string = require("core.config").plugins.feline.center_string
-local c = require("colors.schemes.onedark")
+local c = require("colorschemes").get()
 if not present then
   return print("Lualine not present!!!")
 end

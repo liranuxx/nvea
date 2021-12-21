@@ -28,6 +28,8 @@ git clone https://gitee.com/liranux/nvea.git ~/.config/nvim
 nvim +PackerSync
 ```
 
+## 说明
+
 ## 包管理器
 
 Packer
@@ -42,7 +44,9 @@ Packer
 | -- | -- |
 | \<leader> | \<space> |
 | \<leader>w | 保存文件 |
-| \<leader>q | 关闭文件 |
+| \<leader>q | 退出 |
+| \<leader>x | 关闭Buffer |
+| \<leader>k | 关闭窗口 |
 | \<leader>/ | 搜索字符 |
-| \<c-n> | 打开目录数 |
 | \<leader>ff | 搜索文件 |
+| \<F3> | 打开目录数 |

@@ -101,7 +101,7 @@ M.lsp_handlers = function()
     vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
-      virtual_text = ">"
+      virtual_text = true
     }
   )
 
