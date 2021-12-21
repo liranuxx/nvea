@@ -164,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim",
     url = "https://hub.fastgit.org/tami5/lspsaga.nvim"
   },
+  ["lualine-lsp-progress"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/lualine-lsp-progress",
+    url = "https://hub.fastgit.org/arkav/lualine-lsp-progress"
+  },
   ["lualine.nvim"] = {
     config = { 'require("plugins.tools.lualine")' },
     loaded = true,

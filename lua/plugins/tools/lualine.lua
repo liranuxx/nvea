@@ -17,6 +17,17 @@ local conditions = {
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end
 }
+local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
+  return function(str)
+    local win_width = vim.fn.winwidth(0)
+    if hide_width and win_width < hide_width then
+      return ""
+    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
+      return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
+    end
+    return str
+  end
+end
 
 local mode_color = {
   n = c.red,
@@ -44,21 +55,23 @@ local mode_color = {
 local lualine_a = {
   {
     function()
+      vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. c.background)
       return " "
     end,
-    color = {fg = mode_color[vim.fn.mode()]},
+    fmt = trunc(80, 4, nil, true),
+    color = "LualineMode",
     padding = {left = 1, right = 0}
   },
   {
     "mode",
-    color = {fg = mode_color[vim.fn.mode()]},
+    color = "LualineMode",
     padding = {left = 0, right = 0}
   }
 }
 local lualine_b = {
   {
     "filename",
-    cond = conditions.buffer_not_empty,
+    fmt = trunc(90, 30, 50),
     color = {fg = c.white, gui = "bold"},
     padding = {left = 1, right = 0}
   },
@@ -88,10 +101,44 @@ local lualine_c = {
       color_warn = {fg = c.yellow},
       color_info = {fg = c.cyan}
     }
-  }
+  },
+  {
+    function()
+      if vim.v.hlsearch == 0 then
+        return ""
+      end
+      local last_search = vim.fn.getreg "/"
+      if not last_search or last_search == "" then
+        return ""
+      end
+      local searchcount = vim.fn.searchcount {maxcount = 9999}
+      return last_search .. "(" .. searchcount.current .. "/" .. searchcount.total .. ")"
+    end,
+    color = {fg=c.black,bg=c.dark_yellow},
+    fmt = conditions.hide_in_width,
+  },
 }
 
 local lualine_x = {
+  -- {
+  --   function()
+  --     return vim.api.nvim_win_get_number(0)
+  --   end
+  -- },
+  {
+    "lsp_progress",
+    display_components = {"lsp_client_name", "spinner", {"percentage"}},
+    colors = {
+      percentage = c.cyan,
+      title = c.cyan,
+      message = c.cyan,
+      spinner = c.cyan,
+      lsp_client_name = c.magenta,
+      use = true
+    },
+    timer = {progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000},
+    spinner_symbols = {"🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 "}
+  },
   {
     function()
       local msg = "Hello"
@@ -114,7 +161,7 @@ local lualine_x = {
 }
 local lualine_y = {
   {
-    "branch",
+    "b:gitsigns_head",
     icon = "",
     color = {fg = c.green, gui = "bold"},
     padding = {right = 0}
@@ -131,15 +178,19 @@ local lualine_y = {
     fmt = string.upper,
     icons_enabled = false,
     color = {fg = c.yellow, gui = "bold"},
-    padding = {left = 1, right = 1}
+    padding = {left = 1, right = 0}
   }
 }
 local lualine_z = {
   {
+    "location",
+    color = {fg = c.blue}
+  },
+  {
     function()
       return ""
     end,
-    color = {fg = mode_color[vim.fn.mode()]},
+    color = "LualineMode",
     padding = {right = 0}
   },
   {
@@ -155,7 +206,7 @@ local lualine_z = {
       local result, _ = math.modf((current_line / total_line) * 100)
       return result .. "%% "
     end,
-    color = {fg = mode_color[vim.fn.mode()]},
+    color = "LualineMode",
     padding = {left = 1, right = 0}
   },
   {
@@ -173,7 +224,8 @@ lualine.setup {
     section_separators = {},
     disabled_filetypes = {},
     theme = {
-      normal = {c = {fg = c.foreground, bg = c.background}}
+      normal = {c = {fg = c.foreground, bg = c.background}},
+      inactive = {c = {fg = c.foreground, bg = c.background}}
     }
   },
   sections = {

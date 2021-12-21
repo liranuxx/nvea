@@ -13,8 +13,10 @@ M.tools = function(use)
   use {
     "nvim-lualine/lualine.nvim",
     disable = not plugin_status.lualine,
-    config = [[require("plugins.tools.lualine")]]
+    config = [[require("plugins.tools.lualine")]],
   }
+  use {'arkav/lualine-lsp-progress'}
+
   use {
     "akinsho/bufferline.nvim",
     disable = not plugin_status.bufferline,
