@@ -3,12 +3,6 @@ local conf = require("plugins.editor.config")
 local M = {}
 
 M.editor = function(use)
-  use {
-      "max397574/better-escape.nvim",
-      disable = not status.esc_insertmode,
-      event = "InsertEnter",
-      config = conf.better_escape,
-   }
    use {
       "norcalli/nvim-colorizer.lua",
       disable = not status.colorizer,

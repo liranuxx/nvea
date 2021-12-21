@@ -304,7 +304,6 @@ hl.plugins.ts_rainbow = {
   rainbowcol7 = hlf(c.red),
 }
 
-
 local function init()
   vim.o.background = "dark"
   vim.cmd("hi clear")

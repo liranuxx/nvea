@@ -8,18 +8,6 @@ M.autopairs = function()
   autopairs.setup {}
 end
 
-
-M.better_escape = function()
-  local present, escape = pcall(require, "better_escape")
-  if not present then
-    return print("Escape not present!!!")
-  end
-  escape.setup({
-    mapping = {'jk'},
-    timeout = 300,
-  })
-end
-
 M.colorizer = function()
   local present, colorizer = pcall(require, "colorizer")
   if not present then
