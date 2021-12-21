@@ -17,11 +17,6 @@ M.cmp = function(use)
     after = "nvim-lspconfig"
   }
   use {
-    "tami5/lspsaga.nvim",
-    after = "nvim-lspconfig",
-    config = require("plugins.completion.config").lspsaga,
-  }
-  use {
     "hrsh7th/nvim-cmp",
     disable = not status.cmp,
     events = "InsertEnter",

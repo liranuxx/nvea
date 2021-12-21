@@ -123,7 +123,6 @@ end
 
 local function telescope()
   local m = plugin_maps.telescope
-
   map("n", m.builtin, ":Telescope builtin <CR>")
   map("n", m.buffers, ":Telescope buffers <CR>")
   map("n", m.find_files, ":Telescope find_files <CR>")
@@ -134,20 +133,9 @@ local function telescope()
   map("n", m.live_grep, ":Telescope live_grep <CR>")
   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
   map("n", m.search_char, ":Telescope current_buffer_fuzzy_find <CR>")
-  map("n", "<leader>fp", ":Telescope project<CR>")
-  -- map("n", m.themes, ":Telescope themes <CR>")
+  map("n", m.commands, ":Telescope commands <CR>")
+  map("n", m.comand_history, ":Telescope command_historys <CR>")
 end
-
--- local function lspsaga()
---
---   map("n", m.rename, "<cmd>Lspsaga rename<cr>")
---   map("x", m.code_cation, ":<c-u>Lspsaga range_code_action<cr>")
---   map("n", m.hover_doc, ":Lspsaga hover_doc<cr>")
---   map("n", m.lsp_finder, ":Lspsaga lsp_finder<cr>")
---   map("n", m.signaturehelp, ":Lspsaga signaturehelp<cr>")
---   map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>")
---   map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>")
--- end
 
 local formatter = function()
   local m = plugin_maps.formatter
@@ -163,22 +151,34 @@ local hop = function()
   map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 end
 
+function _G.set_terminal_keymaps()
+  map('t', '<esc>', [[<C-\><C-n>]])
+  map('t', 'jk', [[<C-\><C-n>]])
+  map('t', '<C-h>', [[<C-\><C-n><C-W>h]])
+  map('t', '<C-j>', [[<C-\><C-n><C-W>j]])
+  map('t', '<C-k>', [[<C-\><C-n><C-W>k]])
+  map('t', '<C-l>', [[<C-\><C-n><C-W>l]])
+end
+
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
 M.lspconfig = function()
   local m = plugin_maps.lspsaga
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
   map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
   map("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
-  map("n", m.preview_def, "<cmd>Lspsaga preview_definition<cr>")
+  map("n", m.preview_def, "<cmd>lua vim.lsp.buf.preview_definition()<cr>")
   map("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>")
   map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
   map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  map("n", m.code_cation, "<cmd>Lspsaga code_action<cr>")
+  map("n", m.code_cation, "<cmd>lua vim.lsp.buf.code_action()<cr>")
   -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  map("n", m.show_line_diag, "<cmd>Lspsaga show_line_diagnostics<cr>")
-  map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
-  map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+  map("n", m.show_line_diag, "<cmd>lua vim.lsp.buf.show_line_diagnostics()<cr>")
+  -- map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
+  -- map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
 end
 

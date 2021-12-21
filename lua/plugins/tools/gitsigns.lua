@@ -24,11 +24,4 @@ gitsigns.setup {
     ["n <leader>hp"] = '<cmd>lua require"gitsigns".preview_hunk()<CR>',
     ["n <leader>hb"] = '<cmd>lua require"gitsigns".blame_line()<CR>',
   },
-  watch_gitdir = {interval = 1000, follow_files = true},
-  current_line_blame = true,
-  current_line_blame_opts = {delay = 1000, virtual_text_pos = "eol"},
-  update_debounce = 100,
-  status_formatter = nil, -- Use default
-  -- word_diff = true,
-  diff_opts = {internal = true}
 }

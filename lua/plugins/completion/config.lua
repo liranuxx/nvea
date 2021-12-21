@@ -84,17 +84,6 @@ M.lspinstaller = function()
   }
 end
 
-M.lspsaga = function()
-  local present, lspsaga = pcall(require, "lspsaga")
-  if not present then
-    return print("Lspsaga not present!!!")
-  end
-  lspsaga.setup {
-    use_saga_diagnostic_sign = false,
-    code_action_icon = " "
-  }
-end
-
 M.lsp_handlers = function()
   -- Highlight line number instead of having icons in sign column
   vim.cmd [[
@@ -112,7 +101,7 @@ M.lsp_handlers = function()
     vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
-      virtual_text = false
+      virtual_text = ">"
     }
   )
 

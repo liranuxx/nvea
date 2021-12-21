@@ -13,9 +13,9 @@ M.tools = function(use)
   use {
     "nvim-lualine/lualine.nvim",
     disable = not plugin_status.lualine,
-    config = [[require("plugins.tools.lualine")]]
+    config = [[require("plugins.tools.lualine")]],
+    require={"arkav/lualine-lsp-progress"},
   }
-  use {"arkav/lualine-lsp-progress"}
 
   use {
     "akinsho/bufferline.nvim",
@@ -33,18 +33,9 @@ M.tools = function(use)
     "nvim-telescope/telescope.nvim",
     disable = not plugin_status.telescope,
     requires = {
-      {"nvim-telescope/telescope-project.nvim"},
-      {"nvim-lua/popup.nvim", opt = true},
-      {"nvim-lua/plenary.nvim", opt = true}
+      "nvim-lua/plenary.nvim",
     },
     config = [[require("plugins.tools.telescope")]]
-  }
-
-  use {
-    "ellisonleao/glow.nvim",
-    disable = not plugin_status.markdown_preview,
-    ft = "markdown",
-    config = require("plugins.tools.config").glow()
   }
 
   use {
@@ -61,6 +52,7 @@ M.tools = function(use)
   use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && yarn install",
+    disable = not plugin_status.markdown_preview,
     ft = "markdown"
   }
   use {"liuchengxu/vista.vim"}
@@ -82,9 +74,7 @@ M.tools = function(use)
   }
   use {
     "ahmedkhalf/project.nvim",
-    config = function()
-      require("project_nvim").setup {}
-    end
+    config = require("plugins.tools.config").project
   }
   use {
     "akinsho/toggleterm.nvim",

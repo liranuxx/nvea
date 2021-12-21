@@ -27,7 +27,7 @@ whichkey.register(
       b = {"Find Buffer"},
       a = {"Find Hidden File"},
       w = {"Find AllWord"},
-      o = {"Find Recent File"},
+      h = {"Find Recent File"},
       l = {"Find Function"},
       m = {"File Format"}
     },

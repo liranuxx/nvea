@@ -111,12 +111,13 @@ M.mappings.plugins = {
     find_hiddenfiles = "<leader>fa",
     search_char = "<leader>/",
     live_grep = "<leader>fw",
-    oldfiles = "<leader>fo",
-    com_history = "<leader>ch",
-    git_commits = "<leader>cm",
+    oldfiles = "<leader>fh",
+    commands = "<leader>cc",
+    comand_history = "<leader>ch",
+    git_commits = "<leader>gm",
     git_status = "<leader>gt",
     help_tags = "<F1>",
-    -- themes = "<leader>th" -- theme picker
+    themes = "<leader>tc"
   },
   formatter = {
     format = "<leader>fm",
