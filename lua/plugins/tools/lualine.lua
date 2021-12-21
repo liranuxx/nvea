@@ -1,4 +1,5 @@
 local present, lualine = pcall(require, "lualine")
+local center_string = require("core.config").plugins.feline.center_string
 local c = require("colors.schemes.onedark")
 if not present then
   return print("Lualine not present!!!")
@@ -70,10 +71,15 @@ local lualine_a = {
 }
 local lualine_b = {
   {
+    'filetype',
+    colored = true, -- displays filetype icon in color if set to `true
+    icon_only = true, -- Display only icon for filetype
+  },
+  {
     "filename",
     fmt = trunc(90, 30, 50),
     color = {fg = c.white, gui = "bold"},
-    padding = {left = 1, right = 0}
+    padding = {left = 0, right = 0}
   },
   {
     "filesize",
@@ -97,10 +103,15 @@ local lualine_c = {
     sources = {"nvim_diagnostic"},
     symbols = {error = " ", warn = " ", info = " "},
     diagnostics_color = {
-      color_error = {fg = c.red},
-      color_warn = {fg = c.yellow},
-      color_info = {fg = c.cyan}
+      error = {fg = c.red},
+      warn = {fg = c.yellow},
+      info = {fg = c.blue},
+      hit = {fg = c.green}
     }
+  },
+  {
+    "os.date('%a')",
+    color = {fg=c.dark_red}
   },
   {
     function()
@@ -114,8 +125,8 @@ local lualine_c = {
       local searchcount = vim.fn.searchcount {maxcount = 9999}
       return last_search .. "(" .. searchcount.current .. "/" .. searchcount.total .. ")"
     end,
-    color = {fg=c.black,bg=c.dark_yellow},
-    fmt = conditions.hide_in_width,
+    color = {fg = c.black, bg = c.dark_yellow},
+    fmt = conditions.hide_in_width
   },
 }
 
@@ -243,5 +254,5 @@ lualine.setup {
     lualine_z = {},
     lualine_c = {},
     lualine_x = {}
-  }
+  },
 }

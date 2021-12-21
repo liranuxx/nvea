@@ -68,6 +68,11 @@ M.tools = function(use)
     "mg979/vim-visual-multi",
     branch = "master"
   }
+  use {
+    "glepnir/dashboard-nvim",
+    status = plugin_status.dashboard,
+    config = [[require('plugins.tools.dashboard')]]
+  }
 end
 
 return M
