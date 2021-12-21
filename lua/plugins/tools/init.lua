@@ -61,6 +61,11 @@ M.tools = function(use)
     run = "cd app && yarn install",
     ft = "markdown",
   }
+  use { "liuchengxu/vista.vim" }
+  use {
+    "mg979/vim-visual-multi",
+    branch =  "master",
+  }
 end
 
 return M
