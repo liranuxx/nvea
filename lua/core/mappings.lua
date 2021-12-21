@@ -154,6 +154,15 @@ local formatter = function()
   map("n", m.format, ":Format<CR>")
 end
 
+local hop = function()
+  map('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+  map('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+  map('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
+  map('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
+  map('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+  map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+end
+
 M.lspconfig = function()
   local m = plugin_maps.lspsaga
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -173,6 +182,7 @@ M.lspconfig = function()
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
 end
 
+
 M.init = function()
   non_config_mappings()
   optional_mappings()
@@ -181,6 +191,7 @@ M.init = function()
   nvimtree()
   telescope()
   formatter()
+  hop()
 end
 
 return M

@@ -8,8 +8,8 @@ if not packer_plugins["plenary.nvim"].loaded then
   vim.cmd [[packadd popup.nvim]]
 end
 
-telescope.load_extension("project")
-local project = {
+telescope.load_extension("projects")
+local projects = {
   base_dirs = {
     "~/workstation",
     "~/.config/nvim"
@@ -32,6 +32,6 @@ telescope.setup {
   pickers = {
   },
   extensions = {
-    project = project,
+    project = projects,
   }
 }

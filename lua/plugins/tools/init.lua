@@ -13,9 +13,9 @@ M.tools = function(use)
   use {
     "nvim-lualine/lualine.nvim",
     disable = not plugin_status.lualine,
-    config = [[require("plugins.tools.lualine")]],
+    config = [[require("plugins.tools.lualine")]]
   }
-  use {'arkav/lualine-lsp-progress'}
+  use {"arkav/lualine-lsp-progress"}
 
   use {
     "akinsho/bufferline.nvim",
@@ -73,6 +73,20 @@ M.tools = function(use)
     status = plugin_status.dashboard,
     config = [[require('plugins.tools.dashboard')]]
   }
+  use {
+    "phaazon/hop.nvim",
+    branch = "v1",
+    config = function()
+      require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
+    end
+  }
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {}
+    end
+  }
+  use {"akinsho/toggleterm.nvim"}
 end
 
 return M
