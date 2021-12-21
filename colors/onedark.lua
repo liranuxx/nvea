@@ -150,6 +150,127 @@ hl.syntax = {
   Todo = hlf(c.purple),
 }
 
+hl.langs.c = {
+  cInclude = hlf(c.blue),
+  cStorageClass = hlf(c.purple),
+  cTypedef = hlf(c.purple),
+  cDefine = hlf(c.cyan),
+  cTSInclude = hlf(c.blue),
+  cTSConstant = hlf(c.cyan),
+  cTSConstMacro = hlf(c.purple),
+}
+
+hl.langs.cpp = {
+  cppStatement = MergeTable(hlf(c.purple), {bold = true}),
+  cppTSInclude = hlf(c.blue),
+  cppTSConstant = hlf(c.cyan),
+  cppTSConstMacro = hlf(c.purple),
+}
+
+hl.langs.vim = {
+  vimTSFuncMacro = MergeTable(hlf(c.cyan), {bold = true}),
+  vimCommentTitle = MergeTable(hlf(c.comment_grey), {bold = true}),
+  vimCommand = MergeTable(hlf(c.cyan), {bold = true}),
+  vimLet = hlf(c.purple),
+  vimFunction = hlf(c.blue),
+  vimIsCommand = hlf(c.foreground),
+  vimUserFunc = hlf(c.blue),
+  vimFuncName = hlf(c.blue),
+  vimMap = hlf(c.purple),
+  vimMapModKey = hlf(c.dark_yellow),
+  vimNotation = hlf(c.red),
+  vimMapLhs = hlf(c.blue),
+  vimMapRhs = hlf(c.blue),
+  vimOption = hlf(c.red),
+  vimUserAttrbKey = hlf(c.red),
+  vimUserAttrb = hlf(c.blue),
+  vimSynType = hlf(c.cyan),
+  vimHiBang = hlf(c.purple),
+  vimSet = hlf(c.yellow),
+  vimSetEqual = hlf(c.yellow),
+  vimSetSep = hlf(c.comment_grey),
+  vimVar = hlf(c.foreground),
+  vimFuncVar = hlf(c.foreground),
+  vimContinue = hlf(c.comment_grey),
+  vimAutoCmdSfxList = hlf(c.cyan),
+}
+
+hl.langs.json = {
+  jsonCommentError = hlf(c.white),
+  jsonKeyword = hlf(c.red),
+  jsonBoolean = hlf(c.dark_yellow),
+  jsonNumber = hlf(c.dark_yellow),
+  jsonQuote = hlf(c.white),
+  jsonMissingCommaError = MergeTable(hlf(c.red), {reverse = true}),
+  jsonNoQuotesError = MergeTable(hlf(c.red), {reverse = true}),
+  jsonNumError = MergeTable(hlf(c.red), {reverse = true}),
+  jsonString = hlf(c.green),
+  jsonStringSQError = MergeTable(hlf(c.red), {reverse = true}),
+  jsonSemicolonError = MergeTable(hlf(c.red), {reverse = true}),
+}
+
+hl.langs.markdown = {
+  markdownBlockquote = hlf(c.comment_grey),
+  markdownBold = MergeTable(hlf(c.dark_yellow), {bold = true}),
+  markdownCode = hlf(c.green),
+  markdownCodeBlock = hlf(c.green),
+  markdownCodeDelimiter = hlf(c.green),
+  markdownH1 = hlf(c.red),
+  markdownH2 = hlf(c.red),
+  markdownH3 = hlf(c.red),
+  markdownH4 = hlf(c.red),
+  markdownH5 = hlf(c.red),
+  markdownH6 = hlf(c.red),
+  markdownHeadingDelimiter = hlf(c.red),
+  markdownHeadingRule = hlf(c.comment_grey),
+  markdownId = hlf(c.purple),
+  markdownIdDeclaration = hlf(c.blue),
+  markdownIdDelimiter = hlf(c.purple),
+  markdownItalic = MergeTable(hlf(c.purple), {italic = true}),
+  markdownLinkDelimiter = hlf(c.purple),
+  markdownLinkText = hlf(c.blue),
+  markdownListMarker = hlf(c.red),
+  markdownOrderedListMarker = hlf(c.red),
+  markdownRule = hlf(c.comment_grey),
+  markdownUrl = MergeTable(hlf(c.cyan), {underline = true}),
+}
+
+hl.git = {
+  gitcommitComment = hlf(c.comment_grey),
+  gitcommitUnmerged = hlf(c.green),
+  gitcommitOnBranch = {},
+  gitcommitBranch = hlf(c.purple),
+  gitcommitDiscardedType = hlf(c.red),
+  gitcommitSelectedType = hlf(c.green),
+  gitcommitHeader = {},
+  gitcommitUntrackedFile = hlf(c.cyan),
+  gitcommitDiscardedFile = hlf(c.red),
+  gitcommitSelectedFile = hlf(c.green),
+  gitcommitUnmergedFile = hlf(c.yellow),
+  gitcommitFile = {},
+  gitcommitSummary = hlf(c.white),
+  gitcommitOverflow = hlf(c.red),
+  gitcommitNoBranch = hlf(c.purple),
+  gitcommitUntracked = hlf(c.comment_grey),
+  gitcommitDiscarded = hlf(c.comment_grey),
+  gitcommitSelected = hlf(c.comment_grey),
+  gitcommitDiscardedArrow = hlf(c.red),
+  gitcommitSelectedArrow = hlf(c.green),
+  gitcommitUnmergedArrow = hlf(c.cyan),
+}
+
+hl.plugins.gitgutter = {
+  gitgutteradd = hlf(c.green),
+  gitgutterchange = hlf(c.yellow),
+  gitgutterdelete = hlf(c.red),
+}
+
+hl.plugins.gitsigns = {
+  gitsignsAdd = hlf(c.green),
+  gitsignsChange = hlf(c.yellow),
+  gitsiginsDelete = hlf(c.red),
+}
+
 hl.plugins.telescope = {
   -- TelescopeBorder = {fg = c.blue},
   TelescopePromptTitle = hlfb(c.red, c.background ),
@@ -191,6 +312,7 @@ local function init()
   vim.g.colors_name = "onedark"
   highlights(hl.common)
   highlights(hl.syntax)
+  highlights(hl.git)
   for _, group in pairs(hl.plugins) do highlights(group) end
   -- for _, group in pairs(plugins) do highlights(group) end
   -- for _, group in pairs(langs) do highlights(group) end

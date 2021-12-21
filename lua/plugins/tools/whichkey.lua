@@ -50,7 +50,7 @@ whichkey.register(
 )
 whichkey.register(
   {
-    ["<c-n>"] = {"Open File Tree"},
+    ["<F3>"] = {"Open File Tree"},
     ["<c-a>"] = {"Copy All File Context"},
     ["<F1>"] = {"Help"},
     ["<F2>"] = {"Toggle number"},
