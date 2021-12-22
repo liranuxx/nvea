@@ -13,7 +13,7 @@ M.ui = {
   theme = "onedark",
   -- theme = "onelight",
   italic_comment = true,
-  transparency = false
+  transparency = false,
 }
 
 M.plugins = {

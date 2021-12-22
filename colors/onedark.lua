@@ -87,8 +87,8 @@ end
 -- local function cb(bg)
 --   return {cbg = bg}
 -- end
-local function cs(style)
-  return {cstyle = style}
+local function cs(cstyle)
+  return {style = cstyle}
 end
 
 -- styles
@@ -116,9 +116,17 @@ local hl = {
   treesitter = {},
 }
 
+local or_ts = function ()
+    local ts = require("core.config").ui.transparency
+    if ts then
+      return b("NONE")
+    else
+      return fb(gc.foreground, gc.background)
+    end
+end
 hl.common = {
   -- 背景颜色
-  Normal = fb(gc.foreground, gc.background),
+  Normal = or_ts(),
   Terminal = fb(gc.foreground, gc.background),
   EndOfBuffer = f(gc.black),
   Cursor = fb(gc.black, gc.blue),
@@ -174,8 +182,16 @@ hl.common = {
   WildMenu = fb(gc.black, gc.blue),
 }
 
+local or_ita = function ()
+    local ita = require("core.config").ui.italic_comment
+    if ita then
+      return mt(f(gc.comment_grey),s("italic"),cs("italic"))
+    else
+      return f(gc.comment_grey)
+    end
+end
 hl.syntax = {
-  Comment = mt(f(gc.comment_grey),s("italic"),cs("italic")),
+  Comment = or_ita(),
   Constant = f(gc.cyan),
   String = f(gc.green),
   Character = f(gc.green),
