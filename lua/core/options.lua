@@ -38,8 +38,8 @@ opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 -- opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
-opt.completeopt = "menuone,noselect"
 opt.breakindent = true
+opt.completeopt = "menu,menuone,noselect"
 
 -----------------------------------------------------------
 -- Colorscheme

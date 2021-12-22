@@ -179,8 +179,8 @@ hl.common = {
   TabLineFill = {},
   TabLineSel = f(gc.white),
   Title = f(gc.green),
-  Visual = b(gc.visual_grey),
-  VisualNOS = b(gc.visual_grey),
+  Visual = mt(b("NONE"),s("inverse")),
+  VisualNOS = mt(b("NONE"),s("inverse")),
   WildMenu = fb(gc.black, gc.blue),
 }
 

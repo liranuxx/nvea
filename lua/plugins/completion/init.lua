@@ -8,8 +8,8 @@ M.cmp = function(use)
   }
   use {
     "williamboman/nvim-lsp-installer",
-    alfter = "nvim-lspconfig",
-    config = require("plugins.completion.config").lspinstaller()
+    after = "nvim-lspconfig",
+    config = require("plugins.completion.config").lspinstaller
   }
   use {
     "ray-x/lsp_signature.nvim",
@@ -22,28 +22,28 @@ M.cmp = function(use)
     disable = not status.cmp,
     events = "InsertEnter",
     config = [[require("plugins.completion.cmp")]],
-    wants = "LuaSnip",
-    require ={}
+    requires ={
+      {"hrsh7th/cmp-nvim-lsp",opt=true},
+      {"saadparwaiz1/cmp_luasnip",opt=true},
+      {"hrsh7th/cmp-nvim-lua",opt=true},
+      {"hrsh7th/cmp-cmdline",opt=true},
+      {"hrsh7th/cmp-buffer",opt=true},
+      {"hrsh7th/cmp-path",opt=true},
+      {"hrsh7th/cmp-look",opt=true},
+    }
   }
   use {
     "L3MON4D3/LuaSnip",
-    config = require("plugins.completion.config").luasnip(),
-  }
-  use {
-    "rafamadriz/friendly-snippets",
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path"
+    config = require("plugins.completion.config").luasnip,
+    requires = {"rafamadriz/friendly-snippets"},
   }
   use {
     "mhartington/formatter.nvim",
-    config = require("plugins.completion.config").formatter()
+    config = require("plugins.completion.config").formatter
   }
   use {
     'weilbith/nvim-code-action-menu',
+    after = "nvim-lspconfig",
     cmd = 'CodeActionMenu',
   }
 end

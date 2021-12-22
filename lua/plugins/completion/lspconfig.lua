@@ -3,6 +3,8 @@ if not present then
   return print("Lsp not present!!!")
 end
 
+vim.cmd [[packadd cmp-nvim-lsp]]
+
 -- beauty
 require("plugins.completion.config").lsp_handlers()
 

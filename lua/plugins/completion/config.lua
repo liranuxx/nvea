@@ -161,6 +161,14 @@ M.lsp_handlers = function()
         border = "single"
       }
     )
+  -- vim.lsp.handlers["textDocument/definition"] = vim.lsp.with(
+  --   vim.lsp.handlers.location, {
+  --     location_callback = function(location)
+  --       vim.cmd [[vsplit]]
+  --       vim.lsp.util.jump_to_location(location)
+  --     end
+  --   }
+  -- )
 end
 
 return M

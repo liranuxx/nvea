@@ -13,6 +13,7 @@ M.ui = function(use)
     run = ':TSUpdate',
     config = require("plugins.ui.config").treesitter(),
     requires = {
+      'nvim-treesitter/nvim-treesitter-refactor',
       'nvim-treesitter/nvim-treesitter-textobjects'
     }
   }

@@ -52,7 +52,7 @@ whichkey.register(
   {
     ["<F1>"] = {"Help"},
     ["<F2>"] = {"Toggle number"},
-    ["<F3>"] = {"Open File Tree"},
+    ["<leader>t"] = {"Open File Tree"},
     ["<c-a>"] = {"Copy All File Context"},
     ["<a-h>"] = {"Increase Width"},
     ["<a-j>"] = {"Decrease Height"},

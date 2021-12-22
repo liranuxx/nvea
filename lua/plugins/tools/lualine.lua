@@ -125,7 +125,7 @@ local lualine_c = {
       return last_search .. "(" .. searchcount.current .. "/" .. searchcount.total .. ")"
     end,
     color = {fg = c.black, bg = c.dark_yellow},
-    fmt = conditions.hide_in_width
+    -- fmt = conditions.hide_in_width
   },
 }
 

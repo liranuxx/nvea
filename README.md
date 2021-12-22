@@ -30,6 +30,10 @@ nvim +PackerSync
 
 ## 说明
 
+- lsp: nvim-lspconfig
+- 自动补全: nvim-cmp
+- 模糊查找: telescope
+
 ## 包管理器
 
 Packer
@@ -37,6 +41,24 @@ Packer
 
 ## 插件
 
+Comment.nvim
+bufferline.nvim
+dashboard-nvim
+formatter.nvim
+gitsigns.nvim
+hop.nvim
+indent-blankline.nvim
+lualine.nvim
+markdown-preview.nvim
+nvim-cmp
+nvim-colorizer.lua
+nvim-lspconfig
+nvim-tree.lua
+nvim-treesitter
+telescope.nvim
+toggleterm.nvim
+vim-visual-multi
+which-key.nvim
 
 ## 基础快捷键
 
@@ -49,4 +71,4 @@ Packer
 | \<leader>k | 关闭窗口 |
 | \<leader>/ | 搜索字符 |
 | \<leader>ff | 搜索文件 |
-| \<F3> | 打开目录数 |
+| \<leader>t | 打开目录数 |
