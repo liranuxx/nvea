@@ -41,5 +41,9 @@ M.cmp = function(use)
     "mhartington/formatter.nvim",
     config = require("plugins.completion.config").formatter()
   }
+  use {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
 end
 return M

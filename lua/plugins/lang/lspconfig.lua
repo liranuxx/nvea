@@ -8,7 +8,9 @@ M.setup_lsp = function(attach, capabilities)
     lspconfig[lsp].setup {
       on_attach = attach,
       capabilities = capabilities,
-      root_dir = lspconfig.util.root_pattern('../../')
+      root_dir = function ()
+        return vim.fn.getcwd()
+      end
     }
   end
 
@@ -41,7 +43,9 @@ M.setup_lsp = function(attach, capabilities)
         },
       },
     },
-    root_dir = lspconfig.util.root_pattern('../../')
+    root_dir = function ()
+      return vim.fn.getcwd()
+    end
   }
 
   -- c/c++
@@ -57,7 +61,9 @@ M.setup_lsp = function(attach, capabilities)
       "--clang-tidy",
       "--header-insertion=iwyu",
     },
-    root_dir = lspconfig.util.root_pattern('../../')
+    root_dir = function ()
+      return vim.fn.getcwd()
+    end
   }
 
   -- bash

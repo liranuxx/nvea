@@ -164,21 +164,20 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 M.lspconfig = function()
-  local m = plugin_maps.lspsaga
+  local m = plugin_maps.lsp
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
-  map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
+  map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
   map("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
-  map("n", m.preview_def, "<cmd>lua vim.lsp.buf.preview_definition()<cr>")
   map("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>")
-  map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-  map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+  -- map("n", "gj", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  map("n", m.signaturehelp, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
   map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-  map("n", m.code_cation, "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  -- map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-  map("n", m.show_line_diag, "<cmd>lua vim.lsp.buf.show_line_diagnostics()<cr>")
-  -- map("n", m.diag_jump_next, "<cmd>Lspsaga diagnostic_jump_next<cr>")
-  -- map("n", m.diag_jump_prev, "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+  map("n", m.code_cation, "<cmd>CodeActionMenu<cr>")
+  map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
+  map("n", m.show_line_diag, "<cmd>lua vim.diagnostic.open_float(nil,{focus=false,border='single',scope='cursor'})<cr>")
+  map("n", m.diag_jump_prev, "<cmd>lua vim.diagnostic.goto_prev({ border = 'single'})<cr>")
+  map("n", m.diag_jump_next, "<cmd>lua vim.diagnostic.goto_prev({ border = 'single'})<cr>")
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end

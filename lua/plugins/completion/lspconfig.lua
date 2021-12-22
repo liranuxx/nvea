@@ -6,13 +6,26 @@ end
 -- beauty
 require("plugins.completion.config").lsp_handlers()
 
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
   require("core.mappings").lspconfig()
+
+  if client.resolved_capabilities.document_highlight then
+    -- hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+    -- hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+    -- hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+    vim.cmd [[
+    augroup lsp_document_highlight
+    autocmd! * <buffer>
+    autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]]
+  end
 end
 
 -- Add additional capabilities supported by nvim-cmp

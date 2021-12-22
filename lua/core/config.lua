@@ -119,18 +119,18 @@ M.mappings.plugins = {
   formatter = {
     format = "<leader>fm",
   },
-  lspsaga = {
+  lsp = {
     rename = "gr",
     code_cation = "gx",
     hover_doc = "K",
-    lsp_finder = "gh",
+    declaration = "gh",
     signaturehelp = "gs",
-    preview_def = "gp",
+    references = "gw",
     goto_definition = "gd",
     show_line_diag = "ge",
     list_line_diag = "gl",
-    diag_jump_next = "gj",
-    diag_jump_prev = "gk",
+    diag_jump_next = "gn",
+    diag_jump_prev = "gp",
   }
 }
 

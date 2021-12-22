@@ -84,41 +84,88 @@ M.lspinstaller = function()
   }
 end
 
+-- local function preview_location_callback(_, result)
+--   if result == nil or vim.tbl_isempty(result) then
+--     return nil
+--   end
+--   vim.lsp.util.preview_location(result[1])
+-- end
+--
+-- local function PeekDefinition()
+--   local params = vim.lsp.util.make_position_params()
+--   return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
+-- end
 M.lsp_handlers = function()
   -- Highlight line number instead of having icons in sign column
   vim.cmd [[
-    highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
-    highlight DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
-    highlight DiagnosticLineNrInfo guibg=#1E535D guifg=#00FFFF gui=bold
-    highlight DiagnosticLineNrHint guibg=#1E205D guifg=#0000FF gui=bold
+  highlight DiagnosticLineNrError guibg=#51202A guifg=#FF0000 gui=bold
+  highlight DiagnosticLineNrWarn guibg=#51412A guifg=#FFA500 gui=bold
+  highlight DiagnosticLineNrInfo guibg=#1E535D guifg=#00FFFF gui=bold
+  highlight DiagnosticLineNrHint guibg=#1E205D guifg=#0000FF gui=bold
 
-    sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-    sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
-    sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
-    sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
   ]]
-  vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-      virtual_text = true
-    }
-  )
+
+  if vim.fn.has "nvim-0.6"==1 then
+    vim.diagnostic.config({
+      signs = {
+        active = false,
+        values = {
+          { name = "DiagnosticSignError", text = "" },
+          { name = "DiagnosticSignWarn", text = "" },
+          { name = "DiagnosticSignHint", text = "" },
+          { name = "DiagnosticSignInfo", text = "" },
+        },
+      },
+      virtual_text = false,
+      update_in_insert = false,
+      underline = true,
+      severity_sort = true,
+      float = {
+        focusable = false,
+        style = "minimal",
+        border = "rounded",
+        source = "always",
+        header = "",
+        prefix = "",
+        format = function(d)
+          local t = vim.deepcopy(d)
+          if d.code then
+            t.message = string.format("%s [%s]", t.message, t.code):gsub("1. ", "")
+          end
+          return t.message
+        end,
+      },
+    })
+  else
+    vim.lsp.handlers["textDocument/publishDiagnostics"] =
+      vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics,
+        {
+          virtual_text = {
+            prefix = ">",
+          },
+        }
+      )
+  end
 
   vim.lsp.handlers["textDocument/hover"] =
     vim.lsp.with(
-    vim.lsp.handlers.hover,
-    {
-      border = "single"
-    }
-  )
+      vim.lsp.handlers.hover,
+      {
+        border = "single"
+      }
+    )
   vim.lsp.handlers["textDocument/signatureHelp"] =
     vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    {
-      border = "single"
-    }
-  )
+      vim.lsp.handlers.signature_help,
+      {
+        border = "single"
+      }
+    )
 end
 
 return M

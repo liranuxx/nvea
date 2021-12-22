@@ -22,7 +22,7 @@ packer.init {
    max_job = 16,
    display = {
       open_fn = function()
-         return require("packer.util").float({ border = "single" })
+         return require("packer.util").float({ border = "rounded" })
       end,
       prompt_border = "single",
    },
