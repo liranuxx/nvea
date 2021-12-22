@@ -1,4 +1,4 @@
-local gc = require("colorschemes").get()
+local gc = require("colorschemes").get("onedark")
 local space = " "
 local cc = {
   black = gc.black,
@@ -12,7 +12,27 @@ local cc = {
   visual_grey = gc.visual_grey,
   white = gc.white,
 }
--- local c = {
+
+vim.g.terrminal_color_0 =  cc.black
+vim.g.terminal_color_1 =  cc.red
+vim.g.terminal_color_2 =  cc.green
+vim.g.terminal_color_3 =  cc.yellow
+vim.g.terminal_color_4 =  cc.blue
+vim.g.terminal_color_5 =  cc.purple
+vim.g.terminal_color_6 =  cc.cyan
+vim.g.terminal_color_7 =  cc.white
+vim.g.terminal_color_8 =  cc.visual_grey
+vim.g.terminal_color_9 =  cc.dark_red
+vim.g.terminal_color_10 = cc.green
+vim.g.terminal_color_11 = cc.dark_yellow
+vim.g.terminal_color_12 = cc.blue
+vim.g.terminal_color_13 = cc.purple
+vim.g.terminal_color_14 = cc.cyan
+vim.g.terminal_color_15 = cc.comment_grey
+vim.g.terminal_color_background = cc.background
+vim.g.terminal_color_foreground = cc.foreground
+
+-- local onedark = {
 --   red = "#E06C75",
 --   dark_red = "#BE5046",
 --   green = "#98C379",
@@ -32,19 +52,6 @@ local cc = {
 --   menu_grey = "#3E4452",
 --   special_grey = "#3B4048",
 --   vertsplit = "#3E4452",
---   extra = {
---     teal = "#519ABA",
---     pink = "#ff75a0",
---     dark_purple = "#8a3fa0",
---     dark_cyan = "#2b6f77",
---     bg1 = "#31353f",
---     bg2 = "#393f4a",
---     bg3 = "#3b3f4c",
---     bg_d = "#21252b",
---     bg_blue = "#73b8f1",
---     bg_yellow = "#ebd09c",
---     light_grey = "#848b98",
---   },
 -- }
 
 local function mt(...)
@@ -65,21 +72,21 @@ end
 local function b(bg)
   return {bg = bg}
 end
-local function p(sp)
-  return {sp = sp}
-end
+-- local function p(sp)
+--   return {sp = sp}
+-- end
 local function s(style)
   return {style = style}
 end
-local function cfb(fg,bg)
-  return {cfg = fg, cbg = bg}
-end
-local function cf(fg)
-  return {cfg = fg}
-end
-local function cb(bg)
-  return {cbg = bg}
-end
+-- local function cfb(fg,bg)
+--   return {cfg = fg, cbg = bg}
+-- end
+-- local function cf(fg)
+--   return {cfg = fg}
+-- end
+-- local function cb(bg)
+--   return {cbg = bg}
+-- end
 local function cs(style)
   return {cstyle = style}
 end
@@ -371,15 +378,13 @@ hl.plugins.ts_rainbow = {
 local function init()
   vim.cmd("hi clear")
   if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
-  vim.o.background = "dark"
   vim.g.colors_name = "onedark"
   highlights(hl.common)
   highlights(hl.syntax)
   highlights(hl.git)
   highlights(hl.treesitter)
   for _, group in pairs(hl.plugins) do highlights(group) end
-  -- for _, group in pairs(plugins) do highlights(group) end
-  -- for _, group in pairs(langs) do highlights(group) end
+  vim.o.background = "dark"
 end
 
 init()

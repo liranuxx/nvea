@@ -1,5 +1,38 @@
-local c = require("colorschemes").get()
--- local c = {
+local gc = require("colorschemes").get("onelight")
+local space = " "
+local cc = {
+  black = gc.black,
+  red = gc.red,
+  green = gc.green,
+  yellow = gc.yellow,
+  blue = gc.blue,
+  purple = gc.purple,
+  cyan = gc.cyan,
+  comment_grey = gc.comment_grey,
+  visual_grey = gc.visual_grey,
+  white = gc.white,
+}
+
+vim.g.terrminal_color_0 =  cc.black
+vim.g.terminal_color_1 =  cc.red
+vim.g.terminal_color_2 =  cc.green
+vim.g.terminal_color_3 =  cc.yellow
+vim.g.terminal_color_4 =  cc.blue
+vim.g.terminal_color_5 =  cc.purple
+vim.g.terminal_color_6 =  cc.cyan
+vim.g.terminal_color_7 =  cc.white
+vim.g.terminal_color_8 =  cc.visual_grey
+vim.g.terminal_color_9 =  cc.dark_red
+vim.g.terminal_color_10 = cc.green
+vim.g.terminal_color_11 = cc.dark_yellow
+vim.g.terminal_color_12 = cc.blue
+vim.g.terminal_color_13 = cc.purple
+vim.g.terminal_color_14 = cc.cyan
+vim.g.terminal_color_15 = cc.comment_grey
+vim.g.terminal_color_background = cc.background
+vim.g.terminal_color_foreground = cc.foreground
+
+-- local onedark = {
 --   red = "#E06C75",
 --   dark_red = "#BE5046",
 --   green = "#98C379",
@@ -11,7 +44,7 @@ local c = require("colorschemes").get()
 --   white = "#ABB2BF",
 --   black = "#282C34",
 --   foreground = "#ABB2BF",
---   background = "#f0f0f0",
+--   background = "#282C34",
 --   comment_grey = "#5C6370",
 --   gutter_fg_grey = "#4B5263",
 --   cursor_grey = "#2C323C",
@@ -19,50 +52,59 @@ local c = require("colorschemes").get()
 --   menu_grey = "#3E4452",
 --   special_grey = "#3B4048",
 --   vertsplit = "#3E4452",
---   extra = {
---     teal = "#519ABA",
---     pink = "#ff75a0",
---     dark_purple = "#8a3fa0",
---     dark_cyan = "#2b6f77",
---     bg1 = "#31353f",
---     bg2 = "#393f4a",
---     bg3 = "#3b3f4c",
---     bg_d = "#21252b",
---     bg_blue = "#73b8f1",
---     bg_yellow = "#ebd09c",
---     light_grey = "#848b98",
---   },
 -- }
 
-local function MergeTable(a,b)
-  for k, v in pairs(b) do a[k] = v end
-  return a
+local function mt(...)
+  local all = {}
+  for _, v in pairs({...}) do
+    for e, a in pairs(v) do
+      all[e] = a
+    end
+  end
+  return all
 end
-local function hlfb(fg,bg)
+local function fb(fg,bg)
   return {fg = fg, bg = bg}
 end
-local function hlf(fg)
+local function f(fg)
   return {fg = fg}
 end
-local function hlb(bg)
+local function b(bg)
   return {bg = bg}
 end
-
-local function gui(gui_settings)
-  if gui_settings.bold then return "bold"
-  elseif gui_settings.underline then return "underline"
-  elseif gui_settings.undercurl then return "undercurl"
-  elseif gui_settings.italic then return "italic"
-  elseif gui_settings.reverse then return "reverse"
-  else return "NONE" end
+-- local function p(sp)
+--   return {sp = sp}
+-- end
+local function s(style)
+  return {style = style}
+end
+-- local function cfb(fg,bg)
+--   return {cfg = fg, cbg = bg}
+-- end
+-- local function cf(fg)
+--   return {cfg = fg}
+-- end
+-- local function cb(bg)
+--   return {cbg = bg}
+-- end
+local function cs(style)
+  return {cstyle = style}
 end
 
-local function highlights(highlights)
-  for name, settings in pairs(highlights) do
+-- styles
+-- bold underline undercurl italic reverse
+local function highlights(highlight)
+  for name, settings in pairs(highlight) do
     local fg = settings.fg and "guifg=" .. settings.fg or "guifg=NONE"
     local bg = settings.bg and "guibg=" .. settings.bg or "guibg=NONE"
     local sp = settings.sp and "guisp=" .. settings.sp or "guisp=NONE"
-    vim.cmd("highlight "..name.." ".."gui="..gui(settings).." "..fg .." "..bg.." "..sp)
+    local style = settings.style and "gui="..settings.style or "gui=NONE"
+    local cfg = settings.cfg and "ctermfg=" .. settings.cfg or "ctermfg=NONE"
+    local cbg = settings.cbg and "ctermbg=" .. settings.cbg or "ctermbg=NONE"
+    local cstyle = settings.cstyle and "cterm="..settings.cstyle or "cterm=NONE"
+    local gui = space..style..space..fg ..space..bg..space..sp
+    local cterm = space..cstyle..space..cfg ..space..cbg
+    vim.cmd("highlight "..name..gui..cterm)
   end
 end
 local hl = {
@@ -76,124 +118,273 @@ local hl = {
 
 hl.common = {
   -- 背景颜色
-  Normal = hlfb(c.foreground, c.background),
-  EndOfBuffer = hlfb(c.black),
-  -- Cursor = hlfb(c.red, c.red),
-  -- ColorColumn = hlb(c.cursor_grey),
-  -- CursorColumn = hlb(c.cursor_grey),
+  Normal = fb(gc.foreground, gc.background),
+  Terminal = fb(gc.foreground, gc.background),
+  EndOfBuffer = f(gc.black),
+  Cursor = fb(gc.black, gc.blue),
+  CursorIM = {},
+  ColorColumn = b(gc.cursor_grey),
+  Conceal = {},
+  CursorColumn = b(gc.cursor_grey),
   -- 当前行颜色
-  CursorLine = hlb(c.cursor_wrey),
+  CursorLine = b(gc.cursor_wrey),
   -- 当前行号颜色
-  CursorLineNr = hlf(c.red),
+  CursorLineNr = f(gc.red),
   -- 行号颜色
-  LineNr = hlf(c.gutter_fg_grey),
-
-
-  Pmenu = hlfb(c.white, c.background),
-  PmenuSel = hlfb(c.cursor_grey, c.blue),
-  PmenuSbar = hlb(c.background),
-  PmenuThumb = hlb(c.white),
-
-
-  Search = hlfb(c.visual_grey, c.yellow),
-  VertSplit = hlf(c.vertsplit),
-
-
-  StatusLine = hlfb(c.white, c.cursor_grey),
-  StatusLineNC = hlf(c.comment_grey),
-  StatusLineTerm = hlfb(c.white, c.cursor_grey),
-  StatusLineTermNC = hlf(c.comment_grey),
-
-
-
-  DiffAdd = hlfb(c.green, c.black),
-  DiffChange = MergeTable(hlf(c.yellow), {underline = true}),
-  DiffDelete = hlfb(c.red, c.black),
-  DiffText = hlfb(c.yellow, c.black),
+  Directory = f(gc.blue);
+  LineNr = f(gc.gutter_fg_grey),
+  SignColumn = b(gc.black),
+  Pmenu = fb(gc.white, gc.background),
+  PmenuSel = fb(gc.cursor_grey, gc.blue),
+  PmenuSbar = b(gc.background),
+  PmenuThumb = b(gc.white),
+  Search = fb(gc.black, gc.yellow),
+  IncSearch = fb(gc.yellow, gc.comment_grey),
+  Question = f(gc.purple),
+  QuickFixLine = fb(gc.black, gc.yellow),
+  VertSplit = f(gc.vertsplit),
+  Folded = f(gc.comment_grey),
+  FoldColumn = {},
+  -- '~' and '@' at the end of the window
+  NonText = f(gc.special_grey),
+  StatusLine = fb(gc.white, gc.cursor_grey),
+  StatusLineNC = f(gc.comment_grey),
+  StatusLineTerm = fb(gc.white, gc.cursor_grey),
+  StatusLineTermNC = f(gc.comment_grey),
+  DiffAdd = fb(gc.green, gc.black),
+  DiffChange = fb(gc.yellow, gc.black),
+  DiffDelete = fb(gc.red, gc.black),
+  DiffText = fb(gc.yellow, gc.black),
+  ErrorMsg = f(gc.red),
+  WarningMsg = f(gc.yellow),
+  -- 括号匹配颜色
+  MatchParen = mt(f(gc.blue),s("underline"),cs("underline")),
+  ModeMsg = {},
+  SpecialKey = f(gc.special_grey),
+  SpellBad = mt(f(gc.red), s("underline"), cs("underline")),
+  SpellCap = f(gc.dark_yellow),
+  SpellLocal = f(gc.dark_yellow),
+  SpellRare = f(gc.dark_yellow),
+  TabLine = f(gc.comment_grey),
+  TabLineFill = {},
+  TabLineSel = f(gc.white),
+  Title = f(gc.green),
+  Visual = b(gc.visual_grey),
+  VisualNOS = b(gc.visual_grey),
+  WildMenu = fb(gc.black, gc.blue),
 }
 
 hl.syntax = {
-  Comment = MergeTable(hlf(c.comment_grey),{italic = true}),
-  Constant = hlf(c.cyan),
-  String = hlf(c.green),
-  Character = hlf(c.green),
-  Number = hlf(c.dark_yellow),
-  Boolean = hlf(c.dark_yellow),
-  Float = hlf(c.dark_yellow),
-  Identifier = hlf(c.red),
-  Function = hlf(c.blue),
-  Statement = hlf(c.purple),
-  Conditional = hlf(c.purple),
-  Repeat = hlf(c.purple),
-  Label = hlf(c.purple),
-  Operator = hlf(c.purple),
-  Keyword = hlf(c.red),
-  Exception = hlf(c.purple),
-  PreProc = hlf(c.yellow),
-  Include = hlf(c.blue),
-  Define = hlf(c.purple),
-  Macro = hlf(c.purple),
-  PreCondit = hlf(c.yellow),
-  Type = hlf(c.yellow),
-  StorageClass = hlf(c.yellow),
-  Structure = hlf(c.yellow),
-  Typedef = hlf(c.yellow),
-  Special = hlf(c.blue),
-  SpecialChar = hlf(c.dark_yellow),
+  Comment = mt(f(gc.comment_grey),s("italic"),cs("italic")),
+  Constant = f(gc.cyan),
+  String = f(gc.green),
+  Character = f(gc.green),
+  Number = f(gc.dark_yellow),
+  Boolean = f(gc.dark_yellow),
+  Float = f(gc.dark_yellow),
+  Identifier = f(gc.red),
+  Function = f(gc.blue),
+  Statement = f(gc.purple),
+  Conditional = f(gc.purple),
+  Repeat = f(gc.purple),
+  Label = f(gc.purple),
+  Operator = f(gc.purple),
+  Keyword = f(gc.red),
+  Exception = f(gc.purple),
+  PreProc = f(gc.yellow),
+  Include = f(gc.blue),
+  Define = f(gc.purple),
+  Macro = f(gc.purple),
+  PreCondit = f(gc.yellow),
+  Type = f(gc.yellow),
+  StorageClass = f(gc.yellow),
+  Structure = f(gc.yellow),
+  Typedef = f(gc.yellow),
+  Special = f(gc.blue),
+  SpecialChar = f(gc.dark_yellow),
   Tag = {},
   Delimiter = {},
-  SpecialComment = hlf(c.comment_grey),
+  SpecialComment = f(gc.comment_grey),
   Debug = {},
-  Underlined = {underline = true},
+  Underlined = mt(s("underline"), cs("underline")),
   Ignore = {},
-  Error = hlf(c.red),
-  Todo = hlf(c.purple),
+  Error = f(gc.red),
+  Todo = f(gc.purple),
+  debugPC = b(gc.special_grey),
+  debugBreakpoint = fb(gc.black, gc.red),
+}
+
+hl.treesitter = {
+  -- TSFunction = f(gc.blue),
+  -- TSKeywordFunction = f(gc.red);
+  -- TSProperty = f(gc.);
+  -- TSVariable = f(gc.cyan);
+}
+
+hl.langs.c = {
+  cInclude = f(gc.blue),
+  cStorageClass = f(gc.purple),
+  cTypedef = f(gc.purple),
+  cDefine = f(gc.cyan),
+  cTSInclude = f(gc.blue),
+  cTSConstant = f(gc.cyan),
+  cTSConstMacro = f(gc.purple),
+}
+
+hl.langs.cpp = {
+  cppStatement = mt(f(gc.purple),s("bold")),
+  cppTSInclude = f(gc.blue),
+  cppTSConstant = f(gc.cyan),
+  cppTSConstMacro = f(gc.purple),
+}
+
+hl.langs.vim = {
+  vimTSFuncMacro = mt(f(gc.cyan), s("bold")),
+  vimCommentTitle = mt(f(gc.comment_grey), s("bold")),
+  vimCommand = mt(f(gc.cyan), s("bold")),
+  vimLet = f(gc.purple),
+  vimFunction = f(gc.blue),
+  vimIsCommand = f(gc.foreground),
+  vimUserFunc = f(gc.blue),
+  vimFuncName = f(gc.blue),
+  vimMap = f(gc.purple),
+  vimMapModKey = f(gc.dark_yellow),
+  vimNotation = f(gc.red),
+  vimMapLhs = f(gc.blue),
+  vimMapRhs = f(gc.blue),
+  vimOption = f(gc.red),
+  vimUserAttrbKey = f(gc.red),
+  vimUserAttrb = f(gc.blue),
+  vimSynType = f(gc.cyan),
+  vimHiBang = f(gc.purple),
+  vimSet = f(gc.yellow),
+  vimSetEqual = f(gc.yellow),
+  vimSetSep = f(gc.comment_grey),
+  vimVar = f(gc.foreground),
+  vimFuncVar = f(gc.foreground),
+  vimContinue = f(gc.comment_grey),
+  vimAutoCmdSfxList = f(gc.cyan),
+}
+
+hl.langs.json = {
+  jsonCommentError = f(gc.white),
+  jsonKeyword = f(gc.red),
+  jsonBoolean = f(gc.dark_yellow),
+  jsonNumber = f(gc.dark_yellow),
+  jsonQuote = f(gc.white),
+  jsonMissingCommaError = mt(f(gc.red), s("reverse")),
+  jsonNoQuotesError = mt(f(gc.red), s("reverse")),
+  jsonNumError = mt(f(gc.red), s("reverse")),
+  jsonString = f(gc.green),
+  jsonStringSQError = mt(f(gc.red), s("reverse")),
+  jsonSemicolonError = mt(f(gc.red), s("reverse")),
+}
+
+hl.langs.markdown = {
+  markdownBlockquote = f(gc.comment_grey),
+  markdownBold = mt(f(gc.dark_yellow), s("bold")),
+  markdownCode = f(gc.green),
+  markdownCodeBlock = f(gc.green),
+  markdownCodeDelimiter = f(gc.green),
+  markdownH1 = f(gc.red),
+  markdownH2 = f(gc.red),
+  markdownH3 = f(gc.red),
+  markdownH4 = f(gc.red),
+  markdownH5 = f(gc.red),
+  markdownH6 = f(gc.red),
+  markdownHeadingDelimiter = f(gc.red),
+  markdownHeadingRule = f(gc.comment_grey),
+  markdownId = f(gc.purple),
+  markdownIdDeclaration = f(gc.blue),
+  markdownIdDelimiter = f(gc.purple),
+  markdownItalic = mt(f(gc.purple), s("italic")),
+  markdownLinkDelimiter = f(gc.purple),
+  markdownLinkText = f(gc.blue),
+  markdownListMarker = f(gc.red),
+  markdownOrderedListMarker = f(gc.red),
+  markdownRule = f(gc.comment_grey),
+  markdownUrl = mt(f(gc.cyan), s("underline")),
+}
+
+hl.git = {
+  gitcommitComment = f(gc.comment_grey),
+  gitcommitUnmerged = f(gc.green),
+  gitcommitOnBranch = {},
+  gitcommitBranch = f(gc.purple),
+  gitcommitDiscardedType = f(gc.red),
+  gitcommitSelectedType = f(gc.green),
+  gitcommitHeader = {},
+  gitcommitUntrackedFile = f(gc.cyan),
+  gitcommitDiscardedFile = f(gc.red),
+  gitcommitSelectedFile = f(gc.green),
+  gitcommitUnmergedFile = f(gc.yellow),
+  gitcommitFile = {},
+  gitcommitSummary = f(gc.white),
+  gitcommitOverflow = f(gc.red),
+  gitcommitNoBranch = f(gc.purple),
+  gitcommitUntracked = f(gc.comment_grey),
+  gitcommitDiscarded = f(gc.comment_grey),
+  gitcommitSelected = f(gc.comment_grey),
+  gitcommitDiscardedArrow = f(gc.red),
+  gitcommitSelectedArrow = f(gc.green),
+  gitcommitUnmergedArrow = f(gc.cyan),
+}
+
+hl.plugins.gitgutter = {
+  gitgutteradd = f(gc.green),
+  gitgutterchange = f(gc.yellow),
+  gitgutterdelete = f(gc.red),
+}
+
+hl.plugins.gitsigns = {
+  gitsignsAdd = f(gc.green),
+  gitsignsChange = f(gc.yellow),
+  gitsiginsDelete = f(gc.red),
 }
 
 hl.plugins.telescope = {
   -- TelescopeBorder = {fg = c.blue},
-  TelescopePromptTitle = hlfb(c.red, c.background ),
-  TelescopePromptBorder = hlf(c.red ),
-  TelescopeResultsTitle = hlfb(c.blue, c.background ),
-  TelescopeResultsBorder = hlf(c.blue ),
-  TelescopePreviewTitle = hlfb(c.green, c.background ),
-  TelescopePreviewBorder = hlf(c.green ),
-  TelescopeMatching = MergeTable(hlf(c.yellow), {bold = true}),
+  TelescopePromptTitle = fb(gc.red, gc.background),
+  TelescopePromptBorder = f(gc.red),
+  TelescopeResultsTitle = fb(gc.blue, gc.background),
+  TelescopeResultsBorder = f(gc.blue),
+  TelescopePreviewTitle = fb(gc.green, gc.background),
+  TelescopePreviewBorder = f(gc.green),
+  TelescopeMatching = mt(f(gc.yellow), s("bold")),
 }
 
 hl.plugins.nvimtree = {
-  NvimTreeEndOfBuffer = hlf(c.background),
-  NvimTreeFolderIcon = hlf(c.blue),
-  NvimTreeOpenedFolderName = hlf(c.red),
-  NvimTreeNormal = hlb(c.background),
-  NvimTreeRootFolder = MergeTable(hlf(c.red), {underline = true}),
+  NvimTreeEndOfBuffer = f(gc.background),
+  NvimTreeFolderIcon = f(gc.blue),
+  NvimTreeOpenedFolderName = f(gc.red),
+  NvimTreeNormal = b(gc.background),
+  NvimTreeRootFolder = mt(f(gc.red), s("underline")),
 }
 
 hl.plugins.blankline = {
-  IndentBlanklineChar = hlf(c.purple),
+  IndentBlanklineChar = f(gc.purple),
 }
 
 hl.plugins.ts_rainbow = {
-  rainbowcol1 = hlf(c.cyan),
-  rainbowcol2 = hlf(c.purple),
-  rainbowcol3 = hlf(c.blue),
-  rainbowcol4 = hlf(c.dark_yellow),
-  rainbowcol5 = hlf(c.yellow),
-  rainbowcol6 = hlf(c.green),
-  rainbowcol7 = hlf(c.red),
+  rainbowcol1 = f(gc.cyan),
+  rainbowcol2 = f(gc.purple),
+  rainbowcol3 = f(gc.blue),
+  rainbowcol4 = f(gc.dark_yellow),
+  rainbowcol5 = f(gc.yellow),
+  rainbowcol6 = f(gc.green),
+  rainbowcol7 = f(gc.red),
 }
 
-
 local function init()
-  vim.o.background = "dark"
   vim.cmd("hi clear")
   if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
   vim.g.colors_name = "onedark"
   highlights(hl.common)
   highlights(hl.syntax)
+  highlights(hl.git)
+  highlights(hl.treesitter)
   for _, group in pairs(hl.plugins) do highlights(group) end
-  -- for _, group in pairs(plugins) do highlights(group) end
-  -- for _, group in pairs(langs) do highlights(group) end
+  vim.o.background = "dark"
 end
 
 init()
