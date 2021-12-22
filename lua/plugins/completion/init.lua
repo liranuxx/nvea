@@ -14,7 +14,8 @@ M.cmp = function(use)
   use {
     "ray-x/lsp_signature.nvim",
     disable = not status.lspsignature,
-    after = "nvim-lspconfig"
+    after = "nvim-lspconfig",
+    config = require("plugins.completion.config").lsp_signature
   }
   use {
     "hrsh7th/nvim-cmp",

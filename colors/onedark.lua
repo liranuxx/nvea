@@ -128,6 +128,8 @@ hl.common = {
   -- 背景颜色
   Normal = or_ts(),
   Terminal = fb(gc.foreground, gc.background),
+  -- NormalFloat = f(gc.green),
+  FloatBorder = f(gc.blue),
   EndOfBuffer = f(gc.black),
   Cursor = fb(gc.black, gc.blue),
   CursorIM = {},
@@ -145,7 +147,7 @@ hl.common = {
   Pmenu = fb(gc.white, gc.background),
   PmenuSel = fb(gc.cursor_grey, gc.blue),
   PmenuSbar = b(gc.background),
-  PmenuThumb = b(gc.white),
+  PmenuThumb = b(gc.background),
   Search = fb(gc.black, gc.yellow),
   IncSearch = fb(gc.yellow, gc.comment_grey),
   Question = f(gc.purple),
@@ -235,6 +237,9 @@ hl.treesitter = {
   -- TSKeywordFunction = f(gc.red);
   -- TSProperty = f(gc.);
   -- TSVariable = f(gc.cyan);
+  TSTextReference = f(gc.cyan),
+  -- 运算符颜色
+  TSOperator = f(gc.extra.teal),
 }
 
 hl.langs.c = {
@@ -344,6 +349,31 @@ hl.git = {
   gitcommitDiscardedArrow = f(gc.red),
   gitcommitSelectedArrow = f(gc.green),
   gitcommitUnmergedArrow = f(gc.cyan),
+}
+
+hl.plugins.lsp = {
+  DiagnosticVirtualTextError = b(gc.black),
+  DiagnosticLineNrError = mt(fb("#FF0000","#51202A"),s("bold")),
+  DiagnosticLineNrWarn = mt(fb("#FFA500","#51412A"),s("bold")),
+  DiagnosticLineNrInfo = mt(fb("#00FFFF","#1E535D"),s("bold")),
+  DiagnosticLineNrHint = mt(fb("#0000FF","#1E205D"),s("bold")),
+}
+
+hl.plugins.cmp = {
+  -- CmpDocumentation = fb(gc.foreground,gc.background),
+  -- CmpDocumentationBorder = fb(gc.red,gc.blue),
+  CmpItemAbbrDeprecated = mt(f(gc.white),s("strikethrough")),
+  CmpItemKindSnippet = f("#BF616A"),
+  CmpItemKindUnit = f("#D08770"),
+  CmpItemKindProperty = f("#A3BE8C"),
+  CmpItemKindKeyword = f("#EBCB8B"),
+  CmpItemAbbrMatch = f("#5E81AC"),
+  CmpItemAbbrMatchFuzzy = f("#5E81AC"),
+  CmpItemKindVariable = f("#8FBCBB"),
+  CmpItemKindInterface = f("#88C0D0"),
+  CmpItemKindText = f("#81A1C1"),
+  CmpItemKindFunction = f("#B48EAD"),
+  CmpItemKindMethod = f("#B48EAD"),
 }
 
 hl.plugins.gitgutter = {

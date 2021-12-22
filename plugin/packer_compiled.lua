@@ -191,7 +191,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/karb94/neoscroll.nvim"
   },
   ["nvim-autopairs"] = {
-    config = { "\27LJ\1\2}\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0" },
+    config = { '\27LJ\1\2™\2\0\0\n\0\15\0\0294\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\0014\2\1\0%\3\6\0>\2\2\0024\3\1\0%\4\a\0>\3\2\0027\4\b\3\16\5\4\0007\4\t\4%\6\n\0007\a\v\0023\b\r\0003\t\f\0:\t\14\b>\a\2\0=\4\2\1G\0\1\0\rmap_char\1\0\0\1\0\1\btex\5\20on_confirm_done\17confirm_done\aon\nevent\bcmp"nvim-autopairs.completion.cmp\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0' },
     load_after = {},
     loaded = true,
     needs_bufread = false,
@@ -369,7 +369,7 @@ require("plugins.tools.bufferline")
 vim.cmd [[ packadd nvim-autopairs ]]
 
 -- Config for: nvim-autopairs
-try_loadstring("\27LJ\1\2}\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0", "config", "nvim-autopairs")
+try_loadstring('\27LJ\1\2™\2\0\0\n\0\15\0\0294\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\0014\2\1\0%\3\6\0>\2\2\0024\3\1\0%\4\a\0>\3\2\0027\4\b\3\16\5\4\0007\4\t\4%\6\n\0007\a\v\0023\b\r\0003\t\f\0:\t\14\b>\a\2\0=\4\2\1G\0\1\0\rmap_char\1\0\0\1\0\1\btex\5\20on_confirm_done\17confirm_done\aon\nevent\bcmp"nvim-autopairs.completion.cmp\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0', "config", "nvim-autopairs")
 
 vim.cmd [[ packadd lsp_signature.nvim ]]
 time([[Sequenced loading]], false)

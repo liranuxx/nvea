@@ -13,6 +13,13 @@ local function on_attach(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
   require("core.mappings").lspconfig()
+  require "lsp_signature".on_attach({
+      bind = true,
+      hint_enable = false,
+      handler_opts = {
+        border = "single"
+      }
+    }, bufnr)
 
   if client.resolved_capabilities.document_highlight then
     -- hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
