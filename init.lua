@@ -1,9 +1,10 @@
 vim.cmd("colorscheme onedark")
-require("ui.notification")("Enjoy in your time!",{row=5,col=100})
+require("myplugin.notification")("Enjoy in your time!",{row=5,col=100})
 
 local modules = {
   "core",
   "plugins",
+  "myplugin",
 }
 
 for _, module in ipairs(modules) do
