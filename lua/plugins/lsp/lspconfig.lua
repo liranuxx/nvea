@@ -4,7 +4,7 @@ if not present then
 end
 
 -- beauty
--- require("plugins.lsp.handlers").setup()
+require("plugins.lsp.handlers").setup()
 local on_attach = require("plugins.lsp.handlers").on_attach
 local capabilities = require("plugins.lsp.handlers").capabilities
 

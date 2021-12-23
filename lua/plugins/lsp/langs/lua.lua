@@ -6,7 +6,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 return function(lsp,on_attach,capabilities)
   lsp.sumneko_lua.setup {
-    on_attach = attach,
+    on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
       sumneko_binary, "-E",
