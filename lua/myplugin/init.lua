@@ -8,3 +8,7 @@ for _, module in ipairs(modules) do
     print("Error loading "..module.."\n\n"..err)
   end
 end
+
+-- local word = vim.fn.expand("<cword>")
+-- print(vim.fn.getline("."))
+-- print(word)
