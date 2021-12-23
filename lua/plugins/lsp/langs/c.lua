@@ -1,0 +1,16 @@
+-- local clangd_root_path = vim.fn.stdpath("data") .. "/lsp_servers/clangd"
+-- local clangd_binary = clangd_root_path .. "/clangd_13.0.0/bin/clangd"
+-- lspconfig.clangd.setup {
+--   on_attach = attach,
+--   capabilities = capabilities,
+--   cmd = {
+--     clangd_binary,
+--     "--background-index",
+--     "--suggest-missing-includes",
+--     "--clang-tidy",
+--     "--header-insertion=iwyu"
+--   },
+--   root_dir = function()
+--     return vim.fn.getcwd()
+--   end
+-- }

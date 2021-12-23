@@ -165,7 +165,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/phaazon/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
-    config = { "\27LJ\1\2¿\4\0\0\5\0\16\0\0234\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0:\4\b\0033\4\t\0:\4\n\0033\4\v\0:\4\f\3>\2\2\0014\2\r\0007\2\14\2%\3\15\0>\2\2\1G\0\1\0001autocmd CursorMoved * IndentBlanklineRefresh\bcmd\bvim\21context_patterns\1\15\0\0\nclass\rfunction\vmethod\nblock\17list_literal\rselector\b^if\v^table\17if_statement\nwhile\bfor\ttype\bvar\vimport\20buftype_exclude\1\2\0\0\rterminal\21filetype_exclude\1\b\0\0\thelp\rterminal\14dashboard\vpacker\flspinfo\20TelescopePrompt\21TelescopeResults\1\0\5\25show_current_context\2\28show_first_indent_level\2\tchar\bâ”Š\23indentLine_enabled\3\1#show_trailing_blankline_indent\2\nsetup\29Blankline not present!!!\nprint\21indent_blankline\frequire\npcall\0" },
+    config = { "\27LJ\1\2Æ\4\0\0\5\0\16\0\0234\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0:\4\b\0033\4\t\0:\4\n\0033\4\v\0:\4\f\3>\2\2\0014\2\r\0007\2\14\2%\3\15\0>\2\2\1G\0\1\0001autocmd CursorMoved * IndentBlanklineRefresh\bcmd\bvim\21context_patterns\1\15\0\0\nclass\rfunction\vmethod\nblock\17list_literal\rselector\b^if\v^table\17if_statement\nwhile\bfor\ttype\bvar\vimport\20buftype_exclude\1\2\0\0\rterminal\21filetype_exclude\1\b\0\0\thelp\rterminal\14dashboard\vpacker\flspinfo\20TelescopePrompt\21TelescopeResults\1\0\5\25show_current_context\2\28show_first_indent_level\2\tchar\bâ”Š\23indentLine_enabled\3\1#show_trailing_blankline_indent\2\nsetup$Indent_Blankline not present!!!\nprint\21indent_blankline\frequire\npcall\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -189,6 +189,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/rktjmp/lush.nvim"
   },
   ["markdown-preview.nvim"] = {
+    config = { "\27LJ\1\2p\0\0\2\0\3\0\0054\0\0\0007\0\1\0%\1\2\0>\0\2\1G\0\1\0Qlet g:mkdp_browser = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'\bcmd\bvim\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,

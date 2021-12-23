@@ -1,13 +1,22 @@
-local present, whichkey = pcall(require, "which-key")
+local present, which_key = pcall(require, "which-key")
 if not present then
   return print("Whichkey not present!!!")
 end
-whichkey.setup {
+which_key.setup {
   plugins = {
     spelling = {
       enabled = true,
       suggestions = 20
-    }
+    },
+     presets = {
+      operators = false,
+      motions = false,
+      text_objects = false,
+      windows = true,
+      nav = true,
+      z = true,
+      g = true,
+    },
   },
   window = {
     border = "single"
@@ -18,64 +27,103 @@ whichkey.setup {
     ["<tab>"] = "TAB"
   }
 }
-require("plugins.tools.")
-whichkey.register(
-  {
-    f = {
-      name = "File",
-      f = {"Find File"},
-      b = {"Find Buffer"},
-      a = {"Find Hidden File"},
-      w = {"Find AllWord"},
-      h = {"Find Recent File"},
-      l = {"Find Function"},
-      m = {"File Format"}
-    },
-    g = {
-      name = "Git"
-    },
-    c = {
-      name = "cmd",
-      c = {"Find Cmd"},
-      h = {"Find CmdHistory"}
-    },
-    e = {"Focu File On Tree"},
-    q = {"Close File"},
-    w = {"Save File"},
-    x = {"Close Buffer "},
-    k = {"Close Window "},
-    ["/"] = {"search chars"}
+local opts = {
+  mode = "n",
+  prefix = "<leader>",
+  buffer = nil,
+  silent = true,
+  noremap = true,
+  nowait = true,
+}
+
+local mappings = {
+  ["e"] = { "Explorer" },
+  ["o"] = { "Focu File On Explorer" },
+  ["w"] = { "Save" },
+  ["q"] = { "Quit" },
+  ["x"] = { "Close Buffer" },
+  ["k"] = { "Close Window" },
+  ["/"] = { "Search Words" },
+
+  ["<F2>"] = {"Toggle number"},
+  ["<c-a>"] = {"Copy All File Context"},
+  ["<a-h>"] = {"Increase Width"},
+  ["<a-j>"] = {"Decrease Height"},
+  ["<a-k>"] = {"Increase Height"},
+  ["<a-l>"] = {"Decrease Width"},
+  ["<c-h>"] = {"Go to the Left Window"},
+  ["<c-j>"] = {"Go to the Down Window"},
+  ["<c-k>"] = {"Go to the Up Window"},
+  ["<c-l>"] = {"Go to the Right Window"},
+  ["#"] = {"Search Up for the current word"},
+  ["*"] = {"Search Down for the current word"},
+
+  p = {
+    name = "Packer",
+    c = { "<cmd>PackerCompile<cr>", "Compile" },
+    i = { "<cmd>PackerInstall<cr>", "Install" },
+    S = { "<cmd>PackerSync<cr>", "Sync" },
+    s = { "<cmd>PackerStatus<cr>", "Status" },
+    u = { "<cmd>PackerUpdate<cr>", "Update" },
   },
-  {prefix = "<leader>"}
-)
-whichkey.register(
-  {
-    ["<F1>"] = {"Help"},
-    ["<F2>"] = {"Toggle number"},
-    ["<leader>t"] = {"Open File Tree"},
-    ["<c-a>"] = {"Copy All File Context"},
-    ["<a-h>"] = {"Increase Width"},
-    ["<a-j>"] = {"Decrease Height"},
-    ["<a-k>"] = {"Increase Height"},
-    ["<a-l>"] = {"Decrease Width"},
-    ["<c-h>"] = {"Go to the Left Window"},
-    ["<c-j>"] = {"Go to the Down Window"},
-    ["<c-k>"] = {"Go to the Up Window"},
-    ["<c-l>"] = {"Go to the Right Window"},
-    g = {
-      name = "Lsp",
-      r = {"Rename"},
-      x = {"Code Action"},
-      p = {"Preview Define"},
-      d = {"Goto Define"},
-      e = {"Show Line Diag"},
-      l = {"List Line Diag"},
-      j = {"Jump Next Diag"},
-      k = {"Jump Prev Diag"},
-      h = {"Finder"}
-    },
-    K = {"Function Hover"},
-    ["#"] = {"Search Up for the current word"},
-    ["*"] = {"Search Down for the current word"}
-  }
-)
+
+   g = {
+    name = "Git",
+    g = { "Lazygit" },
+    j = { "Next Hunk" },
+    k = { "Prev Hunk" },
+    l = { "Blame" },
+    p = { "Preview Hunk" },
+    r = { "Reset Hunk" },
+    R = { "Reset Buffer" },
+    s = { "Stage Hunk" },
+    u = { "Undo Stage Hunk" },
+    o = { "Open changed file" },
+    b = { "Checkout branch" },
+    c = { "Checkout commit" },
+    d = { "Diff" },
+  },
+
+  l = {
+    name = "LSP",
+    a = { "Code Action" },
+    d = { "Document Diagnostics" },
+    w = { "Workspace Diagnostics" },
+    e = { "Show Line Diagnostics" },
+    i = { "Info" },
+    I = { "Installer Info" },
+    j = { "Next Diagnostic" },
+    k = { "Prev Diagnostic" },
+    r = { "CodeLens Action" },
+    l = { "Quickfix" },
+    s = { "Signaturehelp Help" },
+  },
+  f = {
+    name = "Find ",
+    l = { "Builtin" },
+    f = { "Find File" },
+    a = { "Find Hide File" },
+    b = { "Find Buffer" },
+    w = { "Find Text" },
+    s = { "Colorscheme" },
+    H = { "Find Help" },
+    h = { "Open Recent File" },
+    R = { "Registers" },
+    k = { "Keymaps" },
+    c = { "Commands" },
+    C = { "Commands History" },
+  },
+
+  t = {
+    name = "Terminal",
+    n = { "Node" },
+    u = { "NCDU" },
+    t = { "Htop" },
+    g = { "Lazygit" },
+    p = { "Python" },
+    f = { "Float" },
+    h = { "Horizontal" },
+    v = { "Vertical" },
+  },
+}
+which_key.register(mappings, opts)

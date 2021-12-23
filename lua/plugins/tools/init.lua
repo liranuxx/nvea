@@ -2,9 +2,7 @@ local plugin_status = require("core.config").plugins.status
 local M = {}
 
 M.tools = function(use)
-  use {
-    "kyazdani42/nvim-web-devicons"
-  }
+  use {"kyazdani42/nvim-web-devicons"}
   use {
     "numToStr/Comment.nvim",
     disable = not plugin_status.comment,
@@ -39,7 +37,6 @@ M.tools = function(use)
     "yuki-uthman/vim-fzf-dictionary",
     requires = {"junegunn/fzf.vim"}
   }
-
   use {
     "folke/which-key.nvim",
     disable = not plugin_status.whichkey,
@@ -55,11 +52,8 @@ M.tools = function(use)
     "iamcco/markdown-preview.nvim",
     run = "cd app && yarn install",
     disable = not plugin_status.markdown_preview,
-    ft = "markdown"
-  }
-  use {
-    "mg979/vim-visual-multi",
-    branch = "master"
+    ft = "markdown",
+    config = require("plugins.tools.config").markdown_preview
   }
   use {
     "glepnir/dashboard-nvim",

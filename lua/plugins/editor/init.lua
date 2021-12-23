@@ -6,7 +6,6 @@ M.editor = function(use)
    use {
       "norcalli/nvim-colorizer.lua",
       disable = not status.colorizer,
-      -- event = "BufRead",
       config = conf.colorizer,
    }
    use {
@@ -30,6 +29,10 @@ M.editor = function(use)
    use {
     'karb94/neoscroll.nvim',
     config = conf.neoscroll,
+  }
+  use {
+    "mg979/vim-visual-multi",
+    branch = "master"
   }
 
 end

@@ -15,5 +15,4 @@ end
 -- set all the mappings
 require("core.mappings").init()
 
-vim.cmd("let g:mkdp_browser = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'")
 vim.cmd("imap <C-\\> <Plug>(fzf-dictionary-open)")

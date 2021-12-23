@@ -93,10 +93,20 @@ M.mappings.plugins = {
     session_load = "<leader>l", -- load a saved session
     session_save = "<leader>s" -- save a session
   },
+  term = {
+    node = "<leader>tn",
+    ncdu = "<leader>tu",
+    htop = "<leader>tt",
+    lazygit = "<leader>tg",
+    python = "<leader>tp",
+    t_float = "<leader>tf",
+    t_hori = "<leader>th",
+    t_vert = "<leader>tv",
+  },
   -- file explorer/tree
   nvimtree = {
-    toggle = "<leader>t",
-    focus = "<leader>e"
+    toggle = "<leader>e",
+    focus = "<leader>o"
   },
   -- multitool for finding & picking things
   telescope = {
@@ -107,27 +117,31 @@ M.mappings.plugins = {
     search_char = "<leader>/",
     live_grep = "<leader>fw",
     oldfiles = "<leader>fh",
-    commands = "<leader>cc",
-    comand_history = "<leader>ch",
-    git_commits = "<leader>gm",
-    git_status = "<leader>gt",
-    help_tags = "<F1>",
+    commands = "<leader>fc",
+    comand_history = "<leader>fC",
+    help_tags = "<leader>fH",
+    registers = "<leader>fR",
+    keymaps = "<leader>fk",
   },
   formatter = {
     format = "<leader>fm",
   },
   lsp = {
-    rename = "gr",
-    code_cation = "gx",
+    lspinfo = "<leader>li",
+    lspinstall_info = "<leader>lI",
+    code_cation = "<leader>la",
     hover_doc = "K",
     declaration = "gh",
-    signaturehelp = "gs",
+    signaturehelp = "<leader>ls",
     references = "gw",
     goto_definition = "gd",
-    show_line_diag = "ge",
-    list_line_diag = "gl",
-    diag_jump_next = "gn",
-    diag_jump_prev = "gp",
+    show_line_diag = "<leader>le",
+    show_docu_diag = "<leader>ld",
+    show_work_diag = "<leader>lw",
+    codelens_action = "<leader>lr",
+    list_line_diag = "<leader>ll",
+    diag_jump_next = "<leader>lj",
+    diag_jump_prev = "<leader>lj",
   }
 }
 

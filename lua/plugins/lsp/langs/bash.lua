@@ -1,0 +1,11 @@
+-- bash
+-- local bash_root_path = vim.fn.stdpath('data') .. "/lsp_servers/bash/"
+-- local bash_binary = bash_root_path .. "/node_modules/.bin/bash-language-server"
+-- lspconfig.bashls.setup {
+--   cmd = { bash_binary, "start" },
+--   cmd_env = {
+--     GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)"
+--   },
+--   filetypes = { "sh" },
+--   single_file_support = true,
+-- }
