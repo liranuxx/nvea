@@ -1,6 +1,5 @@
 local utils = require("core.utils")
 local map = utils.map
--- local map = vim.api.nvim_set_keymap
 local basic = require("core.config").basic
 local maps = require("core.config").mappings
 local plugin_maps = maps.plugins
@@ -9,23 +8,21 @@ local M = {}
 
 local function non_config_mappings()
   -- Don't copy the replaced text after pasting in visual mode
+  -- 在可视模式下粘贴后不复制被替换的文本
   map("v", "p", '"_dP')
-
   -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-  -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
-  -- empty mode is same as using :map
-  -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+  -- 允许光标移动通过折叠行
   map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
   map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
   map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', {expr = true})
   map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', {expr = true})
-
   -- use ESC to turn off search highlighting
+  -- 使用<esc>关闭搜索高亮
   map({"n", "i"}, "<Esc>", "<Esc>:noh <CR>")
-
   -- yank from current cursor to end of line
+  -- 从当前光标复制到行尾
   map("n", "Y", "yg$")
-
+  -- Normal和Visual下，使用H, L表示到达行首，行尾
   map({"n", "v"}, "H", "^")
   map({"n", "v"}, "L", "$")
   map("n", "n", "nzz")
@@ -33,27 +30,26 @@ local function non_config_mappings()
   map("n", "*", "*zz")
   map("n", "#", "#zz")
   map("n", "g*", "g*zz")
-
-  -- Visual
+  -- Visual下，移动当前行
   map("v", "J", ":m '>+1<cr>gv=gv")
   map("v", "K", ":m '<-2<cr>gv=gv")
 end
 
 local function optional_mappings()
   -- don't yank text on cut ( x )
+  -- 剪切时不复制文本
   if not basic.copy_cut then
     map({"n", "v"}, "x", '"_x')
   end
-
   -- don't yank text on delete ( dd )
+  -- 删除时不复制文本
   if not basic.copy_del then
     map({"n", "v"}, "d", '"_d')
   end
-
   -- navigation within insert mode
+  -- 快速在Insert下移动
   if basic.insert_nav then
     local inav = maps.nv.insert_nav
-
     map("i", inav.backward, "<Left>")
     map("i", inav.end_of_line, "<End>")
     map("i", inav.forward, "<Right>")
@@ -61,8 +57,8 @@ local function optional_mappings()
     map("i", inav.prev_line, "<Down>")
     map("i", inav.beginning_of_line, "<ESC>^i")
   end
-
   -- navigation within cmd mode
+  -- 快速在Cmdline下移动
   if basic.cmd_nav then
     local cnav = maps.nv.cmd_nav
     map("c", cnav.backward, "<Left>")
@@ -71,11 +67,10 @@ local function optional_mappings()
     map("c", cnav.endding_of_line, "<End>")
     map("c", cnav.sudow, "w !sudo tee>/dev/null %")
   end
-
   -- easier navigation between windows
+  -- 快速在窗口中移动或者改变大小
   if basic.window_nav then
     local wnav = maps.nv.window_nav
-
     map("n", wnav.moveLeft, "<C-w>h")
     map("n", wnav.moveRight, "<C-w>l")
     map("n", wnav.moveUp, "<C-w>k")
@@ -94,14 +89,14 @@ local function required_mappings()
   map("n", maps.new_buffer, ":enew <CR>") -- new buffer
   map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
   map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
-  map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
-  map("n", maps.quit_file, ":q! <CR>") -- ctrl + s to save file
-  -- map("n", maps.save_quit_file, ":wq! <CR>") -- ctrl + s to save file
+  map("n", maps.save_file, ":w <CR>") -- save file
+  map("n", maps.quit_file, ":q! <CR>") -- quit file
+  -- map("n", maps.save_quit_file, ":wq! <CR>") -- save and quit file
+  map("n", maps.toggle_theme, ":lua require('core.toggle_theme')<cr>")
 end
 
 local function bufferline()
   local m = plugin_maps.bufferline
-
   map("n", m.next_buffer, ":BufferLineCycleNext <CR>")
   map("n", m.prev_buffer, ":BufferLineCyclePrev <CR>")
 end
@@ -113,7 +108,6 @@ end
 
 -- local function dashboard()
 --   local m = plugin_maps.dashboard
---
 --   map("n", m.bookmarks, ":DashboardJumpMarks <CR>")
 --   map("n", m.new_file, ":DashboardNewFile <CR>")
 --   map("n", m.open, ":Dashboard <CR>")
@@ -139,33 +133,60 @@ end
 
 local formatter = function()
   local m = plugin_maps.formatter
-  map("n", m.format, ":Format<CR>")
+  map("n", m.format, ":FormatWrite<CR>")
 end
 
 local hop = function()
-  map('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-  map('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-  map('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-  map('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-  map('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-  map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+  map(
+    "n",
+    "f",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
+  map(
+    "n",
+    "F",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
+  map(
+    "o",
+    "f",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    {}
+  )
+  map(
+    "o",
+    "F",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>",
+    {}
+  )
+  map(
+    "",
+    "t",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
+  map(
+    "",
+    "T",
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>",
+    {}
+  )
 end
 
 function _G.set_terminal_keymaps()
-  map('t', '<esc>', [[<C-\><C-n>]])
-  map('t', 'jk', [[<C-\><C-n>]])
-  map('t', '<C-h>', [[<C-\><C-n><C-W>h]])
-  map('t', '<C-j>', [[<C-\><C-n><C-W>j]])
-  map('t', '<C-k>', [[<C-\><C-n><C-W>k]])
-  map('t', '<C-l>', [[<C-\><C-n><C-W>l]])
+  map("t", "<esc>", [[<C-\><C-n>]])
+  map("t", "jk", [[<C-\><C-n>]])
+  map("t", "<C-h>", [[<C-\><C-n><C-W>h]])
+  map("t", "<C-j>", [[<C-\><C-n><C-W>j]])
+  map("t", "<C-k>", [[<C-\><C-n><C-W>k]])
+  map("t", "<C-l>", [[<C-\><C-n><C-W>l]])
 end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 M.lspconfig = function()
   local m = plugin_maps.lsp
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
   map("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
@@ -179,9 +200,7 @@ M.lspconfig = function()
   map("n", m.diag_jump_prev, "<cmd>lua vim.diagnostic.goto_prev({ border = 'single'})<cr>")
   map("n", m.diag_jump_next, "<cmd>lua vim.diagnostic.goto_prev({ border = 'single'})<cr>")
   map("n", m.list_line_diag, "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
-  vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
-
 
 M.init = function()
   non_config_mappings()

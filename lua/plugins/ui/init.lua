@@ -6,7 +6,6 @@ M.ui = function(use)
     "wbthomason/packer.nvim",
     opt = true,
   }
-  use { "nvim-lua/plenary.nvim", }
 
   use {
     "nvim-treesitter/nvim-treesitter",

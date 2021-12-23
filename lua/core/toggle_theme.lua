@@ -3,7 +3,7 @@ local actions_state = require("telescope.actions.state")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local sorters = require("telescope.sorters")
-local dropdown = require("telescope.themes").get_dropdown()
+-- local dropdown = require("telescope.themes").get_dropdown()
 local colors = vim.fn.getcompletion("", "color")
 local function enter(prompt_bufnr)
   local selected = actions_state.get_selected_entry()
@@ -26,17 +26,18 @@ end
 local mini = {
   layout_strategy = "vertical",
   layout_config = {
-    height = 20,
+    height = 0.9,
     width = 0.3,
     prompt_position = "top",
   },
   sorting_strategy = "ascending",
 }
 local opts = {
+  results_title = "colors",
   finder = finders.new_table(colors),
   sorter = sorters.get_generic_fuzzy_sorter({}),
 
-  attach_mappings = function (prompt_bufnr, map)
+  attach_mappings = function (_, map)
     map("i","<CR>",enter)
     map("i","<C-j>",next_theme)
     map("i","<C-k>",prev_theme)
@@ -45,5 +46,5 @@ local opts = {
     return true
   end
 }
-local colors = pickers.new(mini, opts)
-colors:find()
+local select_colors = pickers.new(mini, opts)
+return select_colors:find()

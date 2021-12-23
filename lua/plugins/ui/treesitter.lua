@@ -103,10 +103,3 @@ ts_config.setup {
     -- termcolors = {} -- table of colour name strings
   },
 }
-
-require("nvim-treesitter.install").prefer_git = true
-
--- 折叠
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.wo.foldlevel = 99

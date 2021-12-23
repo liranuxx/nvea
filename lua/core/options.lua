@@ -1,16 +1,13 @@
 local opt = vim.opt
 local g = vim.g
+
 g.mapleader = ' '
 g.maplocalleader = ' '
--- default utf-8
--- g.encoding = "UTF-8"
 opt.whichwrap = 'b,s,<,>,[,],h,l'
 
 opt.number = true
 opt.numberwidth = 2
 opt.cursorline = true
--- default true
--- opt.ruler = true
 opt.mouse = 'a'
 opt.clipboard = 'unnamedplus'
 opt.cmdheight = 1
@@ -32,26 +29,37 @@ opt.swapfile = false
 opt.list = true
 opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
 
--- default true
--- opt.hidden = true
--- opt.hlsearch = true
--- opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.breakindent = true
 opt.completeopt = "menu,menuone,noselect"
 
+-- 折叠
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldlevel = 99
+
 -----------------------------------------------------------
 -- Colorscheme
 -----------------------------------------------------------
 opt.termguicolors = true
--- default dark
--- opt.background = "dark"
-if vim.g.gui then
-  vim.cmd [[set guifont=FiraCode\ Nerd\ Font\ Mono:h12,JetbrainsMono\ Mono,Source\ Han\ Sans\ CN]]
-end
 
--- disable some builtin vim plugins
+
+-----------------------------------------------------------
+-- Defaults
+-----------------------------------------------------------
+-- g.encoding = "UTF-8"
+-- opt.ruler = true
+-- opt.background = "dark"
+-- opt.hidden = true
+-- opt.hlsearch = true
+-- opt.incsearch = true
+
+
+
+-----------------------------------------------------------
+-- Disable some builtin vim plugins
+-----------------------------------------------------------
 local disabled_built_ins = {
    "2html_plugin",
    "getscript",
@@ -72,12 +80,15 @@ local disabled_built_ins = {
    "zip",
    "zipPlugin",
 }
-
 for _, plugin in pairs(disabled_built_ins) do
    g["loaded_" .. plugin] = 1
 end
 
+-----------------------------------------------------------
+-- Others
+-----------------------------------------------------------
 opt.shadafile = ""
 opt.shell = "/bin/zsh"
 opt.lazyredraw = true
 g.python3_host_prog = '/bin/python3'
+vim.cmd ("set dict+=~/.config/nvim/dict/words")

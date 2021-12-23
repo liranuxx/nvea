@@ -1,6 +1,3 @@
-vim.cmd("colorscheme " .. require("core.config").ui.theme)
-require("myplugin.notification")("Enjoy in your time!", {row = 5, col = 100})
-
 local modules = {
   "core",
   "plugins",
@@ -13,7 +10,3 @@ for _, module in ipairs(modules) do
     print("Error loading " .. module .. "\n\n" .. err)
   end
 end
-
-vim.cmd("let g:mkdp_browser = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'")
-vim.cmd ("set dict+=~/.config/nvim/dict/words")
-vim.cmd("imap <C-i> <Plug>(fzf-dictionary-open)")
