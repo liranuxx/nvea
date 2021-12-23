@@ -76,7 +76,6 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/numToStr/Comment.nvim"
   },
   LuaSnip = {
-    config = { "\27LJ\1\2è\1\0\0\4\0\n\0\0194\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0017\2\6\0023\3\a\0>\2\2\0014\2\1\0%\3\b\0>\2\2\0027\2\t\2>\2\1\1G\0\1\0\tload luasnip/loaders/from_vscode\1\0\2\fhistory\2\17updateevents\29TextChanged,TextChangedI\15set_config\vconfig\24Luasnip not present\nprint\fluasnip\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://hub.fastgit.org/L3MON4D3/LuaSnip"
@@ -102,12 +101,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
     url = "https://hub.fastgit.org/hrsh7th/cmp-cmdline"
-  },
-  ["cmp-look"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-look",
-    url = "https://hub.fastgit.org/hrsh7th/cmp-look"
   },
   ["cmp-nvim-lsp"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
@@ -144,7 +137,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/glepnir/dashboard-nvim"
   },
   ["formatter.nvim"] = {
-    config = { "\27LJ\1\2N\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\4\0\0\19--indent-count\3\2\f--stdin\1\0\2\nstdin\2\bexe\vluafmt9\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\3\0\0\a-i\3\2\1\0\2\nstdin\2\bexe\nshfmt±\1\0\0\4\0\n\1\0163\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\2'\3\0\0>\2\2\0<\2\0\0:\1\5\0004\1\2\0007\1\6\0017\1\a\1%\2\b\0>\1\2\2:\1\t\0H\0\2\0\bcwd\n%:p:h\vexpand\afn\targs\22nvim_buf_get_name\bapi\bvim\1\2\0\0\22--assume-filename\1\0\2\bexe\17clang-format\nstdin\2\5€€À™\4¾\1\0\0\5\0\b\1\0143\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\0024\3\2\0007\3\5\0037\3\6\3'\4\0\0>\3\2\0=\2\0\0<\2\0\0:\1\a\0H\0\2\0\targs\22nvim_buf_get_name\bapi\16fnameescape\afn\bvim\1\2\0\0)--in-place --aggressive --aggressive\1\0\2\nstdin\1\bexe\24python3 -m autopep8\5€€À™\4é\1\1\0\a\0\17\0 4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0000\0\22€7\2\5\0013\3\15\0003\4\a\0002\5\3\0001\6\6\0;\6\1\5:\5\b\0042\5\3\0001\6\t\0;\6\1\5:\5\n\0042\5\3\0001\6\v\0;\6\1\5:\5\f\0042\5\3\0001\6\r\0;\6\1\5:\5\14\4:\4\16\3>\2\2\1G\0\1\0@\2\2\0\rfiletype\1\0\0\vpython\0\bcpp\0\ash\0\blua\1\0\0\0\nsetup\29Formatter not present!!!\nprint\14formatter\frequire\npcall\0" },
+    config = { 'require("plugins.lsp.formatter")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/formatter.nvim",
     url = "https://hub.fastgit.org/mhartington/formatter.nvim"
@@ -178,13 +171,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
     url = "https://hub.fastgit.org/lukas-reineke/indent-blankline.nvim"
-  },
-  ["lsp_signature.nvim"] = {
-    load_after = {},
-    loaded = true,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/lsp_signature.nvim",
-    url = "https://hub.fastgit.org/ray-x/lsp_signature.nvim"
   },
   ["lualine-lsp-progress"] = {
     loaded = true,
@@ -230,7 +216,6 @@ _G.packer_plugins = {
   },
   ["nvim-code-action-menu"] = {
     commands = { "CodeActionMenu" },
-    load_after = {},
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -244,17 +229,16 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lsp-installer"] = {
-    config = { "\27LJ\1\2è\1\0\0\6\0\v\0\0174\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\t\0003\4\a\0003\5\6\0:\5\b\4:\4\n\3>\2\2\1G\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\23server_uninstalled\bâœ—\21server_installed\bâœ“\19server_pending\bâžœ\rsettings Lspinstaller not present!!!\nprint\23nvim-lsp-installer\frequire\npcall\0" },
-    load_after = {},
+    config = { 'require("plugins.lsp.lsp_installer")' },
     loaded = true,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-lsp-installer",
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
     url = "https://hub.fastgit.org/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
-    after = { "lsp_signature.nvim", "nvim-lsp-installer", "nvim-code-action-menu" },
+    config = { 'require("plugins.lsp.lspconfig")' },
     loaded = true,
-    only_config = true
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://hub.fastgit.org/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -356,10 +340,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-try_loadstring("\27LJ\1\2N\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\4\0\0\19--indent-count\3\2\f--stdin\1\0\2\nstdin\2\bexe\vluafmt9\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\3\0\0\a-i\3\2\1\0\2\nstdin\2\bexe\nshfmt±\1\0\0\4\0\n\1\0163\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\2'\3\0\0>\2\2\0<\2\0\0:\1\5\0004\1\2\0007\1\6\0017\1\a\1%\2\b\0>\1\2\2:\1\t\0H\0\2\0\bcwd\n%:p:h\vexpand\afn\targs\22nvim_buf_get_name\bapi\bvim\1\2\0\0\22--assume-filename\1\0\2\bexe\17clang-format\nstdin\2\5€€À™\4¾\1\0\0\5\0\b\1\0143\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\0024\3\2\0007\3\5\0037\3\6\3'\4\0\0>\3\2\0=\2\0\0<\2\0\0:\1\a\0H\0\2\0\targs\22nvim_buf_get_name\bapi\16fnameescape\afn\bvim\1\2\0\0)--in-place --aggressive --aggressive\1\0\2\nstdin\1\bexe\24python3 -m autopep8\5€€À™\4é\1\1\0\a\0\17\0 4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0000\0\22€7\2\5\0013\3\15\0003\4\a\0002\5\3\0001\6\6\0;\6\1\5:\5\b\0042\5\3\0001\6\t\0;\6\1\5:\5\n\0042\5\3\0001\6\v\0;\6\1\5:\5\f\0042\5\3\0001\6\r\0;\6\1\5:\5\14\4:\4\16\3>\2\2\1G\0\1\0@\2\2\0\rfiletype\1\0\0\vpython\0\bcpp\0\ash\0\blua\1\0\0\0\nsetup\29Formatter not present!!!\nprint\14formatter\frequire\npcall\0", "config", "formatter.nvim")
-time([[Config for formatter.nvim]], false)
+-- Config for: hop.nvim
+time([[Config for hop.nvim]], true)
+try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
+time([[Config for hop.nvim]], false)
 -- Config for: nvim-treesitter
 time([[Config for nvim-treesitter]], true)
 require("plugins.ui.treesitter")
@@ -376,57 +360,52 @@ time([[Config for dashboard-nvim]], false)
 time([[Config for neoscroll.nvim]], true)
 try_loadstring("\27LJ\1\2’\2\0\0\5\0\t\0\0154\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\a\0003\4\6\0:\4\b\3>\2\2\1G\0\1\0\rmappings\1\0\5\24use_local_scrolloff\1\22respect_scrolloff\1\16hide_cursor\2\25cursor_scrolls_alone\2\rstop_eof\2\1\n\0\0\n<C-u>\n<C-d>\n<C-b>\n<C-f>\n<C-y>\n<C-e>\azt\azz\azb\nsetup\29Neoscroll not present!!!\nprint\14neoscroll\frequire\npcall\0", "config", "neoscroll.nvim")
 time([[Config for neoscroll.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("plugins.completion.lspconfig")
-time([[Config for nvim-lspconfig]], false)
--- Config for: hop.nvim
-time([[Config for hop.nvim]], true)
-try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
-time([[Config for hop.nvim]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require("plugins.tools.term")
-time([[Config for toggleterm.nvim]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+require("plugins.lsp.formatter")
+time([[Config for formatter.nvim]], false)
 -- Config for: which-key.nvim
 time([[Config for which-key.nvim]], true)
 require("plugins.tools.whichkey")
 time([[Config for which-key.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require("plugins.tools.term")
+time([[Config for toggleterm.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0", "config", "nvim-colorizer.lua")
 time([[Config for nvim-colorizer.lua]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-require('plugins.tools.gitsigns')
-time([[Config for gitsigns.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 require("plugins.tools.telescope")
 time([[Config for telescope.nvim]], false)
--- Config for: lualine.nvim
-time([[Config for lualine.nvim]], true)
-require("plugins.tools.lualine")
-time([[Config for lualine.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+require('plugins.tools.gitsigns')
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+require("plugins.lsp.lspconfig")
+time([[Config for nvim-lspconfig]], false)
+-- Config for: nvim-lsp-installer
+time([[Config for nvim-lsp-installer]], true)
+require("plugins.lsp.lsp_installer")
+time([[Config for nvim-lsp-installer]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 require("Comment").setup()
 time([[Config for Comment.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-try_loadstring("\27LJ\1\2è\1\0\0\4\0\n\0\0194\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0017\2\6\0023\3\a\0>\2\2\0014\2\1\0%\3\b\0>\2\2\0027\2\t\2>\2\1\1G\0\1\0\tload luasnip/loaders/from_vscode\1\0\2\fhistory\2\17updateevents\29TextChanged,TextChangedI\15set_config\vconfig\24Luasnip not present\nprint\fluasnip\frequire\npcall\0", "config", "LuaSnip")
-time([[Config for LuaSnip]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+require("plugins.tools.lualine")
+time([[Config for lualine.nvim]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
 time([[Config for project.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
-vim.cmd [[ packadd nvim-treesitter-context ]]
-
--- Config for: nvim-treesitter-context
-try_loadstring("\27LJ\1\2Š\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup&Treesitter-context not present!!!\nprint\23treesitter-context\frequire\npcall\0", "config", "nvim-treesitter-context")
-
 vim.cmd [[ packadd nvim-web-devicons ]]
 vim.cmd [[ packadd bufferline.nvim ]]
 
@@ -438,12 +417,11 @@ vim.cmd [[ packadd nvim-autopairs ]]
 -- Config for: nvim-autopairs
 try_loadstring("\27LJ\1\2}\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0", "config", "nvim-autopairs")
 
-vim.cmd [[ packadd nvim-lsp-installer ]]
+vim.cmd [[ packadd nvim-treesitter-context ]]
 
--- Config for: nvim-lsp-installer
-try_loadstring("\27LJ\1\2è\1\0\0\6\0\v\0\0174\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\t\0003\4\a\0003\5\6\0:\5\b\4:\4\n\3>\2\2\1G\0\1\0\aui\1\0\0\nicons\1\0\0\1\0\3\23server_uninstalled\bâœ—\21server_installed\bâœ“\19server_pending\bâžœ\rsettings Lspinstaller not present!!!\nprint\23nvim-lsp-installer\frequire\npcall\0", "config", "nvim-lsp-installer")
+-- Config for: nvim-treesitter-context
+try_loadstring("\27LJ\1\2Š\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup&Treesitter-context not present!!!\nprint\23treesitter-context\frequire\npcall\0", "config", "nvim-treesitter-context")
 
-vim.cmd [[ packadd lsp_signature.nvim ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads

@@ -19,6 +19,10 @@ local status_cmp, plug_cmp = pcall(require, "plugins.completion")
 if not status_cmp then
   return print("Error loading plugin_cmp\n\n"..plug_cmp)
 end
+local status_cmp, plug_lsp = pcall(require, "plugins.lsp")
+if not status_cmp then
+  return print("Error loading plugin_cmp\n\n"..plug_cmp)
+end
 
 local use = packer.use
 
@@ -26,5 +30,6 @@ packer.startup(function()
   plug_ui.ui(use)
   plug_tools.tools(use)
   plug_editor.editor(use)
-  plug_cmp.cmp(use)
+  plug_cmp.cmpletion(use)
+  plug_lsp.lspconfig(use)
 end)
