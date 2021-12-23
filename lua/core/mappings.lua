@@ -166,7 +166,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 M.lspconfig = function()
   local m = plugin_maps.lsp
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+  -- map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
   map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
   map("n", m.goto_definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
   map("n", m.hover_doc, "<cmd>lua vim.lsp.buf.hover()<CR>")

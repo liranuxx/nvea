@@ -13,7 +13,7 @@ M.tools = function(use)
   use {
     "nvim-lualine/lualine.nvim",
     disable = not plugin_status.lualine,
-    config = [[require("plugins.tools.lualine")]],
+    config = [[require("plugins.tools.lualine")]]
   }
   use {"arkav/lualine-lsp-progress"}
 
@@ -32,10 +32,12 @@ M.tools = function(use)
   use {
     "nvim-telescope/telescope.nvim",
     disable = not plugin_status.telescope,
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
+    requires = {"nvim-lua/plenary.nvim"},
     config = [[require("plugins.tools.telescope")]]
+  }
+  use {
+    "yuki-uthman/vim-fzf-dictionary",
+    requires = {"junegunn/fzf.vim"}
   }
 
   use {

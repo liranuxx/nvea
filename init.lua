@@ -15,10 +15,5 @@ for _, module in ipairs(modules) do
 end
 
 vim.cmd("let g:mkdp_browser = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'")
-
-local function better_sub()
-  local reg = vim.fn.getreg(0)
-  local word = vim.fn.expand("<cword>")
-
-  return word..">>>"..reg
-end
+vim.cmd ("set dict+=~/.config/nvim/dict/words")
+vim.cmd("imap <C-i> <Plug>(fzf-dictionary-open)")

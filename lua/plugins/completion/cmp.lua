@@ -44,6 +44,9 @@ local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = {tex = ''}}))
 
 local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+    return false
+  end
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
@@ -55,22 +58,23 @@ cmp.setup {
     end,
   },
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = string.format("%s %s", lspkind_icons[vim_item.kind], vim_item.kind)
-      vim_item.menu = ({
-        buffer = "﬘",
-        nvim_lsp = "",
-        luasnip = "🐍",
-        treesitter = '',
-        nvim_lua = "",
-        spell = '暈'
-        -- nvim_lsp = "[LSP]",
-        -- nvim_lua = "[LUA]",
-        -- buffer = "BUF",
-        -- path = "[PATH]",
-        -- luasnip = "[SNIP]",
-        -- spell = "[SPE]"
-      })[entry.source.name]
+    format = function(_, vim_item)
+      vim_item.kind = string.format("%s", lspkind_icons[vim_item.kind])
+      vim_item.menu = nil
+      -- vim_item.menu = ({
+      --   buffer = "﬘",
+      --   nvim_lsp = "",
+      --   luasnip = "🐍",
+      --   treesitter = '',
+      --   nvim_lua = "",
+      --   spell = '暈'
+      -- nvim_lsp = "[LSP]",
+      -- nvim_lua = "[LUA]",
+      -- buffer = "BUF",
+      -- path = "[PATH]",
+      -- luasnip = "[SNIP]",
+      -- spell = "[SPE]"
+      --})[entry.source.name]
       return vim_item
     end
   },
@@ -81,16 +85,6 @@ cmp.setup {
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-e>"] = cmp.mapping.close(),
-    -- ["<C-k>"] = cmp.mapping(function(fallback)
-    --   if vim.fn.pumvisible() == 1 then
-    --     cmp.select_prev_item()
-    --   elseif has_words_before() then
-    --     cmp.setup.buffer{sources={name="look"}}
-    --     cmp.complete()
-    --   else
-    --     fallback()
-    --   end
-    -- end,{"i","s"}),
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -116,5 +110,8 @@ cmp.setup {
     {name = "nvim_lsp"}, {name = "nvim_lua"}, {name = "buffer"},
     {name = "luasnip"}, {name = "path"}, {name = "look"}, {name = "spell"},
   },
-  experimental = { ghost_text = true },
+  completion = {
+    completeopt = 'menu,menuone,noinsert'
+  },
+  experimental = {native_menu=false, ghost_text = true },
 }

@@ -11,19 +11,18 @@ M.ui = function(use)
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ':TSUpdate',
-    config = require("plugins.ui.config").treesitter(),
+    config = [[require("plugins.ui.treesitter")]],
     requires = {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      'nvim-treesitter/nvim-treesitter-textobjects'
+      {'nvim-treesitter/nvim-treesitter-refactor',opt=true},
+      {'nvim-treesitter/nvim-treesitter-textobjects',opt=true},
+      {'p00f/nvim-ts-rainbow',opt=true},
+      {
+        'romgrk/nvim-treesitter-context',
+        after = "nvim-treesitter",
+        config = require("plugins.ui.config").context
+      },
     }
-  }
-
-  use {
-    'p00f/nvim-ts-rainbow',
-    disble = not plugin_status.rainbow,
-    config = require("plugins.ui.config").rainbow(),
   }
   use { 'rktjmp/lush.nvim' }
 end
-
 return M

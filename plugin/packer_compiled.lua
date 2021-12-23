@@ -154,6 +154,11 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://hub.fastgit.org/rafamadriz/friendly-snippets"
   },
+  ["fzf.vim"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/fzf.vim",
+    url = "https://hub.fastgit.org/junegunn/fzf.vim"
+  },
   ["gitsigns.nvim"] = {
     config = { "require('plugins.tools.gitsigns')" },
     loaded = true,
@@ -261,23 +266,34 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
+    after = { "nvim-treesitter-context" },
     loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter"
+    only_config = true
+  },
+  ["nvim-treesitter-context"] = {
+    config = { "\27LJ\1\2Š\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup&Treesitter-context not present!!!\nprint\23treesitter-context\frequire\npcall\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
+    url = "https://hub.fastgit.org/romgrk/nvim-treesitter-context"
   },
   ["nvim-treesitter-refactor"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-treesitter-refactor",
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-refactor",
     url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter-refactor"
   },
   ["nvim-treesitter-textobjects"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects",
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
     url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-ts-rainbow"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
     url = "https://hub.fastgit.org/p00f/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
@@ -321,6 +337,11 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/vim-cursorword",
     url = "https://hub.fastgit.org/itchyny/vim-cursorword"
   },
+  ["vim-fzf-dictionary"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-fzf-dictionary",
+    url = "https://hub.fastgit.org/yuki-uthman/vim-fzf-dictionary"
+  },
   ["vim-visual-multi"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
@@ -339,10 +360,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for formatter.nvim]], true)
 try_loadstring("\27LJ\1\2N\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\4\0\0\19--indent-count\3\2\f--stdin\1\0\2\nstdin\2\bexe\vluafmt9\0\0\2\0\3\0\0043\0\0\0003\1\1\0:\1\2\0H\0\2\0\targs\1\3\0\0\a-i\3\2\1\0\2\nstdin\2\bexe\nshfmt±\1\0\0\4\0\n\1\0163\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\2'\3\0\0>\2\2\0<\2\0\0:\1\5\0004\1\2\0007\1\6\0017\1\a\1%\2\b\0>\1\2\2:\1\t\0H\0\2\0\bcwd\n%:p:h\vexpand\afn\targs\22nvim_buf_get_name\bapi\bvim\1\2\0\0\22--assume-filename\1\0\2\bexe\17clang-format\nstdin\2\5€€À™\4¾\1\0\0\5\0\b\1\0143\0\0\0003\1\1\0004\2\2\0007\2\3\0027\2\4\0024\3\2\0007\3\5\0037\3\6\3'\4\0\0>\3\2\0=\2\0\0<\2\0\0:\1\a\0H\0\2\0\targs\22nvim_buf_get_name\bapi\16fnameescape\afn\bvim\1\2\0\0)--in-place --aggressive --aggressive\1\0\2\nstdin\1\bexe\24python3 -m autopep8\5€€À™\4é\1\1\0\a\0\17\0 4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0000\0\22€7\2\5\0013\3\15\0003\4\a\0002\5\3\0001\6\6\0;\6\1\5:\5\b\0042\5\3\0001\6\t\0;\6\1\5:\5\n\0042\5\3\0001\6\v\0;\6\1\5:\5\f\0042\5\3\0001\6\r\0;\6\1\5:\5\14\4:\4\16\3>\2\2\1G\0\1\0@\2\2\0\rfiletype\1\0\0\vpython\0\bcpp\0\ash\0\blua\1\0\0\0\nsetup\29Formatter not present!!!\nprint\14formatter\frequire\npcall\0", "config", "formatter.nvim")
 time([[Config for formatter.nvim]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-try_loadstring("\27LJ\1\2è\1\0\0\4\0\n\0\0194\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0017\2\6\0023\3\a\0>\2\2\0014\2\1\0%\3\b\0>\2\2\0027\2\t\2>\2\1\1G\0\1\0\tload luasnip/loaders/from_vscode\1\0\2\fhistory\2\17updateevents\29TextChanged,TextChangedI\15set_config\vconfig\24Luasnip not present\nprint\fluasnip\frequire\npcall\0", "config", "LuaSnip")
-time([[Config for LuaSnip]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+require("plugins.ui.treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-cmp
 time([[Config for nvim-cmp]], true)
 require("plugins.completion.cmp")
@@ -359,14 +380,18 @@ time([[Config for neoscroll.nvim]], false)
 time([[Config for nvim-lspconfig]], true)
 require("plugins.completion.lspconfig")
 time([[Config for nvim-lspconfig]], false)
--- Config for: toggleterm.nvim
-time([[Config for toggleterm.nvim]], true)
-require("plugins.tools.term")
-time([[Config for toggleterm.nvim]], false)
 -- Config for: hop.nvim
 time([[Config for hop.nvim]], true)
 try_loadstring("\27LJ\1\2U\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\3\0>\0\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\bhop\frequire\0", "config", "hop.nvim")
 time([[Config for hop.nvim]], false)
+-- Config for: toggleterm.nvim
+time([[Config for toggleterm.nvim]], true)
+require("plugins.tools.term")
+time([[Config for toggleterm.nvim]], false)
+-- Config for: which-key.nvim
+time([[Config for which-key.nvim]], true)
+require("plugins.tools.whichkey")
+time([[Config for which-key.nvim]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\1\2Ð\1\0\0\5\0\b\0\0144\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0>\2\3\1G\0\1\0\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0", "config", "nvim-colorizer.lua")
@@ -387,16 +412,21 @@ time([[Config for lualine.nvim]], false)
 time([[Config for Comment.nvim]], true)
 require("Comment").setup()
 time([[Config for Comment.nvim]], false)
--- Config for: which-key.nvim
-time([[Config for which-key.nvim]], true)
-require("plugins.tools.whichkey")
-time([[Config for which-key.nvim]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\1\2è\1\0\0\4\0\n\0\0194\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0017\2\6\0023\3\a\0>\2\2\0014\2\1\0%\3\b\0>\2\2\0027\2\t\2>\2\1\1G\0\1\0\tload luasnip/loaders/from_vscode\1\0\2\fhistory\2\17updateevents\29TextChanged,TextChangedI\15set_config\vconfig\24Luasnip not present\nprint\fluasnip\frequire\npcall\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
 -- Config for: project.nvim
 time([[Config for project.nvim]], true)
 try_loadstring("\27LJ\1\2>\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\17project_nvim\frequire\0", "config", "project.nvim")
 time([[Config for project.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-treesitter-context ]]
+
+-- Config for: nvim-treesitter-context
+try_loadstring("\27LJ\1\2Š\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup&Treesitter-context not present!!!\nprint\23treesitter-context\frequire\npcall\0", "config", "nvim-treesitter-context")
+
 vim.cmd [[ packadd nvim-web-devicons ]]
 vim.cmd [[ packadd bufferline.nvim ]]
 
@@ -419,8 +449,8 @@ time([[Sequenced loading]], false)
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CodeActionMenu lua require("packer.load")({'nvim-code-action-menu'}, { cmd = "CodeActionMenu", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
