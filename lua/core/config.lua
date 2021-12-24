@@ -51,6 +51,7 @@ M.mappings = {
   quit_file = "<leader>q", -- quite file using :q!
   -- save_quit_file = "<leader>wq", -- quite file using :wq!
   toggle_theme = "<leader>fs",
+  select_cmd = "<leader>,",
   nv = {
     insert_nav = {
       backward = "<C-h>",

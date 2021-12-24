@@ -2,11 +2,13 @@
 ---
 --- Wrapper to make the popup api from vim in neovim.
 
-local vim = vim
+vim.api.nvim_command("hi MenuInfo guifg=#80ff95")
+vim.api.nvim_command("hi MenuWarning guifg=#fff454")
+vim.api.nvim_command("hi MenuError guifg=#c44323")
 
-local Border = require("ui.border")
-local Window = require("ui.window")
-local utils = require("ui._utils")
+local Border = require("myplugin.ui.border")
+local Window = require("myplugin.ui.window")
+local utils = require("myplugin.ui._utils")
 
 local popup = {}
 
@@ -29,67 +31,64 @@ local function dict_default(options, key, default)
 end
 
 function popup.create(what, vim_options)
-  local bufnr
-  if type(what) == "number" then
-    bufnr = what
+  local bufnr = vim.api.nvim_create_buf(false, true)
+  assert(bufnr, "Failed to create buffer")
+
+  -- TODO: Handle list of lines
+  if type(what) == "string" then
+    what = {what}
   else
-    bufnr = vim.api.nvim_create_buf(false, true)
-    assert(bufnr, "Failed to create buffer")
-
-    -- TODO: Handle list of lines
-    if type(what) == "string" then
-      what = {what}
-    else
-      assert(type(what) == "table", '"what" must be a table')
-    end
-
-    -- padding    List with numbers, defining the padding
-    --     above/right/below/left of the popup (similar to CSS).
-    --     An empty list uses a padding of 1 all around.  The
-    --     padding goes around the text, inside any border.
-    --     Padding uses the 'wincolor' highlight.
-    --     Example: [1, 2, 1, 3] has 1 line of padding above, 2
-    --     columns on the right, 1 line below and 3 columns on
-    --     the left.
-    if vim_options.padding then
-      local pad_top, pad_right, pad_below, pad_left
-      if vim.tbl_isempty(vim_options.padding) then
-        pad_top = 1
-        pad_right = 1
-        pad_below = 1
-        pad_left = 1
-      else
-        local padding = vim_options.padding
-        pad_top = padding[1] or 0
-        pad_right = padding[2] or 0
-        pad_below = padding[3] or 0
-        pad_left = padding[4] or 0
-      end
-
-      local left_padding = string.rep(" ", pad_left)
-      local right_padding = string.rep(" ", pad_right)
-      for index = 1, #what do
-        what[index] = string.format("%s%s%s", left_padding, what[index], right_padding)
-      end
-
-      for _ = 1, pad_top do
-        table.insert(what, 1, "")
-      end
-
-      for _ = 1, pad_below do
-        table.insert(what, "")
-      end
-    end
-
-    vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, what)
+    assert(type(what) == "table", '"what" must be a table')
   end
+
+  -- 设置填充
+  -- padding
+  --  List with numbers, defining the padding
+  --  above/right/below/left of the popup (similar to CSS).
+  --  An empty list uses a padding of 1 all around.  The
+  --  padding goes around the text, inside any border.
+  --  Padding uses the 'wincolor' highlight.
+  --  Example: [1, 2, 1, 3] has 1 line of padding above, 2
+  --  columns on the right, 1 line below and 3 columns on
+  --  the left.
+  if vim_options.padding then
+    local pad_top, pad_right, pad_below, pad_left
+    if vim.tbl_isempty(vim_options.padding) then
+      pad_top = 1
+      pad_right = 1
+      pad_below = 1
+      pad_left = 1
+    else
+      local padding = vim_options.padding
+      pad_top = padding[1] or 0
+      pad_right = padding[2] or 0
+      pad_below = padding[3] or 0
+      pad_left = padding[4] or 0
+    end
+
+    local left_padding = string.rep(" ", pad_left)
+    local right_padding = string.rep(" ", pad_right)
+    for index = 1, #what do
+      what[index] = string.format("%s%s%s", left_padding, what[index], right_padding)
+    end
+
+    for _ = 1, pad_top do
+      table.insert(what, 1, "")
+    end
+
+    for _ = 1, pad_below do
+      table.insert(what, "")
+    end
+  end
+
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, what)
 
   local option_defaults = {
     posinvert = true
   }
 
   local win_opts = {}
-  win_opts.relative = "editor"
+  win_opts.relative = "cursor"
 
   local cursor_relative_pos = function(pos_str, dim)
     assert(string.find(pos_str, "^cursor"), "Invalid value for " .. dim)
@@ -140,7 +139,7 @@ function popup.create(what, vim_options)
   -- ,   then the popup is placed on the other side of the
   -- ,   position indicated by "line".
   if dict_default(vim_options, "posinvert", option_defaults) then
-  -- TODO: handle the invert thing
+    -- TODO: handle the invert thing
   end
 
   -- , fixed    When FALSE (the default), and:
@@ -196,7 +195,7 @@ function popup.create(what, vim_options)
     if vim_options.moved == "any" then
       vim.lsp.util.close_preview_autocmd({"CursorMoved", "CursorMovedI"}, win_id)
     elseif vim_options.moved == "word" then
-    -- TODO: Handle word, WORD, expr, and the range functions... which seem hard?
+      -- TODO: Handle word, WORD, expr, and the range functions... which seem hard?
     end
   else
     local silent = false
@@ -362,6 +361,17 @@ function popup.create(what, vim_options)
     border = border
   }
 end
+local cmd = {
+  "1.code",
+  "2.formatting",
+  "2.formatting",
+  "2.formatting",
+  "2.formatting",
+  "2.formatting",
+  "2.formatting",
+  "3.save"
+}
+popup.create(cmd,{col =10,row=10})
 
 function popup.show(self, asdf)
 end

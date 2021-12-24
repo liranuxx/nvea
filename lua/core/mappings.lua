@@ -92,7 +92,8 @@ local function required_mappings()
   map("n", maps.save_file, ":w <CR>") -- save file
   map("n", maps.quit_file, ":q! <CR>") -- quit file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- save and quit file
-  map("n", maps.toggle_theme, ":lua require('core.toggle_theme')<cr>")
+  map("n", maps.toggle_theme, ":lua require('myplugin.toggle_theme')<cr>")
+  map("n", maps.select_cmd, ":lua require('myplugin.select_cmd')<cr>")
 end
 
 local function bufferline()
