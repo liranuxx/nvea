@@ -9,7 +9,7 @@ local conditions = {
     return vim.fn.empty(vim.fn.expand "%:t") ~= 1
   end,
   hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
+    return vim.fn.winwidth(0) > 100
   end,
   check_git_workspace = function()
     local filepath = vim.fn.expand "%:p:h"
@@ -17,17 +17,6 @@ local conditions = {
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end
 }
-local function trunc(trunc_width, trunc_len, hide_width, no_ellipsis)
-  return function(str)
-    local win_width = vim.fn.winwidth(0)
-    if hide_width and win_width < hide_width then
-      return ""
-    elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-      return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
-    end
-    return str
-  end
-end
 
 local mode_color = {
   n = c.red,
@@ -39,7 +28,6 @@ local mode_color = {
   no = c.red,
   s = c.orange,
   S = c.orange,
-  [""] = c.orange,
   ic = c.yellow,
   R = c.violet,
   Rv = c.violet,
@@ -56,37 +44,28 @@ local lualine_a = {
   {
     function()
       vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. c.background)
-      return " "
+      return ""
     end,
-    fmt = trunc(80, 4, nil, true),
     color = "LualineMode",
-    padding = {left = 1, right = 0}
+    padding = {left=1,right=0}
   },
   {
     "mode",
     color = "LualineMode",
-    padding = {left = 0, right = 0}
-  }
+  },
+  {
+    "os.date('%a %H:%M')",
+    color = {fg=c.blue},
+    padding = {left=0,right=1}
+  },
 }
 local lualine_b = {
   {
-    'filetype',
-    colored = true, -- displays filetype icon in color if set to `true
-    icon_only = true, -- Display only icon for filetype
+    "b:gitsigns_head",
+    icon = "",
+    color = {fg = c.green, gui = "bold"},
+    cond = conditions.hide_in_width,
   },
-  {
-    "filename",
-    fmt = trunc(90, 30, 50),
-    color = {fg = c.white, gui = "bold"},
-    padding = {left = 0, right = 0}
-  },
-  {
-    "filesize",
-    color = {fg = c.cyan},
-    cond = conditions.buffer_not_empty
-  }
-}
-local lualine_c = {
   {
     "diff",
     symbols = {added = "+", modified = "~", removed = "-"},
@@ -95,22 +74,8 @@ local lualine_c = {
       modified = {fg = c.orange},
       removed = {fg = c.red}
     },
-    cond = conditions.hide_in_width
-  },
-  {
-    "diagnostics",
-    sources = {"nvim_diagnostic"},
-    symbols = {error = " ", warn = " ", info = " "},
-    diagnostics_color = {
-      error = {fg = c.red},
-      warn = {fg = c.yellow},
-      info = {fg = c.blue},
-      hit = {fg = c.green}
-    }
-  },
-  {
-    "os.date('%a')",
-    color = {fg=c.dark_red}
+    cond = conditions.hide_in_width,
+    padding = {left=0,right=1}
   },
   {
     function()
@@ -125,28 +90,14 @@ local lualine_c = {
       return last_search .. "(" .. searchcount.current .. "/" .. searchcount.total .. ")"
     end,
     color = {fg = c.black, bg = c.dark_yellow},
-    -- fmt = conditions.hide_in_width
+    cond = conditions.hide_in_width
   },
 }
-
-local lualine_x = {
-  -- {
-  --   function()
-  --     return vim.api.nvim_win_get_number(0)
-  --   end
-  -- },
+local lualine_c = {
+  { "%=" },
   {
-    "lsp_progress",
-    display_components = {"lsp_client_name", "spinner", {"percentage"}},
-    colors = {
-      percentage = c.cyan,
-      title = c.cyan,
-      message = c.cyan,
-      spinner = c.cyan,
-      lsp_client_name = c.magenta,
-      use = true
-    },
-    spinner_symbols = {"🌑 ", "🌒 ", "🌓 ", "🌔 ", "🌕 ", "🌖 ", "🌗 ", "🌘 "}
+    "filename",
+    color = {fg = c.black, bg = c.blue, gui = "bold"},
   },
   {
     function()
@@ -159,49 +110,39 @@ local lualine_x = {
       for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
         if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-          return client.name
+          return msg
         end
       end
       return msg
     end,
     icon = " ",
-    color = {fg = c.comment_grey, gui = "bold"}
+    color = {fg = c.comment_grey, gui = "bold"},
+    cond = conditions.hide_in_width
   }
 }
-local lualine_y = {
+
+local lualine_x = {
   {
-    "b:gitsigns_head",
-    icon = "",
-    color = {fg = c.green, gui = "bold"},
-    padding = {right = 0}
+    "location",
+    color = {fg = c.extra.pink},
+    padding = {left=1,right=0},
   },
+  {
+    "filesize",
+    color = {fg = c.yellow},
+    cond = conditions.buffer_not_empty and conditions.hide_in_width,
+  },
+}
+local lualine_y = {
   {
     "o:encoding",
     fmt = string.upper,
     cond = conditions.hide_in_width,
     color = {fg = c.cyan, gui = "bold"},
-    padding = {left = 1, right = 0}
+    padding = {left=1,right=0}
   },
-  {
-    "fileformat",
-    fmt = string.upper,
-    icons_enabled = false,
-    color = {fg = c.yellow, gui = "bold"},
-    padding = {left = 1, right = 0}
-  }
 }
 local lualine_z = {
-  {
-    "location",
-    color = {fg = c.blue}
-  },
-  {
-    function()
-      return ""
-    end,
-    color = "LualineMode",
-    padding = {right = 0}
-  },
   {
     function()
       local current_line = vim.fn.line "."
@@ -216,15 +157,15 @@ local lualine_z = {
       return result .. "%% "
     end,
     color = "LualineMode",
-    padding = {left = 1, right = 0}
+    padding = {left=1,right=0}
   },
   {
     function()
       return "▊"
     end,
-    color = {fg = c.blue},
-    padding = {left = 0}
-  }
+    color = "LualineMode",
+    padding = {right=0}
+  },
 }
 
 lualine.setup {
@@ -233,9 +174,12 @@ lualine.setup {
     section_separators = {},
     disabled_filetypes = {},
     theme = {
-      normal = {c = {fg = c.foreground, bg = c.background}},
-      inactive = {c = {fg = c.foreground, bg = c.background}}
-    }
+      normal = {
+        a = {fg = c.foreground, bg = c.background},
+        b = {fg = c.foreground, bg = c.background},
+        c = {fg = c.foreground, bg = c.background},
+      },
+    },
   },
   sections = {
     lualine_a = lualine_a,

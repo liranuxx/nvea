@@ -65,7 +65,7 @@ local function optional_mappings()
     -- map("c",cnav.forward,"<Right>")
     -- map("c",cnav.beginning_of_line,"<Home>")
     map("c", cnav.endding_of_line, "<End>")
-    map("c", cnav.sudow, "w !sudo tee>/dev/null %")
+    -- map("c", cnav.sudow, "w !sudo tee>/dev/null %")
   end
   -- easier navigation between windows
   -- 快速在窗口中移动或者改变大小

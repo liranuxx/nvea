@@ -32,4 +32,8 @@ packer.startup(function()
   plug_editor.editor(use)
   plug_cmp.cmpletion(use)
   plug_lsp.lspconfig(use)
+  use {
+    "gelguy/wilder.nvim",
+    run = "UpdateRemotePlugins",
+  }
 end)
