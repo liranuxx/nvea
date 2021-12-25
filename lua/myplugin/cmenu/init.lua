@@ -1,5 +1,5 @@
 local choices = {"vs", "Format"}
-require "myplugin.test.test".open(
+require "myplugin.cmenu.cmenu".open(
   choices,
   {
     callback = function(chosen)

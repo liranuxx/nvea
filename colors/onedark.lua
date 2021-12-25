@@ -121,7 +121,7 @@ local or_ts = function ()
     if ts then
       return b("NONE")
     else
-      return fb(gc.foreground, gc.background)
+      return fb(gc.foreground,gc.background)
     end
 end
 hl.common = {
@@ -137,14 +137,14 @@ hl.common = {
   Conceal = {},
   CursorColumn = b(gc.cursor_grey),
   -- 当前行颜色
-  CursorLine = b(gc.cursor_wrey),
+  CursorLine = b(gc.visual_grey),
   -- 当前行号颜色
   CursorLineNr = f(gc.red),
-  -- 行号颜色
-  Directory = f(gc.blue);
+  -- 行颜色
   LineNr = f(gc.gutter_fg_grey),
+  Directory = f(gc.blue);
   SignColumn = or_ts(),
-  Pmenu = fb(gc.white, gc.background),
+  Pmenu = b(gc.background),
   PmenuSel = fb(gc.cursor_grey, gc.blue),
   PmenuSbar = b(gc.background),
   PmenuThumb = b(gc.background),
@@ -157,7 +157,7 @@ hl.common = {
   FoldColumn = {},
   -- '~' and '@' at the end of the window
   NonText = f(gc.special_grey),
-  -- StatusLine = fb(gc.white, gc.cursor_grey),
+  -- statusline 背景色
   StatusLine = or_ts(),
   StatusLineNC = f(gc.comment_grey),
   StatusLineTerm = or_ts(),
@@ -180,8 +180,8 @@ hl.common = {
   TabLineFill = {},
   TabLineSel = f(gc.white),
   Title = f(gc.green),
-  Visual = mt(b("NONE"),s("inverse")),
-  VisualNOS = mt(b("NONE"),s("inverse")),
+  Visual = mt(b("none"),s("inverse")),
+  VisualNOS = mt(b("none"),s("inverse")),
   WildMenu = fb(gc.black, gc.blue),
 }
 
@@ -397,7 +397,8 @@ hl.plugins.telescope = {
   TelescopeResultsBorder = f(gc.blue),
   TelescopePreviewTitle = fb(gc.green, gc.background),
   TelescopePreviewBorder = f(gc.green),
-  TelescopeMatching = mt(f(gc.yellow), s("bold")),
+  TelescopeMatching = mt(fb(gc.black,gc.dark_yellow), s("bold")),
+  TelescopeSelection = f(gc.blue),
 }
 
 hl.plugins.nvimtree = {

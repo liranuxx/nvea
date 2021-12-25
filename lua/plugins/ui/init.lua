@@ -27,6 +27,5 @@ M.ui = function(use)
     run = "UpdateRemotePlugins",
     config = require("plugins.ui.config").wilder,
   }
-  use { 'rktjmp/lush.nvim' }
 end
 return M
