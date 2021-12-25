@@ -1,16 +1,11 @@
--- local clangd_root_path = vim.fn.stdpath("data") .. "/lsp_servers/clangd"
--- local clangd_binary = clangd_root_path .. "/clangd_13.0.0/bin/clangd"
--- lspconfig.clangd.setup {
---   on_attach = attach,
---   capabilities = capabilities,
---   cmd = {
---     clangd_binary,
---     "--background-index",
---     "--suggest-missing-includes",
---     "--clang-tidy",
---     "--header-insertion=iwyu"
---   },
---   root_dir = function()
---     return vim.fn.getcwd()
---   end
--- }
+-- 将clangd添加到环境变量中
+-- /home/liran/.local/share/nvim/lsp_servers/clangd/clangd_13.0.0/bin
+return function(lsp,on_attach,capabilities)
+  lsp.clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = function ()
+      return vim.fn.getcwd()
+    end
+  }
+end

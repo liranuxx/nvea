@@ -143,7 +143,7 @@ hl.common = {
   -- 行号颜色
   Directory = f(gc.blue);
   LineNr = f(gc.gutter_fg_grey),
-  SignColumn = b(gc.black),
+  SignColumn = or_ts(),
   Pmenu = fb(gc.white, gc.background),
   PmenuSel = fb(gc.cursor_grey, gc.blue),
   PmenuSbar = b(gc.background),
@@ -157,9 +157,10 @@ hl.common = {
   FoldColumn = {},
   -- '~' and '@' at the end of the window
   NonText = f(gc.special_grey),
-  StatusLine = fb(gc.white, gc.cursor_grey),
+  -- StatusLine = fb(gc.white, gc.cursor_grey),
+  StatusLine = or_ts(),
   StatusLineNC = f(gc.comment_grey),
-  StatusLineTerm = fb(gc.white, gc.cursor_grey),
+  StatusLineTerm = or_ts(),
   StatusLineTermNC = f(gc.comment_grey),
   DiffAdd = fb(gc.green, gc.black),
   DiffChange = fb(gc.yellow, gc.black),

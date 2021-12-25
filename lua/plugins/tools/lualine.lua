@@ -26,8 +26,8 @@ local mode_color = {
   V = c.blue,
   c = c.magenta,
   no = c.red,
-  s = c.orange,
-  S = c.orange,
+  s = c.dark_yellow,
+  S = c.dark_yellow,
   ic = c.yellow,
   R = c.violet,
   Rv = c.violet,
@@ -43,39 +43,39 @@ local mode_color = {
 local lualine_a = {
   {
     function()
-      vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. c.background)
+      vim.api.nvim_command("hi! LualineMode guifg=" .. mode_color[vim.fn.mode()] .. " guibg=" .. "Normal")
       return ""
     end,
     color = "LualineMode",
-    padding = {left=1,right=0}
+    padding = {left = 1, right = 0}
   },
   {
     "mode",
-    color = "LualineMode",
+    color = "LualineMode"
   },
   {
     "os.date('%a %H:%M')",
-    color = {fg=c.blue},
-    padding = {left=0,right=1}
-  },
+    color = {fg = c.blue},
+    padding = {left = 0, right = 1}
+  }
 }
 local lualine_b = {
   {
     "b:gitsigns_head",
     icon = "",
     color = {fg = c.green, gui = "bold"},
-    cond = conditions.hide_in_width,
+    cond = conditions.hide_in_width
   },
   {
     "diff",
     symbols = {added = "+", modified = "~", removed = "-"},
     diff_color = {
       added = {fg = c.green},
-      modified = {fg = c.orange},
+      modified = {fg = c.yellow},
       removed = {fg = c.red}
     },
     cond = conditions.hide_in_width,
-    padding = {left=0,right=1}
+    padding = {left = 0, right = 1}
   },
   {
     function()
@@ -91,56 +91,53 @@ local lualine_b = {
     end,
     color = {fg = c.black, bg = c.dark_yellow},
     cond = conditions.hide_in_width
-  },
+  }
 }
 local lualine_c = {
-  { "%=" },
+  {"%="},
   {
     "filename",
-    color = {fg = c.black, bg = c.blue, gui = "bold"},
+    color = {fg = c.black, bg = c.blue, gui = "bold"}
   },
   {
-    function()
-      local msg = "Hello"
+    function ()
       local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
       local clients = vim.lsp.get_active_clients()
       if next(clients) == nil then
-        return msg
+        return
       end
       for _, client in ipairs(clients) do
         local filetypes = client.config.filetypes
         if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-          return msg
+          return client.name
         end
       end
-      return msg
     end,
-    icon = " ",
+    icon = "",
     color = {fg = c.comment_grey, gui = "bold"},
     cond = conditions.hide_in_width
-  }
+  },
 }
 
-local lualine_x = {
+local lualine_x = {}
+local lualine_y = {
+  {'diagnostics',},
   {
-    "location",
+    "%l:%c",
     color = {fg = c.extra.pink},
-    padding = {left=1,right=0},
   },
   {
     "filesize",
     color = {fg = c.yellow},
-    cond = conditions.buffer_not_empty and conditions.hide_in_width,
+    cond = conditions.buffer_not_empty
   },
-}
-local lualine_y = {
   {
     "o:encoding",
     fmt = string.upper,
     cond = conditions.hide_in_width,
     color = {fg = c.cyan, gui = "bold"},
-    padding = {left=1,right=0}
-  },
+    padding = {left = 1, right = 1}
+  }
 }
 local lualine_z = {
   {
@@ -157,29 +154,30 @@ local lualine_z = {
       return result .. "%% "
     end,
     color = "LualineMode",
-    padding = {left=1,right=0}
+    cond = conditions.hide_in_width,
+    padding = {left = 1, right = 0}
   },
   {
     function()
       return "▊"
     end,
     color = "LualineMode",
-    padding = {right=0}
-  },
+    padding = {right = 0}
+  }
 }
 
 lualine.setup {
   options = {
     component_separators = {},
     section_separators = {},
-    disabled_filetypes = {},
+    disabled_filetypes = {"NvimTree"},
     theme = {
       normal = {
-        a = {fg = c.foreground, bg = c.background},
-        b = {fg = c.foreground, bg = c.background},
-        c = {fg = c.foreground, bg = c.background},
-      },
-    },
+    --     a = {fg = c.foreground, bg = "Normal"},
+    --     b = {fg = c.foreground, bg = "Normal"},
+    --     c = {fg = c.foreground, bg = "Normal"}
+      }
+    }
   },
   sections = {
     lualine_a = lualine_a,
@@ -191,10 +189,21 @@ lualine.setup {
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_v = {},
+    lualine_b = {},
+    lualine_c = {
+      {"%="},
+      {
+        "filename",
+        color = {fg = c.blue, bg = "Normal", gui = "bold"}
+      },
+      {
+        "filesize",
+        color = {fg = c.yellow},
+        cond = conditions.buffer_not_empty
+      },
+    },
     lualine_y = {},
     lualine_z = {},
-    lualine_c = {},
     lualine_x = {}
-  },
+  }
 }
