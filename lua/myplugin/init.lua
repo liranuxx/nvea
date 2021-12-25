@@ -1,14 +1,11 @@
 local modules = {
   "myplugin.prodoc",
+  "myplugin.test"
 }
 
 for _, module in ipairs(modules) do
   local ok, err = pcall(require, module)
   if not ok then
-    print("Error loading "..module.."\n\n"..err)
+    print("Error loading " .. module .. "\n\n" .. err)
   end
 end
-
--- local word = vim.fn.expand("<cword>")
--- print(vim.fn.getline("."))
--- print(word)

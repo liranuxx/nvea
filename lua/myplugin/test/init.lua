@@ -1,0 +1,30 @@
+
+-- local word = vim.fn.expand("<cword>")
+-- print(vim.fn.getline("."))
+-- print(word)
+
+-- local Job = require'plenary.job'
+--
+-- Job:new({
+--   command = 'rg',
+--   args = { '--files' },
+--   cwd = '/usr/bin',
+--   env = { ['a'] = 'b' },
+--   on_exit = function(j, return_val)
+--     print(return_val)
+--     print(j:result())
+--   end,
+-- }):sync()
+-- local popup = require("popup")
+--
+-- vim.cmd [[highlight PopupColor1 ctermbg=lightblue guibg=lightblue]]
+-- vim.cmd [[highlight PopupColor2 ctermbg=lightcyan guibg=lightcyan]]
+--
+-- popup.create({ "vs", "option 2" }, {
+--   line = "cursor+2",
+--   col = "cursor+2",
+--   border = { 1, 1, 1, 1},
+--   enter = true,
+--   cursorline = true,
+--   callback = function(win_id, sel) vim.cmd(sel) end,
+-- })

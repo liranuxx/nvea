@@ -72,7 +72,7 @@ M.tools = function(use)
   }
   use {
     "akinsho/toggleterm.nvim",
-    config = [[require("plugins.tools.term")]]
+    config = [[require("plugins.tools.toggleterm")]]
   }
 end
 

@@ -22,6 +22,11 @@ M.ui = function(use)
       },
     }
   }
+  use {
+    "gelguy/wilder.nvim",
+    run = "UpdateRemotePlugins",
+    config = require("plugins.ui.config").wilder,
+  }
   use { 'rktjmp/lush.nvim' }
 end
 return M
