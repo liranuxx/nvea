@@ -10,19 +10,19 @@ local cc = {
   cyan = gc.cyan,
   comment_grey = gc.comment_grey,
   visual_grey = gc.visual_grey,
-  white = gc.white,
+  white = gc.white
 }
 
-vim.g.terrminal_color_0 =  cc.black
-vim.g.terminal_color_1 =  cc.red
-vim.g.terminal_color_2 =  cc.green
-vim.g.terminal_color_3 =  cc.yellow
-vim.g.terminal_color_4 =  cc.blue
-vim.g.terminal_color_5 =  cc.purple
-vim.g.terminal_color_6 =  cc.cyan
-vim.g.terminal_color_7 =  cc.white
-vim.g.terminal_color_8 =  cc.visual_grey
-vim.g.terminal_color_9 =  cc.dark_red
+vim.g.terrminal_color_0 = cc.black
+vim.g.terminal_color_1 = cc.red
+vim.g.terminal_color_2 = cc.green
+vim.g.terminal_color_3 = cc.yellow
+vim.g.terminal_color_4 = cc.blue
+vim.g.terminal_color_5 = cc.purple
+vim.g.terminal_color_6 = cc.cyan
+vim.g.terminal_color_7 = cc.white
+vim.g.terminal_color_8 = cc.visual_grey
+vim.g.terminal_color_9 = cc.dark_red
 vim.g.terminal_color_10 = cc.green
 vim.g.terminal_color_11 = cc.dark_yellow
 vim.g.terminal_color_12 = cc.blue
@@ -63,7 +63,7 @@ local function mt(...)
   end
   return all
 end
-local function fb(fg,bg)
+local function fb(fg, bg)
   return {fg = fg, bg = bg}
 end
 local function f(fg)
@@ -87,8 +87,8 @@ end
 -- local function cb(bg)
 --   return {cbg = bg}
 -- end
-local function cs(style)
-  return {cstyle = style}
+local function cs(cstyle)
+  return {style = cstyle}
 end
 
 -- styles
@@ -98,13 +98,13 @@ local function highlights(highlight)
     local fg = settings.fg and "guifg=" .. settings.fg or "guifg=NONE"
     local bg = settings.bg and "guibg=" .. settings.bg or "guibg=NONE"
     local sp = settings.sp and "guisp=" .. settings.sp or "guisp=NONE"
-    local style = settings.style and "gui="..settings.style or "gui=NONE"
+    local style = settings.style and "gui=" .. settings.style or "gui=NONE"
     local cfg = settings.cfg and "ctermfg=" .. settings.cfg or "ctermfg=NONE"
     local cbg = settings.cbg and "ctermbg=" .. settings.cbg or "ctermbg=NONE"
-    local cstyle = settings.cstyle and "cterm="..settings.cstyle or "cterm=NONE"
-    local gui = space..style..space..fg ..space..bg..space..sp
-    local cterm = space..cstyle..space..cfg ..space..cbg
-    vim.cmd("highlight "..name..gui..cterm)
+    local cstyle = settings.cstyle and "cterm=" .. settings.cstyle or "cterm=NONE"
+    local gui = space .. style .. space .. fg .. space .. bg .. space .. sp
+    local cterm = space .. cstyle .. space .. cfg .. space .. cbg
+    vim.cmd("highlight " .. name .. gui .. cterm)
   end
 end
 local hl = {
@@ -114,12 +114,15 @@ local hl = {
   plugins = {},
   git = {},
   treesitter = {},
+  transparency = {}
 }
 
 hl.common = {
   -- 背景颜色
   Normal = fb(gc.foreground, gc.background),
   Terminal = fb(gc.foreground, gc.background),
+  NormalFloat = b(gc.black),
+  FloatBorder = f(gc.blue),
   EndOfBuffer = f(gc.black),
   Cursor = fb(gc.black, gc.blue),
   CursorIM = {},
@@ -127,17 +130,18 @@ hl.common = {
   Conceal = {},
   CursorColumn = b(gc.cursor_grey),
   -- 当前行颜色
-  CursorLine = b(gc.cursor_wrey),
+  CursorLine = b(gc.visual_grey),
   -- 当前行号颜色
   CursorLineNr = f(gc.red),
-  -- 行号颜色
-  Directory = f(gc.blue);
+  -- 行颜色
   LineNr = f(gc.gutter_fg_grey),
-  SignColumn = b(gc.black),
-  Pmenu = fb(gc.white, gc.background),
+  NvimTnternalError = f(gc.red),
+  Directory = f(gc.blue),
+  SignColumn = fb(gc.foreground, gc.background),
+  Pmenu = b(gc.background),
   PmenuSel = fb(gc.cursor_grey, gc.blue),
   PmenuSbar = b(gc.background),
-  PmenuThumb = b(gc.white),
+  PmenuThumb = b(gc.blue),
   Search = fb(gc.black, gc.yellow),
   IncSearch = fb(gc.yellow, gc.comment_grey),
   Question = f(gc.purple),
@@ -147,9 +151,10 @@ hl.common = {
   FoldColumn = {},
   -- '~' and '@' at the end of the window
   NonText = f(gc.special_grey),
-  StatusLine = fb(gc.white, gc.cursor_grey),
-  StatusLineNC = f(gc.comment_grey),
-  StatusLineTerm = fb(gc.white, gc.cursor_grey),
+  -- statusline 背景色
+  StatusLine = fb(gc.foreground, gc.background),
+  StatusLineNC = mt(f(gc.comment_grey), s("underline")),
+  StatusLineTerm = fb(gc.foreground, gc.background),
   StatusLineTermNC = f(gc.comment_grey),
   DiffAdd = fb(gc.green, gc.black),
   DiffChange = fb(gc.yellow, gc.black),
@@ -158,7 +163,7 @@ hl.common = {
   ErrorMsg = f(gc.red),
   WarningMsg = f(gc.yellow),
   -- 括号匹配颜色
-  MatchParen = mt(f(gc.blue),s("underline"),cs("underline")),
+  MatchParen = mt(f(gc.blue), s("underline"), cs("underline")),
   ModeMsg = {},
   SpecialKey = f(gc.special_grey),
   SpellBad = mt(f(gc.red), s("underline"), cs("underline")),
@@ -169,13 +174,21 @@ hl.common = {
   TabLineFill = {},
   TabLineSel = f(gc.white),
   Title = f(gc.green),
-  Visual = b(gc.visual_grey),
-  VisualNOS = b(gc.visual_grey),
-  WildMenu = fb(gc.black, gc.blue),
+  Visual = mt(b("none"), s("inverse")),
+  VisualNOS = mt(b("none"), s("inverse")),
+  WildMenu = fb(gc.black, gc.blue)
 }
 
+local or_ita = function()
+  local ita = require("core.config").ui.italic_comment
+  if ita then
+    return mt(f(gc.comment_grey), s("italic"), cs("italic"))
+  else
+    return f(gc.comment_grey)
+  end
+end
 hl.syntax = {
-  Comment = mt(f(gc.comment_grey),s("italic"),cs("italic")),
+  Comment = or_ita(),
   Constant = f(gc.cyan),
   String = f(gc.green),
   Character = f(gc.green),
@@ -211,7 +224,7 @@ hl.syntax = {
   Error = f(gc.red),
   Todo = f(gc.purple),
   debugPC = b(gc.special_grey),
-  debugBreakpoint = fb(gc.black, gc.red),
+  debugBreakpoint = fb(gc.black, gc.red)
 }
 
 hl.treesitter = {
@@ -219,6 +232,9 @@ hl.treesitter = {
   -- TSKeywordFunction = f(gc.red);
   -- TSProperty = f(gc.);
   -- TSVariable = f(gc.cyan);
+  TSTextReference = f(gc.cyan),
+  -- 运算符颜色
+  TSOperator = f(gc.extra.teal)
 }
 
 hl.langs.c = {
@@ -228,14 +244,14 @@ hl.langs.c = {
   cDefine = f(gc.cyan),
   cTSInclude = f(gc.blue),
   cTSConstant = f(gc.cyan),
-  cTSConstMacro = f(gc.purple),
+  cTSConstMacro = f(gc.purple)
 }
 
 hl.langs.cpp = {
-  cppStatement = mt(f(gc.purple),s("bold")),
+  cppStatement = mt(f(gc.purple), s("bold")),
   cppTSInclude = f(gc.blue),
   cppTSConstant = f(gc.cyan),
-  cppTSConstMacro = f(gc.purple),
+  cppTSConstMacro = f(gc.purple)
 }
 
 hl.langs.vim = {
@@ -263,7 +279,7 @@ hl.langs.vim = {
   vimVar = f(gc.foreground),
   vimFuncVar = f(gc.foreground),
   vimContinue = f(gc.comment_grey),
-  vimAutoCmdSfxList = f(gc.cyan),
+  vimAutoCmdSfxList = f(gc.cyan)
 }
 
 hl.langs.json = {
@@ -277,7 +293,7 @@ hl.langs.json = {
   jsonNumError = mt(f(gc.red), s("reverse")),
   jsonString = f(gc.green),
   jsonStringSQError = mt(f(gc.red), s("reverse")),
-  jsonSemicolonError = mt(f(gc.red), s("reverse")),
+  jsonSemicolonError = mt(f(gc.red), s("reverse"))
 }
 
 hl.langs.markdown = {
@@ -303,7 +319,7 @@ hl.langs.markdown = {
   markdownListMarker = f(gc.red),
   markdownOrderedListMarker = f(gc.red),
   markdownRule = f(gc.comment_grey),
-  markdownUrl = mt(f(gc.cyan), s("underline")),
+  markdownUrl = mt(f(gc.cyan), s("underline"))
 }
 
 hl.git = {
@@ -327,19 +343,48 @@ hl.git = {
   gitcommitSelected = f(gc.comment_grey),
   gitcommitDiscardedArrow = f(gc.red),
   gitcommitSelectedArrow = f(gc.green),
-  gitcommitUnmergedArrow = f(gc.cyan),
+  gitcommitUnmergedArrow = f(gc.cyan)
+}
+
+hl.plugins.lsp = {
+  DiagnosticHint = f(gc.purple),
+  DiagnosticError = f(gc.red),
+  DiagnosticWarn = f(gc.yellow),
+  DiagnosticInformation = f(gc.green),
+  DiagnosticVirtualTextError = b(gc.black),
+  DiagnosticLineNrError = mt(fb("#FF0000", "#51202A"), s("bold")),
+  DiagnosticLineNrWarn = mt(fb("#FFA500", "#51412A"), s("bold")),
+  DiagnosticLineNrInfo = mt(fb("#00FFFF", "#1E535D"), s("bold")),
+  DiagnosticLineNrHint = mt(fb("#0000FF", "#1E205D"), s("bold"))
+}
+
+hl.plugins.cmp = {
+  -- CmpDocumentation = fb(gc.foreground,gc.background),
+  -- CmpDocumentationBorder = fb(gc.red,gc.blue),
+  CmpItemAbbrDeprecated = mt(f(gc.white), s("strikethrough")),
+  CmpItemKindSnippet = f("#BF616A"),
+  CmpItemKindUnit = f("#D08770"),
+  CmpItemKindProperty = f("#A3BE8C"),
+  CmpItemKindKeyword = f("#EBCB8B"),
+  CmpItemAbbrMatch = f("#5E81AC"),
+  CmpItemAbbrMatchFuzzy = f("#5E81AC"),
+  CmpItemKindVariable = f("#8FBCBB"),
+  CmpItemKindInterface = f("#88C0D0"),
+  CmpItemKindText = f("#81A1C1"),
+  CmpItemKindFunction = f("#B48EAD"),
+  CmpItemKindMethod = f("#B48EAD")
 }
 
 hl.plugins.gitgutter = {
   gitgutteradd = f(gc.green),
   gitgutterchange = f(gc.yellow),
-  gitgutterdelete = f(gc.red),
+  gitgutterdelete = f(gc.red)
 }
 
 hl.plugins.gitsigns = {
   gitsignsAdd = f(gc.green),
   gitsignsChange = f(gc.yellow),
-  gitsiginsDelete = f(gc.red),
+  gitsiginsDelete = f(gc.red)
 }
 
 hl.plugins.telescope = {
@@ -350,19 +395,20 @@ hl.plugins.telescope = {
   TelescopeResultsBorder = f(gc.blue),
   TelescopePreviewTitle = fb(gc.green, gc.background),
   TelescopePreviewBorder = f(gc.green),
-  TelescopeMatching = mt(f(gc.yellow), s("bold")),
+  TelescopeMatching = mt(fb(gc.black, gc.dark_yellow), s("bold")),
+  TelescopeSelection = f(gc.blue)
 }
 
 hl.plugins.nvimtree = {
   NvimTreeEndOfBuffer = f(gc.background),
   NvimTreeFolderIcon = f(gc.blue),
   NvimTreeOpenedFolderName = f(gc.red),
-  NvimTreeNormal = b(gc.background),
-  NvimTreeRootFolder = mt(f(gc.red), s("underline")),
+  NvimTreeNormal = fb(gc.foreground,gc.background),
+  NvimTreeRootFolder = mt(f(gc.red), s("underline"))
 }
 
 hl.plugins.blankline = {
-  IndentBlanklineChar = f(gc.purple),
+  IndentBlanklineChar = f(gc.purple)
 }
 
 hl.plugins.ts_rainbow = {
@@ -372,18 +418,52 @@ hl.plugins.ts_rainbow = {
   rainbowcol4 = f(gc.dark_yellow),
   rainbowcol5 = f(gc.yellow),
   rainbowcol6 = f(gc.green),
-  rainbowcol7 = f(gc.red),
+  rainbowcol7 = f(gc.red)
+}
+
+hl.transparency = {
+  Normal = b("NONE"),
+  SignColumn = b("NONE"),
+  StatusLine = b("NONE"),
+  StatusLineTerm = b("NONE"),
+
+  Pmenu = b("NONE"),
+  PmenuSbar = b("NONE"),
+
+  NormalFloat = b("NONE"),
+  NvimTreeNormal = b("NONE"),
+  NvimTreeNormalNC = b("NONE"),
+  NvimTreeStatusLineNC = b("NONE"),
+  NvimTreeVertSplit = fb(gc.comment_grey, "NONE"),
+  -- telescope
+  TelescopeBorder = fb(gc.background, "NONE"),
+  TelescopePrompt = b("NONE"),
+  TelescopeResults = b("NONE"),
+  TelescopePromptNormal = b("NONE"),
+  TelescopeNormal = b("NONE"),
+  TelescopePromptPrefix = b("NONE"),
+  TelescopeResultsTitle = fb(gc.black, gc.blue),
+  TelescopePreviewTitle = fb(gc.black, gc.green),
+  TelescopePromptTitle = fb(gc.black, gc.red)
 }
 
 local function init()
   vim.cmd("hi clear")
-  if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
+  if vim.fn.exists("syntax_on") then
+    vim.cmd("syntax reset")
+  end
   vim.g.colors_name = "onedark"
   highlights(hl.common)
   highlights(hl.syntax)
   highlights(hl.git)
   highlights(hl.treesitter)
-  for _, group in pairs(hl.plugins) do highlights(group) end
+  for _, group in pairs(hl.plugins) do
+    highlights(group)
+  end
+  local ts = require("core.config").ui.transparency
+  if ts then
+    highlights(hl.transparency)
+  end
   vim.o.background = "dark"
 end
 

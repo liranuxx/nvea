@@ -23,7 +23,7 @@ bufferline.setup {
   highlights = {
     close_button_selected = {
       guifg = colors.red,
-      guibg = colors.background,
+      -- guibg = colors.background,
     },
     indicator_selected = {
       guifg = colors.blue,

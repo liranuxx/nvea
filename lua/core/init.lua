@@ -1,5 +1,6 @@
 vim.cmd("colorscheme " .. require("core.config").ui.theme)
 require("myplugin.notification")("Enjoy in your time!", {row = 5, col = 100})
+
 local modules = {
   "core.options",
   "core.autocmds"

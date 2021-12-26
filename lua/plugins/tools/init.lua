@@ -56,7 +56,7 @@ M.tools = function(use)
   }
   use {
     "glepnir/dashboard-nvim",
-    status = plugin_status.dashboard,
+    disable = not plugin_status.dashboard,
     config = [[require('plugins.tools.dashboard')]]
   }
   use {
