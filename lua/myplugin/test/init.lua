@@ -1,4 +1,3 @@
-
 -- local word = vim.fn.expand("<cword>")
 -- print(vim.fn.getline("."))
 -- print(word)

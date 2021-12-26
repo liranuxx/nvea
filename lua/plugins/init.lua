@@ -28,6 +28,12 @@ end
 local use = packer.use
 
 packer.startup(function()
+  use {
+    "wbthomason/packer.nvim",
+    opt = true,
+  }
+  use {"nvim-lua/plenary.nvim"}
+
   plug_ui.ui(use)
   plug_tools.tools(use)
   plug_editor.editor(use)

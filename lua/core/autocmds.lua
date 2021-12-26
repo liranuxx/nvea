@@ -14,6 +14,9 @@ local cmd = vim.cmd
 -- augroup END
 -- ]], true)
 
+-- Don't show any numbers inside terminals
+cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
+
 -- File extension specific tabbing
 cmd [[ autocmd Filetype lua setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2 ]]
 

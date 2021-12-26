@@ -6,6 +6,7 @@ M.editor = function(use)
    use {
       "norcalli/nvim-colorizer.lua",
       disable = not status.colorizer,
+      event = "BufRead",
       config = conf.colorizer,
    }
    use {
@@ -17,7 +18,7 @@ M.editor = function(use)
    use {
       "windwp/nvim-autopairs",
       disable = not status.autopairs,
-      after = "nvim-cmp",
+      events = "InsertEnter",
       config = conf.autopairs,
    }
    use {
