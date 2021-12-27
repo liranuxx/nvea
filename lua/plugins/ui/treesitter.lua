@@ -1,6 +1,6 @@
-local present, ts_config = pcall(require, "nvim-treesitter.configs")
-if not present then
-  return print("Treesitter not present!!!")
+local status, ts_config = pcall(require, "nvim-treesitter.configs")
+if not status then
+  return print("Treesitter not found!!!")
 end
 vim.cmd[[packadd nvim-treesitter-refactor]]
 vim.cmd[[packadd nvim-treesitter-textobjects]]

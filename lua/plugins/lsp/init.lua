@@ -19,7 +19,7 @@ M.lspconfig = function(use)
   }
   use {
     "mhartington/formatter.nvim",
-    config = [[require("plugins.lsp.formatter")]]
+    config = [[require("plugins.lsp.init-formatter")]]
   }
 end
 return M

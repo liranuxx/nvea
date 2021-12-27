@@ -1,9 +1,9 @@
 local M = {}
 
 M.context = function()
-  local present, context = pcall(require, "treesitter-context")
-  if not present then
-    return print("Treesitter-context not present!!!")
+  local status, context = pcall(require, "treesitter-context")
+  if not status then
+    return print("Treesitter-context not found!")
   end
   context.setup {}
 end

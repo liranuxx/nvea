@@ -1,6 +1,6 @@
-local present, gitsigns = pcall(require, "gitsigns")
-if not present then
-   return "Gitsigns not exits!"
+local status, gitsigns = pcall(require, "gitsigns")
+if not status then
+   return print("Gitsigns not found!")
 end
 
 gitsigns.setup {

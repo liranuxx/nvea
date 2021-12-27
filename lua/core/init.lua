@@ -15,5 +15,3 @@ end
 
 -- set all the mappings
 require("core.mappings").init()
-
-vim.cmd("imap <C-\\> <Plug>(fzf-dictionary-open)")

@@ -73,12 +73,12 @@ _G.packer_plugins = {
     config = { "\27LJ\1\2l\0\0\4\0\6\0\f4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\1>\2\1\1G\0\1\0\nsetup\23Comment not found!\nprint\fComment\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/Comment.nvim",
-    url = "https://github.com.cnpmjs.org/numToStr/Comment.nvim"
+    url = "https://hub.fastgit.org/numToStr/Comment.nvim"
   },
   LuaSnip = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/LuaSnip",
-    url = "https://github.com.cnpmjs.org/L3MON4D3/LuaSnip"
+    url = "https://hub.fastgit.org/L3MON4D3/LuaSnip"
   },
   ["bufferline.nvim"] = {
     config = { 'require("plugins.tools.init-bufferline")' },
@@ -86,77 +86,77 @@ _G.packer_plugins = {
     loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/bufferline.nvim",
-    url = "https://github.com.cnpmjs.org/akinsho/bufferline.nvim"
+    url = "https://hub.fastgit.org/akinsho/bufferline.nvim"
   },
   ["cmp-buffer"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
-    url = "https://github.com.cnpmjs.org/hrsh7th/cmp-buffer"
+    url = "https://hub.fastgit.org/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
-    url = "https://github.com.cnpmjs.org/hrsh7th/cmp-cmdline"
+    url = "https://hub.fastgit.org/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
-    url = "https://github.com.cnpmjs.org/hrsh7th/cmp-nvim-lsp"
+    url = "https://hub.fastgit.org/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lua"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua/after/plugin/cmp_nvim_lua.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua",
-    url = "https://github.com.cnpmjs.org/hrsh7th/cmp-nvim-lua"
+    url = "https://hub.fastgit.org/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-path",
-    url = "https://github.com.cnpmjs.org/hrsh7th/cmp-path"
+    url = "https://hub.fastgit.org/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
-    url = "https://github.com.cnpmjs.org/saadparwaiz1/cmp_luasnip"
+    url = "https://hub.fastgit.org/saadparwaiz1/cmp_luasnip"
   },
   ["formatter.nvim"] = {
-    config = { 'require("plugins.lsp.formatter")' },
+    config = { 'require("plugins.lsp.init-formatter")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/formatter.nvim",
-    url = "https://github.com.cnpmjs.org/mhartington/formatter.nvim"
+    url = "https://hub.fastgit.org/mhartington/formatter.nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    url = "https://github.com.cnpmjs.org/rafamadriz/friendly-snippets"
+    url = "https://hub.fastgit.org/rafamadriz/friendly-snippets"
   },
   ["fzf.vim"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/fzf.vim",
-    url = "https://github.com.cnpmjs.org/junegunn/fzf.vim"
+    url = "https://hub.fastgit.org/junegunn/fzf.vim"
   },
   ["gitsigns.nvim"] = {
     config = { "require('plugins.tools.init-gitsigns')" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
-    url = "https://github.com.cnpmjs.org/lewis6991/gitsigns.nvim"
+    url = "https://hub.fastgit.org/lewis6991/gitsigns.nvim"
   },
   ["hop.nvim"] = {
     config = { "\27LJ\1\2”\1\0\0\4\0\a\0\0164\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0004\2\1\0%\3\2\0>\2\2\0027\2\5\0023\3\6\0>\2\2\1G\0\1\0\1\0\1\tkeys\28etovxqpdygfblzhckisuran\nsetup\19Hop not found!\nprint\bhop\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/hop.nvim",
-    url = "https://github.com.cnpmjs.org/phaazon/hop.nvim"
+    url = "https://hub.fastgit.org/phaazon/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
     config = { "\27LJ\1\2Æ\4\0\0\5\0\16\0\0234\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0:\4\b\0033\4\t\0:\4\n\0033\4\v\0:\4\f\3>\2\2\0014\2\r\0007\2\14\2%\3\15\0>\2\2\1G\0\1\0001autocmd CursorMoved * IndentBlanklineRefresh\bcmd\bvim\21context_patterns\1\15\0\0\nclass\rfunction\vmethod\nblock\17list_literal\rselector\b^if\v^table\17if_statement\nwhile\bfor\ttype\bvar\vimport\20buftype_exclude\1\2\0\0\rterminal\21filetype_exclude\1\b\0\0\thelp\rterminal\14dashboard\vpacker\flspinfo\20TelescopePrompt\21TelescopeResults\1\0\5\25show_current_context\2\28show_first_indent_level\2\tchar\bâ”Š\23indentLine_enabled\3\1#show_trailing_blankline_indent\2\nsetup$Indent_Blankline not present!!!\nprint\21indent_blankline\frequire\npcall\0" },
@@ -164,7 +164,7 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/indent-blankline.nvim",
-    url = "https://github.com.cnpmjs.org/lukas-reineke/indent-blankline.nvim"
+    url = "https://hub.fastgit.org/lukas-reineke/indent-blankline.nvim"
   },
   ["lualine.nvim"] = {
     config = { 'require("plugins.tools.init-lualine")' },
@@ -172,7 +172,7 @@ _G.packer_plugins = {
     loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/lualine.nvim",
-    url = "https://github.com.cnpmjs.org/nvim-lualine/lualine.nvim"
+    url = "https://hub.fastgit.org/nvim-lualine/lualine.nvim"
   },
   ["markdown-preview.nvim"] = {
     commands = { "MarkdownPreview" },
@@ -181,19 +181,19 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
-    url = "https://github.com.cnpmjs.org/iamcco/markdown-preview.nvim"
+    url = "https://hub.fastgit.org/iamcco/markdown-preview.nvim"
   },
   ["neoscroll.nvim"] = {
     config = { "\27LJ\1\2’\2\0\0\5\0\t\0\0154\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\a\0003\4\6\0:\4\b\3>\2\2\1G\0\1\0\rmappings\1\0\5\24use_local_scrolloff\1\22respect_scrolloff\1\16hide_cursor\2\25cursor_scrolls_alone\2\rstop_eof\2\1\n\0\0\n<C-u>\n<C-d>\n<C-b>\n<C-f>\n<C-y>\n<C-e>\azt\azz\azb\nsetup\29Neoscroll not present!!!\nprint\14neoscroll\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
-    url = "https://github.com.cnpmjs.org/karb94/neoscroll.nvim"
+    url = "https://hub.fastgit.org/karb94/neoscroll.nvim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\1\2}\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup\29Autopairs not present!!!\nprint\19nvim-autopairs\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
-    url = "https://github.com.cnpmjs.org/windwp/nvim-autopairs"
+    url = "https://hub.fastgit.org/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     config = { 'require("plugins.completion.cmp")' },
@@ -201,7 +201,7 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
-    url = "https://github.com.cnpmjs.org/hrsh7th/nvim-cmp"
+    url = "https://hub.fastgit.org/hrsh7th/nvim-cmp"
   },
   ["nvim-code-action-menu"] = {
     commands = { "CodeActionMenu" },
@@ -209,7 +209,7 @@ _G.packer_plugins = {
     needs_bufread = true,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu",
-    url = "https://github.com.cnpmjs.org/weilbith/nvim-code-action-menu"
+    url = "https://hub.fastgit.org/weilbith/nvim-code-action-menu"
   },
   ["nvim-colorizer.lua"] = {
     config = { "\27LJ\1\2†\2\0\0\5\0\v\0\0194\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\4€4\2\3\0%\3\4\0@\2\2\0T\2\b€7\2\5\0013\3\6\0003\4\a\0>\2\3\0014\2\b\0007\2\t\2%\3\n\0>\2\2\1G\0\1\0\30ColorizerReloadAllBuffers\bcmd\bvim\1\0\t\vhsl_fn\1\tmode\15background\nnames\1\bcss\1\vRRGGBB\2\vrgb_fn\1\rRRGGBBAA\1\vcss_fn\1\bRGB\2\1\2\0\0\6*\nsetup\29Colorizer not present!!!\nprint\14colorizer\frequire\npcall\0" },
@@ -217,24 +217,24 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-colorizer.lua",
-    url = "https://github.com.cnpmjs.org/norcalli/nvim-colorizer.lua"
+    url = "https://hub.fastgit.org/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lsp-installer"] = {
     config = { 'require("plugins.lsp.lsp_installer")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com.cnpmjs.org/williamboman/nvim-lsp-installer"
+    url = "https://hub.fastgit.org/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     config = { 'require("plugins.lsp.lspconfig")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
-    url = "https://github.com.cnpmjs.org/neovim/nvim-lspconfig"
+    url = "https://hub.fastgit.org/neovim/nvim-lspconfig"
   },
   ["nvim-notify"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://github.com.cnpmjs.org/rcarriga/nvim-notify"
+    url = "https://hub.fastgit.org/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -243,7 +243,7 @@ _G.packer_plugins = {
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua",
-    url = "https://github.com.cnpmjs.org/kyazdani42/nvim-tree.lua"
+    url = "https://hub.fastgit.org/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     after = { "nvim-treesitter-context" },
@@ -252,102 +252,102 @@ _G.packer_plugins = {
     needs_bufread = true,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter",
-    url = "https://github.com.cnpmjs.org/nvim-treesitter/nvim-treesitter"
+    url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-treesitter-context"] = {
-    config = { "\27LJ\1\2Š\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup&Treesitter-context not present!!!\nprint\23treesitter-context\frequire\npcall\0" },
+    config = { '\27LJ\1\2†\1\0\0\4\0\6\0\r4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0012\3\0\0>\2\2\1G\0\1\0\nsetup"Treesitter-context not found!\nprint\23treesitter-context\frequire\npcall\0' },
     load_after = {
       ["nvim-treesitter"] = true
     },
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-context",
-    url = "https://github.com.cnpmjs.org/romgrk/nvim-treesitter-context"
+    url = "https://hub.fastgit.org/romgrk/nvim-treesitter-context"
   },
   ["nvim-treesitter-refactor"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-refactor",
-    url = "https://github.com.cnpmjs.org/nvim-treesitter/nvim-treesitter-refactor"
+    url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter-refactor"
   },
   ["nvim-treesitter-textobjects"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-treesitter-textobjects",
-    url = "https://github.com.cnpmjs.org/nvim-treesitter/nvim-treesitter-textobjects"
+    url = "https://hub.fastgit.org/nvim-treesitter/nvim-treesitter-textobjects"
   },
   ["nvim-ts-rainbow"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-ts-rainbow",
-    url = "https://github.com.cnpmjs.org/p00f/nvim-ts-rainbow"
+    url = "https://hub.fastgit.org/p00f/nvim-ts-rainbow"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com.cnpmjs.org/kyazdani42/nvim-web-devicons"
+    url = "https://hub.fastgit.org/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/packer.nvim",
-    url = "https://github.com.cnpmjs.org/wbthomason/packer.nvim"
+    url = "https://hub.fastgit.org/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/plenary.nvim",
-    url = "https://github.com.cnpmjs.org/nvim-lua/plenary.nvim"
+    url = "https://hub.fastgit.org/nvim-lua/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/popup.nvim",
-    url = "https://github.com.cnpmjs.org/nvim-lua/popup.nvim"
+    url = "https://hub.fastgit.org/nvim-lua/popup.nvim"
   },
   ["project.nvim"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/project.nvim",
-    url = "https://github.com.cnpmjs.org/ahmedkhalf/project.nvim"
+    url = "https://hub.fastgit.org/ahmedkhalf/project.nvim"
   },
   ["telescope.nvim"] = {
     config = { 'require("plugins.tools.init-telescope")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/telescope.nvim",
-    url = "https://github.com.cnpmjs.org/nvim-telescope/telescope.nvim"
+    url = "https://hub.fastgit.org/nvim-telescope/telescope.nvim"
   },
   ["toggleterm.nvim"] = {
     config = { 'require("plugins.tools.init-toggleterm")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
-    url = "https://github.com.cnpmjs.org/akinsho/toggleterm.nvim"
+    url = "https://hub.fastgit.org/akinsho/toggleterm.nvim"
   },
   ["vim-cursorword"] = {
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/vim-cursorword",
-    url = "https://github.com.cnpmjs.org/itchyny/vim-cursorword"
+    url = "https://hub.fastgit.org/itchyny/vim-cursorword"
   },
   ["vim-fzf-dictionary"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-fzf-dictionary",
-    url = "https://github.com.cnpmjs.org/yuki-uthman/vim-fzf-dictionary"
+    url = "https://hub.fastgit.org/yuki-uthman/vim-fzf-dictionary"
   },
   ["vim-visual-multi"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
-    url = "https://github.com.cnpmjs.org/mg979/vim-visual-multi"
+    url = "https://hub.fastgit.org/mg979/vim-visual-multi"
   },
   ["which-key.nvim"] = {
     config = { 'require("plugins.tools.whichkey")' },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/which-key.nvim",
-    url = "https://github.com.cnpmjs.org/folke/which-key.nvim"
+    url = "https://hub.fastgit.org/folke/which-key.nvim"
   },
   ["wilder.nvim"] = {
     config = { "\27LJ\1\2v\0\0\4\0\6\0\f4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\1>\2\1\1G\0\1\0\vwilder\22Wilder not found!\nprint\22plugins.ui.config\frequire\npcall\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/wilder.nvim",
-    url = "https://github.com.cnpmjs.org/gelguy/wilder.nvim"
+    url = "https://hub.fastgit.org/gelguy/wilder.nvim"
   }
 }
 
@@ -374,7 +374,7 @@ require("plugins.tools.init-toggleterm")
 time([[Config for toggleterm.nvim]], false)
 -- Config for: formatter.nvim
 time([[Config for formatter.nvim]], true)
-require("plugins.lsp.formatter")
+require("plugins.lsp.init-formatter")
 time([[Config for formatter.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)

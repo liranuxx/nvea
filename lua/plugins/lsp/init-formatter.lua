@@ -1,6 +1,6 @@
-local present, formatter = pcall(require, "formatter")
-if not present then
-  return print("Formatter not present!!!")
+local status, formatter = pcall(require, "formatter")
+if not status then
+  return print("Formatter not found!!!")
 end
 formatter.setup(
   {

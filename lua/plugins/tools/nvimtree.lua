@@ -1,6 +1,6 @@
-local present, nvimtree = pcall(require, "nvim-tree")
-if not present then
-  return print("Nvimtree not present!!!")
+local status, nvimtree = pcall(require, "nvim-tree")
+if not status then
+  return print("Nvimtree not found!!!")
 end
 
 local g = vim.g

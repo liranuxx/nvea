@@ -1,14 +1,9 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return print("Cmp not present!!!")
+local status, cmp = pcall(require, "cmp")
+if not status then
+  return print("Cmp not found!!!")
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-  return print("Luasnip not present!!!")
-end
-
-require("luasnip/loaders/from_vscode").lazy_load()
+local luasnip = require("luasnip")
 
 local check_backspace = function()
   local col = vim.fn.col "." - 1
@@ -124,7 +119,7 @@ cmp.setup {
     select = false,
   },
   documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    border = "single"
   },
   experimental = {native_menu=false, ghost_text = true },
 }

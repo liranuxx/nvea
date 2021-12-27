@@ -25,7 +25,6 @@ M.plugins = {
     lualine = true,
     colorizer = true,
     comment = true,
-    dashboard = false,
     gitsigns = true,
     lsp = true,
     cmp = true,
@@ -35,9 +34,6 @@ M.plugins = {
     telescope = true,
     whichkey = true,
   },
-  lspconfig = {
-    setup_lspconf = "plugins.lang.lspconfig",
-  }
 }
 
 M.mappings = {
@@ -85,14 +81,6 @@ M.mappings.plugins = {
   bufferline = {
     next_buffer = "<Tab>", -- next buffer
     prev_buffer = "<S-Tab>" -- previous buffer
-  },
-  -- NeoVim 'home screen' on open
-  dashboard = {
-    bookmarks = "<leader>bm",
-    new_file = "<leader>fn", -- basically create a new buffer
-    open = "<leader>db", -- open dashboard
-    session_load = "<leader>l", -- load a saved session
-    session_save = "<leader>s" -- save a session
   },
   term = {
     node = "<leader>tn",

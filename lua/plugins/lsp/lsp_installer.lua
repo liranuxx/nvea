@@ -1,6 +1,6 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-	return print("Lsp-installer not present!!!")
+local status, lsp_installer = pcall(require, "nvim-lsp-installer")
+if not status then
+	return print("Lsp-installer not found!")
 end
 
 lsp_installer.settings {

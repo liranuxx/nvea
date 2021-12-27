@@ -1,6 +1,6 @@
-local present, nvim_lsp = pcall(require,"lspconfig")
-if not present then
-  return print("Lsp not present!!!")
+local status, nvim_lsp = pcall(require,"lspconfig")
+if not status then
+  return print("Lsp not found!")
 end
 
 -- beauty

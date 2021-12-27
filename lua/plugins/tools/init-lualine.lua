@@ -1,7 +1,7 @@
-local present, lualine = pcall(require, "lualine")
+local status, lualine = pcall(require, "lualine")
 local c = require("colorschemes").get()
-if not present then
-  return print("Lualine not present!!!")
+if not status then
+  return print("Lualine not found!")
 end
 
 local conditions = {
@@ -121,7 +121,10 @@ local lualine_c = {
 
 local lualine_x = {}
 local lualine_y = {
-  {'diagnostics',},
+  {
+    'diagnostics',
+    cond = conditions.hide_in_width,
+  },
   {
     "%l:%c",
     color = {fg = c.extra.pink},

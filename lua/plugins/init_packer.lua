@@ -36,8 +36,8 @@ packer.init {
    git = {
       clone_timeout = 1000,
       -- default_url_format = 'https://git::@github.com/%s.git',
-      default_url_format = 'https://github.com.cnpmjs.org/%s',
-      -- default_url_format = 'https://hub.fastgit.org/%s',
+      -- default_url_format = 'https://github.com.cnpmjs.org/%s',
+      default_url_format = 'https://hub.fastgit.org/%s',
    },
    auto_clean = true,
    compile_on_sync = true,

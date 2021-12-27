@@ -95,6 +95,9 @@ local function required_mappings()
   map("n", maps.toggle_theme, ":lua require('myplugin.toggle_theme')<cr>")
   map("n", maps.select_cmd, ":lua require('myplugin.select_cmd')<cr>")
   map("n","<leader>bo",":%bd|e#|bd#<cr>")
+
+
+  vim.cmd("imap <C-\\> <Plug>(fzf-dictionary-open)")
 end
 
 local function bufferline()
@@ -108,14 +111,6 @@ local function nvimtree()
   map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
--- local function dashboard()
---   local m = plugin_maps.dashboard
---   map("n", m.bookmarks, ":DashboardJumpMarks <CR>")
---   map("n", m.new_file, ":DashboardNewFile <CR>")
---   map("n", m.open, ":Dashboard <CR>")
---   map("n", m.session_load, ":SessionLoad <CR>")
---   map("n", m.session_save, ":SessionSave <CR>")
--- end
 
 local function telescope()
   local m = plugin_maps.telescope
