@@ -40,3 +40,13 @@ vim.cmd([[autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="Inc
 
 -- Don't show status line on certain windows
 -- vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("core.utils").hide_statusline() ]]
+
+
+if vim.fn.has('wsl') then
+  vim.cmd [[
+  augroup Yank
+  autocmd!
+  autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")
+  augroup END
+  ]]
+end
