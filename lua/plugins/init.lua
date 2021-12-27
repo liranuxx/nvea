@@ -28,10 +28,7 @@ end
 local use = packer.use
 
 packer.startup(function()
-  use {
-    "wbthomason/packer.nvim",
-    opt = true,
-  }
+  use { "wbthomason/packer.nvim", opt = true, }
   use {"nvim-lua/plenary.nvim"}
 
   plug_ui.ui(use)

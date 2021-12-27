@@ -4,7 +4,7 @@ M.cmpletion = function(use)
   use {
     "hrsh7th/nvim-cmp",
     disable = not status.cmp,
-    event = "BufRead",
+    event = "InsertEnter",
     config = [[require("plugins.completion.cmp")]],
     requires = {
       { "L3MON4D3/LuaSnip" },

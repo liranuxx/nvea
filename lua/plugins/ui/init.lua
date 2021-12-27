@@ -20,7 +20,13 @@ M.ui = function(use)
   use {
     "gelguy/wilder.nvim",
     run = "UpdateRemotePlugins",
-    config = require("plugins.ui.config").wilder,
+    config = function()
+      local status, wilder = pcall(require, "plugins.ui.config")
+      if not status then
+        return print("Wilder not found!")
+      end
+      wilder.wilder()
+    end
   }
 end
 return M

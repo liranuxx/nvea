@@ -1,80 +1,53 @@
-local utils = require("myplugin.notification._utils")
 
-vim.api.nvim_command("hi NotificationInfo guifg=#80ff95")
-vim.api.nvim_command("hi NotificationWarning guifg=#fff454")
-vim.api.nvim_command("hi NotificationError guifg=#c44323")
+-- vim.cmd("hi NotificationInfo guifg="#80ff95")
+-- vim.cmd("hi NotificationWarning guifg="#fff454")
+-- vim.cmd("hi NotificationError guifg="#c44323")
+local notification = {}
 
-local function notification(message, options)
+local function tbl_longest_str(tbl)
+  local len = 0
+
+  for _,str in pairs(tbl) do
+    len = math.max(len, #str)
+  end
+
+  return len
+end
+
+function notification.notification(message, options)
   if type(message) == "string" then
     message = {message}
   end
 
-  if type(message) ~= "table" then
-    error("First argument has to be either a table or a string")
-  end
-
   options = options or {}
-  options.type = options.type or "info"
   options.delay = options.delay or 2000
+  options.style = options.style or "info"
+  options.border = options.border or "single"
 
-  local width = utils.tbl_longest_str(message)
-  local height = #message
-  local row = options.row
-  local col = vim.api.nvim_get_option("columns") - 3
+  local win_current_width = vim.api.nvim_get_option("columns")
+  local win_current_height = vim.api.nvim_get_option("lines")
 
   local buf = vim.api.nvim_create_buf(false, true)
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, message)
 
-  local window =
-    vim.api.nvim_open_win(buf, false,
-    {
-      relative = "editor",
-      row = row,
-      col = col,
-      width = width,
-      anchor = "SE",
-      height = height,
-      style = "minimal"
-    }
-  )
+  local window = vim.api.nvim_open_win(buf, false,
+  {
+    relative = "win",
+    row = options.row or -1,
+    col = options.col or win_current_width -1 ,
+    width = tbl_longest_str(message),
+    height = #message,
+    style = "minimal",
+    border = options.border,
+  })
 
-  local border_buf = vim.api.nvim_create_buf(false, true)
-  local border_buf_lines = {}
-  width = width + 2
-
-  table.insert(border_buf_lines, string.format("╭%s╮", string.rep("─", width)))
-
-  for _ = 1, height do
-    table.insert(border_buf_lines, string.format("│%s│", string.rep(" ", width)))
-  end
-
-  table.insert(border_buf_lines, string.format("╰%s╯", string.rep("─", width)))
-
-  vim.api.nvim_buf_set_lines(border_buf, 0, -1, false, border_buf_lines)
-
-  local border_win =
-    vim.api.nvim_open_win(border_buf, false,
-    {
-      relative = "editor",
-      row = row + 1,
-      col = col + 3,
-      width = width + 3,
-      anchor = "SE",
-      height = height + 2,
-      style = "minimal"
-    }
-  )
-
-  if options.type == "info" then
+  if options.style == "info" then
     vim.api.nvim_win_set_option(window, "winhl", "Normal:NotificationInfo")
-    vim.api.nvim_win_set_option(border_win, "winhl", "Normal:NotificationInfo")
-  elseif options.type == "warning" then
+  elseif options.style == "warning" then
     vim.api.nvim_win_set_option(window, "winhl", "Normal:NotificationWarning")
-    vim.api.nvim_win_set_option(border_win, "winhl", "Normal:NotificationWarning")
   else
     vim.api.nvim_win_set_option(window, "winhl", "Normal:NotificationError")
-    vim.api.nvim_win_set_option(border_win, "winhl", "Normal:NotificationError")
   end
 
   local timer
@@ -85,7 +58,6 @@ local function notification(message, options)
 
     if vim.api.nvim_win_is_valid(window) then
       vim.api.nvim_win_close(window, false)
-      vim.api.nvim_win_close(border_win, false)
     end
   end
 
@@ -93,17 +65,26 @@ local function notification(message, options)
 
   return {
     window = window,
-    height = height,
-    width = width,
-    row = row,
-    col = col,
-    border = {
-      window = border_win,
-      buffer = border_buf
-    },
+    height = options.height,
+    width = options.width,
+    row = options.row,
+    col = options.col,
     content = message,
+    border = options.border,
     delete = delete
   }
 end
+
+setmetatable(notification, {
+  __call = function(_, m, o)
+    if vim.in_fast_event() then
+      vim.schedule(function()
+        notification.notification(m, o)
+      end)
+    else
+      notification.notification(m, o)
+    end
+  end,
+})
 
 return notification

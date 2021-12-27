@@ -1,4 +1,5 @@
 local status = require("core.config").plugins.status
+local conf = require("plugins.tools.config")
 local M = {}
 
 M.tools = function(use)
@@ -7,13 +8,13 @@ M.tools = function(use)
     "nvim-lualine/lualine.nvim",
     disable = not status.lualine,
     after = "nvim-web-devicons",
-    config = [[require("plugins.tools.lualine")]]
+    config = [[require("plugins.tools.init-lualine")]]
   }
   use {
     "akinsho/bufferline.nvim",
     disable = not status.bufferline,
     after = "nvim-web-devicons",
-    config = [[require("plugins.tools.bufferline")]]
+    config = [[require("plugins.tools.init-bufferline")]]
   }
   use {
     "kyazdani42/nvim-tree.lua",
@@ -24,13 +25,13 @@ M.tools = function(use)
   use {
     "numToStr/Comment.nvim",
     disable = not status.comment,
-    config = [[require("Comment").setup()]]
+    config = conf.comment
   }
 
   use {
     "nvim-telescope/telescope.nvim",
     disable = not status.telescope,
-    config = [[require("plugins.tools.telescope")]]
+    config = [[require("plugins.tools.init-telescope")]]
   }
   use {
     "yuki-uthman/vim-fzf-dictionary",
@@ -44,7 +45,7 @@ M.tools = function(use)
   use {
     "lewis6991/gitsigns.nvim",
     disable = not status.gitsigns,
-    config = [[require('plugins.tools.gitsigns')]]
+    config = [[require('plugins.tools.init-gitsigns')]]
   }
   use {
     "iamcco/markdown-preview.nvim",
@@ -52,27 +53,20 @@ M.tools = function(use)
     disable = not status.markdown_preview,
     ft = "markdown",
     cmd = {"MarkdownPreview"},
-    config = require("plugins.tools.config").markdown_preview
-  }
-  use {
-    "glepnir/dashboard-nvim",
-    disable = not status.dashboard,
-    config = [[require('plugins.tools.dashboard')]]
+    config = conf.markdown_preview
   }
   use {
     "phaazon/hop.nvim",
     branch = "v1",
-    config = function()
-      require "hop".setup {keys = "etovxqpdygfblzhckisuran"}
-    end
+    config = conf.hop
   }
   use {
     "ahmedkhalf/project.nvim",
-    config = require("plugins.tools.config").project
+    config = conf.project
   }
   use {
     "akinsho/toggleterm.nvim",
-    config = [[require("plugins.tools.toggleterm")]]
+    config = [[require("plugins.tools.init-toggleterm")]]
   }
   use {
     "rcarriga/nvim-notify"

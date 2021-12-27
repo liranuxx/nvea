@@ -421,6 +421,12 @@ hl.plugins.ts_rainbow = {
   rainbowcol7 = f(gc.red)
 }
 
+hl.plugins.notification = {
+  NotificationInfo = f(gc.green),
+  NotificationWarning = f(gc.yellow),
+  NotificationError = f(gc.red),
+}
+
 hl.transparency = {
   Normal = b("NONE"),
   SignColumn = b("NONE"),

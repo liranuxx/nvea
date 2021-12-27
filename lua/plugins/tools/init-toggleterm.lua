@@ -1,9 +1,9 @@
-local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-  return print("Toggleterm not present!")
+local status, toggleterm = pcall(require, "toggleterm")
+if not status then
+  return print("Toggleterm not found!")
 end
 
-toggleterm.setup {
+require("toggleterm").setup({
   size = 20,
   open_mapping = [[<a-d>]],
   hide_numbers = true,
@@ -22,7 +22,7 @@ toggleterm.setup {
       background = "Normal"
     }
   }
-}
+})
 
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({cmd = "lazygit", hidden = true})

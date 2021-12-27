@@ -1,7 +1,8 @@
-local present, telescope = pcall(require, "telescope")
-if not present then
-  return print("Telescope not present!!!")
+local status, telescope = pcall(require, "telescope")
+if not status then
+  return print("Telescope not found!!!")
 end
+
 telescope.load_extension("projects")
 
 telescope.setup {
@@ -21,7 +22,7 @@ telescope.setup {
     path_display = {"smart"},
   },
   pickers = { },
-  extensions = {
+    extensions = {
     project = {
       base_dirs = {
         "~/.config/nvim"
@@ -29,5 +30,4 @@ telescope.setup {
       hidden_files = true -- default: false
     }
   }
-
 }
