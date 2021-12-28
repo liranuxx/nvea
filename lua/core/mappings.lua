@@ -240,5 +240,4 @@ M.init = function()
   git()
   toggle_term()
 end
-
 return M

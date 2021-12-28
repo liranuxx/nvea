@@ -18,15 +18,15 @@ Website: https://gitee.com/liranux/nvim
 -----------------------------------------------------------
 -- Import Lua modules
 -----------------------------------------------------------
+vim.notify = require("notify")
 local modules = {
   "core",
   "plugins",
-  "myplugin"
 }
 
 for _, module in ipairs(modules) do
-  local ok, err = pcall(require, module)
+  local ok, _ = pcall(require, module)
   if not ok then
-    print("Error loading " .. module .. "\n\n" .. err)
+    vim.notify("Error loading "..module,{position="bot"},"error")
   end
 end

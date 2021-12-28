@@ -422,7 +422,7 @@ hl.plugins.ts_rainbow = {
 }
 
 hl.plugins.notification = {
-  NotificationInfo = f(gc.green),
+  NotificationInfo = f(gc.blue),
   NotificationWarning = f(gc.yellow),
   NotificationError = f(gc.red),
 }

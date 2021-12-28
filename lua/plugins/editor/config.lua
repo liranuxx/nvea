@@ -47,7 +47,9 @@ M.blankline = function()
       "packer",
       "lspinfo",
       "TelescopePrompt",
-      "TelescopeResults"
+      "TelescopeResults",
+      "notification",
+      "cmenu",
     },
     buftype_exclude = {"terminal"},
     show_trailing_blankline_indent = true,

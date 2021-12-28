@@ -1,5 +1,8 @@
 vim.cmd("colorscheme " .. require("core.config").ui.theme)
-require("myplugin.notification")("Enjoy in your time!")
+vim.notify({
+  "😊 Now is "..vim.fn.strftime("%H:%M:%S", vim.fn.localtime()),
+  "☕ Enjoy in your time!"
+})
 
 local modules = {
   "core.options",

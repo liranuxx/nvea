@@ -74,28 +74,13 @@ local function create_float_win(choices, opts)
 		col = col + opts.border,
 		row = row + opts.border,
 		style =  'minimal',
-	}
-
-	local border_opts = {
-		title = opts.title,
-		width = opts.border,
-		top      = opts.borderchars[1],
-		right    = opts.borderchars[2],
-		bot      = opts.borderchars[3],
-		left     = opts.borderchars[4],
-		topleft  = opts.borderchars[5],
-		topright = opts.borderchars[6],
-		botright = opts.borderchars[7],
-		botleft  = opts.borderchars[8],
+    border = "single",
 	}
 
 	-- use borders if plenary is installed
 	local win = vim.api.nvim_open_win(buf, false, win_opts)
-	pcall(function()
-		local Border = require("plenary.window.border")
-		Border:new(buf, win, win_opts, border_opts)
-	end)
 
+  vim.api.nvim_buf_set_option(buf, "filetype", "cmenu")
 	vim.api.nvim_win_set_option(win, "cursorline", true)
 	vim.api.nvim_win_set_option(win, "winhl", "CursorLine:" .. opts.highlight)
 	vim.api.nvim_set_current_win(win)
@@ -187,8 +172,8 @@ function M.open(choices, opts)
 	end
 
 	-- set default settings
-	opts.padding = opts.padding or { 0, 1, 0, 1}
-	opts.borderchars = M.fill_borderchars(borderchars)
+	opts.padding = opts.padding or { 0, 0, 0, 0}
+	-- opts.borderchars = M.fill_borderchars(borderchars)
 	opts.border = opts.border or 1
 	opts.highlight = opts.highlight or "TermCursor"
 	opts.title = opts.title or ""
@@ -215,10 +200,10 @@ function M.open(choices, opts)
 	}
 
 	-- Setup keymapping for floating window
-	vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', '<cmd>lua require"myplugin.test.test".close()<CR>', {noremap = true})
-	vim.api.nvim_buf_set_keymap(buf, 'n', '<CR>', '<cmd>lua require"myplugin.test.test".submit()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(buf, 'n', '<ESC>', '<cmd>lua require"myplugin.cmenu.cmenu".close()<CR>', {noremap = true})
+	vim.api.nvim_buf_set_keymap(buf, 'n', '<CR>', '<cmd>lua require"myplugin.cmenu.cmenu".submit()<CR>', {noremap = true})
 
-	vim.api.nvim_command("autocmd WinLeave * ++once lua require'myplugin.test.test'.close()")
+	vim.api.nvim_command("autocmd WinLeave * ++once lua require'myplugin.cmenu.cmenu'.close()")
 end
 
 --@private

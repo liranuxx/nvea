@@ -159,7 +159,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/phaazon/hop.nvim"
   },
   ["indent-blankline.nvim"] = {
-    config = { "\27LJ\1\2Æ\4\0\0\5\0\16\0\0234\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0:\4\b\0033\4\t\0:\4\n\0033\4\v\0:\4\f\3>\2\2\0014\2\r\0007\2\14\2%\3\15\0>\2\2\1G\0\1\0001autocmd CursorMoved * IndentBlanklineRefresh\bcmd\bvim\21context_patterns\1\15\0\0\nclass\rfunction\vmethod\nblock\17list_literal\rselector\b^if\v^table\17if_statement\nwhile\bfor\ttype\bvar\vimport\20buftype_exclude\1\2\0\0\rterminal\21filetype_exclude\1\b\0\0\thelp\rterminal\14dashboard\vpacker\flspinfo\20TelescopePrompt\21TelescopeResults\1\0\5\25show_current_context\2\28show_first_indent_level\2\tchar\bâ”Š\23indentLine_enabled\3\1#show_trailing_blankline_indent\2\nsetup$Indent_Blankline not present!!!\nprint\21indent_blankline\frequire\npcall\0" },
+    config = { "\27LJ\1\2Ù\4\0\0\5\0\16\0\0234\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\0013\3\6\0003\4\a\0:\4\b\0033\4\t\0:\4\n\0033\4\v\0:\4\f\3>\2\2\0014\2\r\0007\2\14\2%\3\15\0>\2\2\1G\0\1\0001autocmd CursorMoved * IndentBlanklineRefresh\bcmd\bvim\21context_patterns\1\15\0\0\nclass\rfunction\vmethod\nblock\17list_literal\rselector\b^if\v^table\17if_statement\nwhile\bfor\ttype\bvar\vimport\20buftype_exclude\1\2\0\0\rterminal\21filetype_exclude\1\n\0\0\thelp\rterminal\14dashboard\vpacker\flspinfo\20TelescopePrompt\21TelescopeResults\17notification\ncmenu\1\0\5\25show_current_context\2\28show_first_indent_level\2\tchar\bâ”Š\23indentLine_enabled\3\1#show_trailing_blankline_indent\2\nsetup$Indent_Blankline not present!!!\nprint\21indent_blankline\frequire\npcall\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -229,11 +229,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://hub.fastgit.org/neovim/nvim-lspconfig"
-  },
-  ["nvim-notify"] = {
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-notify",
-    url = "https://hub.fastgit.org/rcarriga/nvim-notify"
   },
   ["nvim-tree.lua"] = {
     commands = { "NvimTreeToggle", "NvimTreeFocus" },
@@ -406,21 +401,21 @@ require("plugins.tools.whichkey")
 time([[Config for which-key.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-nvim-lua ]]
+vim.cmd [[ packadd cmp_luasnip ]]
+vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd nvim-web-devicons ]]
-vim.cmd [[ packadd lualine.nvim ]]
-
--- Config for: lualine.nvim
-require("plugins.tools.init-lualine")
-
 vim.cmd [[ packadd bufferline.nvim ]]
 
 -- Config for: bufferline.nvim
 require("plugins.tools.init-bufferline")
 
-vim.cmd [[ packadd cmp-path ]]
-vim.cmd [[ packadd cmp-nvim-lua ]]
-vim.cmd [[ packadd cmp_luasnip ]]
-vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd lualine.nvim ]]
+
+-- Config for: lualine.nvim
+require("plugins.tools.init-lualine")
+
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads

@@ -67,7 +67,4 @@ return function(use)
     "akinsho/toggleterm.nvim",
     config = [[require("plugins.tools.init-toggleterm")]]
   }
-  use {
-    "rcarriga/nvim-notify"
-  }
 end
