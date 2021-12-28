@@ -1,8 +1,7 @@
 local status = require("core.config").plugins.status
 local conf = require("plugins.tools.config")
-local M = {}
 
-M.tools = function(use)
+return function(use)
   use {"kyazdani42/nvim-web-devicons"}
   use {
     "nvim-lualine/lualine.nvim",
@@ -72,5 +71,3 @@ M.tools = function(use)
     "rcarriga/nvim-notify"
   }
 end
-
-return M

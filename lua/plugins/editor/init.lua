@@ -1,8 +1,7 @@
 local status = require("core.config").plugins.status
 local conf = require("plugins.editor.config")
-local M = {}
 
-M.editor = function(use)
+return function(use)
    use {
       "norcalli/nvim-colorizer.lua",
       disable = not status.colorizer,
@@ -35,7 +34,7 @@ M.editor = function(use)
     "mg979/vim-visual-multi",
     branch = "master"
   }
+  use {'brooth/far.vim'}
+  use {'tpope/vim-surround'}
 
 end
-
-return M

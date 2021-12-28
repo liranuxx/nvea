@@ -3,19 +3,12 @@ if not status then
   return print("Cmp not found!!!")
 end
 
-local luasnip = require("luasnip")
-
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+local status, luasnip = pcall(require,"luasnip")
+if not status then
+  return print("Luasnip not found!!!")
 end
 
-vim.cmd [[packadd cmp-nvim-lsp]]
-vim.cmd [[packadd cmp_luasnip]]
-vim.cmd [[packadd cmp-nvim-lua]]
-vim.cmd [[packadd cmp-cmdline]]
-vim.cmd [[packadd cmp-buffer]]
-vim.cmd [[packadd cmp-path]]
+require("luasnip/loaders/from_vscode").lazy_load()
 
 local lspkind_icons = {
   Text = "",
@@ -49,6 +42,11 @@ vim.cmd [[packadd nvim-autopairs]]
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({map_char = {tex = ''}}))
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -56,7 +54,7 @@ cmp.setup {
     end,
   },
   formatting = {
-    fields = {"kind","abbr", "menu"},
+    fields = {"kind","abbr","menu"},
     format = function(entry, vim_item)
       vim_item.kind = string.format("%s", lspkind_icons[vim_item.kind])
       --vim_item.menu = nil
@@ -94,8 +92,8 @@ cmp.setup {
         luasnip.expand()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif check_backspace() then
-        fallback()
+      elseif has_words_before() then
+        cmp.complete()
       else
         fallback()
       end
@@ -123,3 +121,15 @@ cmp.setup {
   },
   experimental = {native_menu=false, ghost_text = true },
 }
+-- cmp.setup.cmdline('/', {
+--   sources = {
+--     { name = 'buffer' }
+--   }
+-- })
+-- cmp.setup.cmdline(':', {
+--   sources = cmp.config.sources({
+--     { name = 'path' }
+--   }, {
+--       { name = 'cmdline' }
+--     })
+-- })

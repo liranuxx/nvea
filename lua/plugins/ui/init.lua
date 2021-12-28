@@ -1,7 +1,6 @@
-local plugin_status = require("core.config").plugins.status
+local status = require("core.config").plugins.status
 
-local M = {}
-M.ui = function(use)
+return function(use)
   use {
     "nvim-treesitter/nvim-treesitter",
     event = "BufRead",
@@ -21,12 +20,7 @@ M.ui = function(use)
     "gelguy/wilder.nvim",
     run = "UpdateRemotePlugins",
     config = function()
-      local status, wilder = pcall(require, "plugins.ui.config")
-      if not status then
-        return print("Wilder not found!")
-      end
-      wilder.wilder()
+      require("plugins.ui.config").wilder()
     end
   }
 end
-return M

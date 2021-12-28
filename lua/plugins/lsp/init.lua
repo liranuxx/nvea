@@ -1,10 +1,10 @@
 local status = require("core.config").plugins.status
-local M = {}
 
-M.lspconfig = function(use)
+return function(use)
   use {
     "neovim/nvim-lspconfig",
     disable = not status.lsp,
+    ft = {'python', 'lua', 'sh', 'c', 'cpp'},
     config = [[require("plugins.lsp.lspconfig")]],
     requires = {
       {
@@ -22,4 +22,3 @@ M.lspconfig = function(use)
     config = [[require("plugins.lsp.init-formatter")]]
   }
 end
-return M

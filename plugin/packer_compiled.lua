@@ -90,45 +90,45 @@ _G.packer_plugins = {
   },
   ["cmp-buffer"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
-    loaded = false,
+    load_after = {},
+    loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-buffer",
     url = "https://hub.fastgit.org/hrsh7th/cmp-buffer"
   },
-  ["cmp-cmdline"] = {
-    after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-cmdline/after/plugin/cmp_cmdline.lua" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-cmdline",
-    url = "https://hub.fastgit.org/hrsh7th/cmp-cmdline"
-  },
   ["cmp-nvim-lsp"] = {
-    after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp/after/plugin/cmp_nvim_lsp.lua" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lsp",
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://hub.fastgit.org/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-nvim-lua"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua/after/plugin/cmp_nvim_lua.lua" },
-    loaded = false,
+    load_after = {},
+    loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-nvim-lua",
     url = "https://hub.fastgit.org/hrsh7th/cmp-nvim-lua"
   },
   ["cmp-path"] = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-path/after/plugin/cmp_path.lua" },
-    loaded = false,
+    load_after = {},
+    loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp-path",
     url = "https://hub.fastgit.org/hrsh7th/cmp-path"
   },
   cmp_luasnip = {
     after_files = { "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
-    loaded = false,
+    load_after = {},
+    loaded = true,
     needs_bufread = false,
     path = "/home/liran/.local/share/nvim/site/pack/packer/opt/cmp_luasnip",
     url = "https://hub.fastgit.org/saadparwaiz1/cmp_luasnip"
+  },
+  ["far.vim"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/far.vim",
+    url = "https://hub.fastgit.org/brooth/far.vim"
   },
   ["formatter.nvim"] = {
     config = { 'require("plugins.lsp.init-formatter")' },
@@ -196,12 +196,9 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    config = { 'require("plugins.completion.cmp")' },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-cmp",
-    url = "https://hub.fastgit.org/hrsh7th/nvim-cmp"
+    after = { "cmp-nvim-lua", "cmp-buffer", "cmp_luasnip", "cmp-path" },
+    loaded = true,
+    only_config = true
   },
   ["nvim-code-action-menu"] = {
     commands = { "CodeActionMenu" },
@@ -227,8 +224,10 @@ _G.packer_plugins = {
   },
   ["nvim-lspconfig"] = {
     config = { 'require("plugins.lsp.lspconfig")' },
-    loaded = true,
-    path = "/home/liran/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig",
     url = "https://hub.fastgit.org/neovim/nvim-lspconfig"
   },
   ["nvim-notify"] = {
@@ -332,6 +331,11 @@ _G.packer_plugins = {
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-fzf-dictionary",
     url = "https://hub.fastgit.org/yuki-uthman/vim-fzf-dictionary"
   },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://hub.fastgit.org/tpope/vim-surround"
+  },
   ["vim-visual-multi"] = {
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
@@ -344,7 +348,7 @@ _G.packer_plugins = {
     url = "https://hub.fastgit.org/folke/which-key.nvim"
   },
   ["wilder.nvim"] = {
-    config = { "\27LJ\1\2v\0\0\4\0\6\0\f4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\1>\2\1\1G\0\1\0\vwilder\22Wilder not found!\nprint\22plugins.ui.config\frequire\npcall\0" },
+    config = { "\27LJ\1\2@\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vwilder\22plugins.ui.config\frequire\0" },
     loaded = true,
     path = "/home/liran/.local/share/nvim/site/pack/packer/start/wilder.nvim",
     url = "https://hub.fastgit.org/gelguy/wilder.nvim"
@@ -360,9 +364,13 @@ time([[Config for hop.nvim]], false)
 time([[Config for telescope.nvim]], true)
 require("plugins.tools.init-telescope")
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require("plugins.completion.cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: wilder.nvim
 time([[Config for wilder.nvim]], true)
-try_loadstring("\27LJ\1\2v\0\0\4\0\6\0\f4\0\0\0004\1\1\0%\2\2\0>\0\3\3\14\0\0\0T\2\3€4\2\3\0%\3\4\0@\2\2\0007\2\5\1>\2\1\1G\0\1\0\vwilder\22Wilder not found!\nprint\22plugins.ui.config\frequire\npcall\0", "config", "wilder.nvim")
+try_loadstring("\27LJ\1\2@\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vwilder\22plugins.ui.config\frequire\0", "config", "wilder.nvim")
 time([[Config for wilder.nvim]], false)
 -- Config for: neoscroll.nvim
 time([[Config for neoscroll.nvim]], true)
@@ -372,18 +380,14 @@ time([[Config for neoscroll.nvim]], false)
 time([[Config for toggleterm.nvim]], true)
 require("plugins.tools.init-toggleterm")
 time([[Config for toggleterm.nvim]], false)
--- Config for: formatter.nvim
-time([[Config for formatter.nvim]], true)
-require("plugins.lsp.init-formatter")
-time([[Config for formatter.nvim]], false)
 -- Config for: gitsigns.nvim
 time([[Config for gitsigns.nvim]], true)
 require('plugins.tools.init-gitsigns')
 time([[Config for gitsigns.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-require("plugins.lsp.lspconfig")
-time([[Config for nvim-lspconfig]], false)
+-- Config for: formatter.nvim
+time([[Config for formatter.nvim]], true)
+require("plugins.lsp.init-formatter")
+time([[Config for formatter.nvim]], false)
 -- Config for: nvim-lsp-installer
 time([[Config for nvim-lsp-installer]], true)
 require("plugins.lsp.lsp_installer")
@@ -413,12 +417,16 @@ vim.cmd [[ packadd bufferline.nvim ]]
 -- Config for: bufferline.nvim
 require("plugins.tools.init-bufferline")
 
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-nvim-lua ]]
+vim.cmd [[ packadd cmp_luasnip ]]
+vim.cmd [[ packadd cmp-buffer ]]
 time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CodeActionMenu lua require("packer.load")({'nvim-code-action-menu'}, { cmd = "CodeActionMenu", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file MarkdownPreview lua require("packer.load")({'markdown-preview.nvim'}, { cmd = "MarkdownPreview", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file CodeActionMenu lua require("packer.load")({'nvim-code-action-menu'}, { cmd = "CodeActionMenu", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
@@ -427,13 +435,17 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType lua ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "lua" }, _G.packer_plugins)]]
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "sh" }, _G.packer_plugins)]]
+vim.cmd [[au FileType cpp ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "cpp" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "python" }, _G.packer_plugins)]]
+vim.cmd [[au FileType c ++once lua require("packer.load")({'nvim-lspconfig'}, { ft = "c" }, _G.packer_plugins)]]
 vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vim-cursorword'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'indent-blankline.nvim', 'nvim-colorizer.lua'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
