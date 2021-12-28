@@ -83,14 +83,13 @@ local function optional_mappings()
 end
 
 local function required_mappings()
-  map("n", maps.close_window, "<c-w>q") -- close  window
+  map("n", maps.close_window, ":q <CR>") -- close  window
   map("n", maps.close_buffer, ":bd <CR>") -- close  buffer
   map("n", maps.copy_whole_file, ":%y+ <CR>") -- copy whole file content
   map("n", maps.new_buffer, ":enew <CR>") -- new buffer
   map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
   map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
   map("n", maps.save_file, ":w <CR>") -- save file
-  map("n", maps.quit_file, ":q! <CR>") -- quit file
   -- map("n", maps.save_quit_file, ":wq! <CR>") -- save and quit file
   map("n", maps.toggle_theme, ":lua require('myplugin.toggle_theme')<cr>")
   map("n", maps.select_cmd, ":lua require('myplugin.select_cmd')<cr>")

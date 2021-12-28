@@ -37,14 +37,13 @@ M.plugins = {
 }
 
 M.mappings = {
-  close_buffer = "<leader>x",
-  close_window = "<leader>k",
+  save_file = "<leader>w", -- save file using :w
+  close_buffer = "<leader>k",
+  close_window = "<leader>q",
   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
   line_number_toggle = "<F2>", -- show or hide line number
   new_buffer = "<leader>n", -- open a new buffer
   new_tab = "<C-t>b", -- open a new vim tab
-  save_file = "<leader>w", -- save file using :w
-  quit_file = "<leader>q", -- quite file using :q!
   -- save_quit_file = "<leader>wq", -- quite file using :wq!
   toggle_theme = "<leader>fs",
   select_cmd = "<leader>,",
