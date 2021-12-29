@@ -1,4 +1,4 @@
-local choices = {"vs", "Format"}
+local choices = {"vs", "Format", "sp"}
 require "myplugin.cmenu.cmenu".open(
   choices,
   {

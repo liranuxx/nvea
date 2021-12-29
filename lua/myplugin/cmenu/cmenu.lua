@@ -5,38 +5,29 @@
 --
 -- Usage:
 -- 		local choices = {"choice 1", choice 2"}
--- 		require"contextmenu".open(choices, {
+-- 		require"cmenu".open(choices, {
 -- 			callback = function(chosen)
 -- 				print("Final choice " .. choices[chosen])
 -- 			end
 -- 		})
 local M = {}
 
+local function tbl_longest_str(tbl)
+  local len = 0
+  for _,str in pairs(tbl) do
+    len = math.max(len, #str)
+  end
+  return len
+end
 --@private
 -- Create a floating window and its buffer.
 -- Compute the window size according to the elements and
 -- options passed.
 local function create_float_win(choices, opts)
-	-- Create scratch buffer
-	local buf = vim.api.nvim_create_buf(false, true)
-
 	-- Compute width
-	local width = 0
-	for _, o in ipairs(choices) do
-		local w = vim.api.nvim_strwidth(o)
-		width = math.max(width, opts.padding[4] + w + opts.padding[2])
-	end
-
-	if opts.maxwidth then
-		width = math.min(width, opts.maxwidth)
-	end
-
+	local width = tbl_longest_str(choices)
 	-- Compute height
 	local height = #choices
-
-	if opts.maxheight then
-		height = math.min(height, opts.maxheight)
-	end
 
 	-- Determine float anchor
 	local anchor
@@ -77,13 +68,15 @@ local function create_float_win(choices, opts)
     border = "single",
 	}
 
+	-- Create scratch buffer
+	local buf = vim.api.nvim_create_buf(false, true)
 	-- use borders if plenary is installed
 	local win = vim.api.nvim_open_win(buf, false, win_opts)
 
   vim.api.nvim_buf_set_option(buf, "filetype", "cmenu")
-	vim.api.nvim_win_set_option(win, "cursorline", true)
-	vim.api.nvim_win_set_option(win, "winhl", "CursorLine:" .. opts.highlight)
-	vim.api.nvim_set_current_win(win)
+	-- vim.api.nvim_win_set_option(win, "cursorline", true)
+	-- vim.api.nvim_win_set_option(win, "winhl", "CursorLine:" .. opts.highlight)
+	-- vim.api.nvim_set_current_win(win)
 
 	return buf, win
 end
@@ -91,20 +84,19 @@ end
 --@private
 -- Adds padding on the left to every elements
 -- according to opts.padding[2] (right)
-local function pad_text(choices, opts)
-	for i=1,#choices do
-		for _=1,opts.padding[2] do
-			choices[i] = " " .. choices[i]
-		end
-	end
-end
+-- local function pad_text(choices, opts)
+-- 	for i=1,#choices do
+-- 		for _=1,opts.padding[2] do
+-- 			choices[i] = " " .. choices[i]
+-- 		end
+-- 	end
+-- end
 
 --@private
 -- Contains the focused context menu
 local focused = {}
 
 -- Open a context menu
---
 --@param choices a table of strings
 --@param opts dictionary with fields
 function M.open(choices, opts)
@@ -167,9 +159,9 @@ function M.open(choices, opts)
 		["opts.filtermode"] = { opts.filtermode, NA, "not supported!" },
 	}
 
-	if padding and (padding[1] ~= 0 or padding[3] ~= 0) then
-		error("top/bot border not supported!")
-	end
+	-- if padding and (padding[1] ~= 0 or padding[3] ~= 0) then
+	-- 	error("top/bot border not supported!")
+	-- end
 
 	-- set default settings
 	opts.padding = opts.padding or { 0, 0, 0, 0}
@@ -182,12 +174,12 @@ function M.open(choices, opts)
 
 	-- Leave a highlight where the cursor was
 	local old_buf = vim.api.nvim_get_current_buf()
-	local ns_cursor = M.display_cursor()
+	local ns_cursor = M.hide_cursor()
 
 	-- Display floating with text
 	local buf, win = create_float_win(choices, opts)
 
-	pad_text(choices, opts)
+	-- pad_text(choices, opts)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, choices)
 
 	focused = {
@@ -204,29 +196,6 @@ function M.open(choices, opts)
 	vim.api.nvim_buf_set_keymap(buf, 'n', '<CR>', '<cmd>lua require"myplugin.cmenu.cmenu".submit()<CR>', {noremap = true})
 
 	vim.api.nvim_command("autocmd WinLeave * ++once lua require'myplugin.cmenu.cmenu'.close()")
-end
-
---@private
--- Fills the borderchars array completly
--- according to what's received
-function M.fill_borderchars(borderchars)
-	if not borderchars then
-		borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'}
-	elseif #borderchars == 1 then
-		local a = borderchars[1]
-		borderchars = { a, a, a, a,    a, a, a, a }
-	elseif #borderchars == 2 then
-		local b = borderchars[1]
-		local c = borderchars[2]
-		borderchars = { b, b, b, b,    c, c, c, c }
-	elseif #borderchars == 4 then
-		local a = borderchars[1]
-		local b = borderchars[2]
-		local c = borderchars[3]
-		local d = borderchars[4]
-		borderchars = { a, b, c, d,    '+', '+', '+', '+' }
-	end
-	return borderchars
 end
 
 --@private
