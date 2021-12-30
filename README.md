@@ -29,7 +29,7 @@ Nvea，一个 neovim 配置。仅供参考。
 
 </details>
 
-## ✨ 特性
+## 特性
 
 - All written in lua, simple and powerful
 - Now only Onedark/Onelight theme to choose
@@ -50,7 +50,7 @@ Nvea，一个 neovim 配置。仅供参考。
 
 ## 要求
 
-- neovim >= 0.5 ...
+- neovim >= 0.5
 
 ## 使用
 
@@ -58,6 +58,7 @@ Nvea，一个 neovim 配置。仅供参考。
 
 ```bash
 git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\opt\packer.nvim"
+# 备份本地nvim目录
 git clone https://gitee.com/liranux/nvea.git ~/AppData/Local/nvim
 nvim +PackerSync
 ```
