@@ -1,4 +1,5 @@
 vim.cmd("colorscheme " .. require("core.config").ui.theme)
+vim.notify = require("notify")
 vim.notify({
   "😊 Now is "..vim.fn.strftime("%H:%M:%S", vim.fn.localtime()),
   "☕ Enjoy in your time!"

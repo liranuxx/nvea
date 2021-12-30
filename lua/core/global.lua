@@ -1,21 +1,21 @@
-local global = {}
 local home    = os.getenv("HOME")
 local os_name = vim.loop.os_uname().sysname
+local is_mac = "Darwin" == os_name
+local is_linux = 'Linux' == os_name
+local is_win = 'Windows' == os_name
+local path_sep = is_win and '\\' or '/'
 
-function global:load_variables()
+local global = {
+  home = home,
+  os_name = os_name,
+  is_linux = is_linux,
+  is_win = is_win,
+  is_mac = is_mac,
+  path_sep = path_sep,
 
-  self.home = home
-  self.is_mac = "Darwin" == os_name
-  self.is_linux = 'Linux' == os_name
-  self.is_win = 'Windows' == os_name
-  local path_sep = global.is_win and '\\' or '/'
-  self.path_sep = path_sep
-
-  self.vim_path = vim.fn.stdpath("config")
-  self.cache_dir = home .. path_sep .. ".cache" .. path_sep.. "nvim"
-  self.data_dir = vim.fn.stdpath("data") .. path_sep .. "site"
-end
-
-global:load_variables()
-
+  nvim = vim.fn.stdpath("config"),
+  cache = home .. path_sep .. ".cache" .. path_sep.. "nvim",
+  data = vim.fn.stdpath("data"),
+  site = vim.fn.stdpath("data") .. path_sep .. "site",
+}
 return global

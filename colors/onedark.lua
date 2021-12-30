@@ -466,11 +466,11 @@ local function init()
   for _, group in pairs(hl.plugins) do
     highlights(group)
   end
+  vim.o.background = "dark"
   local ts = require("core.config").ui.transparency
   if ts then
     highlights(hl.transparency)
   end
-  vim.o.background = "dark"
 end
 
 init()

@@ -1,7 +1,7 @@
-local global = require("core.global")
-local sep = global.path_sep
-local data_dir = global.data_dir
-local install_path = data_dir..sep..'pack'..sep..'packer'..sep..'opt'..sep..'packer.nvim'
+local g = require("core.global")
+local sep = g.path_sep
+local site = g.site
+local install_path = site..sep..'pack'..sep..'packer'..sep..'opt'..sep..'packer.nvim'
 
 local state = vim.loop.fs_stat(install_path)
 if not state then

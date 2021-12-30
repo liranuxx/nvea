@@ -3,16 +3,16 @@ local cmd = vim.cmd
 -- Compile code
 -- Get current filetype -> :echo &filetype or as variable &filetypes
 -- [ Builds / Compiles / Interpretes  ]
--- exec([[
--- augroup bci
---   autocmd FileType c nnoremap <buffer> <C-m> :5sp term://gcc % && ./a.out <CR>
---   autocmd FileType cpp nnoremap <buffer> <C-m> :5sp term://g++ % && ./a.out <CR>
---   autocmd FileType python nnoremap <buffer> <C-m> :5sp term://python % <CR>
---   autocmd FileType sh nnoremap <buffer> <C-m> :5sp term://sh % <CR>
---   autocmd FileType markdown nnoremap <buffer> <C-m> :Glow <CR>
---   autocmd FileType vim,zsh,tmux,lua nnoremap <buffer> <C-m> :source % <CR>
--- augroup END
--- ]], true)
+exec([[
+augroup bci
+  autocmd FileType c nnoremap <buffer> <leader>r :5sp term://gcc % && ./a.out <CR>
+  autocmd FileType cpp nnoremap <buffer> <leader>r :5sp term://g++ % && ./a.out <CR>
+  autocmd FileType python nnoremap <buffer> <leader>r :5sp term://python % <CR>
+  autocmd FileType sh nnoremap <buffer> <leader>r :5sp term://sh % <CR>
+  autocmd FileType markdown nnoremap <buffer> <leader>r :MarkdownPreview <CR>
+  autocmd FileType vim,zsh,tmux,lua nnoremap <buffer> <leader>r :source % <CR>
+augroup END
+]], true)
 
 -- Don't show any numbers inside terminals
 cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
@@ -43,7 +43,7 @@ vim.cmd([[autocmd TextYankPost * silent! lua vim.highlight.on_yank({higroup="Inc
 
 
 if vim.fn.has('wsl') then
-  vim.cmd [[
+  cmd [[
   augroup Yank
   autocmd!
   autocmd TextYankPost * :call system('/mnt/c/windows/system32/clip.exe ',@")

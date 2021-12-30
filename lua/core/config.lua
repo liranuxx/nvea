@@ -13,6 +13,7 @@ M.ui = {
   theme = "onedark",
   -- theme = "onelight",
   italic_comment = true,
+  -- 需要终端支持透明
   transparency = false,
 }
 
